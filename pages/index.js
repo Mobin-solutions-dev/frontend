@@ -21,7 +21,7 @@ export default function Index() {
   return (
     <>
       <Header />
-      <Container>
+      <Container maxWidth="lg">
         <Banner />
         <Grid container spacing={1}>
           <Grid container item xs={12} md={9}
