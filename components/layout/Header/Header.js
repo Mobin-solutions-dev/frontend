@@ -3,7 +3,7 @@ import Toolbar from '@material-ui/core/Toolbar';
 import Box from '@material-ui/core/Box';
 import Button from '@material-ui/core/Button';
 import { makeStyles } from '@material-ui/core/styles';
-
+import Link from 'next/link'
 import { Icon } from '../../global'
 
 const useStyles = makeStyles((theme) => ({
@@ -25,8 +25,9 @@ const Header = () => {
                 <Toolbar>
                     <div style={{ display: 'flex' }}>
                     </div>
-                    <Icon src="/static/icons/logo_mobin.jpg" />
-
+                    <Link href="/">
+                        <Icon src="/static/icons/logo_mobin.jpg" />
+                    </Link>
                     <Box ml={2}>
                         <Button
                             className={classes.navbarItem}

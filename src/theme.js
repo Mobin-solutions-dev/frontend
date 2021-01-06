@@ -20,10 +20,10 @@ const theme = createMuiTheme({
       main: "#2699b0"
     },
     orange: {
-      main: "#FF7F00"
+      main: "#e95e2e"
     },
     red: {
-      main: "#5352c"
+      main: "#e5352c"
     },
     golden: {
       main: "#f29400"
