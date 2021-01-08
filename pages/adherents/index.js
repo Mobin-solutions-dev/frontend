@@ -1,5 +1,5 @@
-import { Container, Box } from '@material-ui/core'
-import { Header, Title } from '../../components'
+import { Container, Box, Grid } from '@material-ui/core'
+import { Header, Title, FranceMap } from '../../components'
 
 
 const Adherents = ({ }) => {
@@ -8,7 +8,14 @@ const Adherents = ({ }) => {
             <Header />
             <Box mt={7}>
                 <Container maxWidth="lg">
-                    <Title content="Adherents" size="h4" uppercase bold letterspacing="2px" />
+                    <Grid container>
+                        <Box mb={5}>
+                            <Title content="Adherents" size="h4" uppercase bold letterspacing="2px" />
+                        </Box>
+                        <Grid item xs={12}>
+                            <FranceMap />
+                        </Grid>
+                    </Grid>
                 </Container>
             </Box>
         </>

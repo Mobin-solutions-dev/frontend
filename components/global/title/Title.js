@@ -3,15 +3,19 @@ import { makeStyles } from '@material-ui/core/styles';
 
 
 
-const Title = ({ size, color, uppercase, content, bold, letterspacing, fontSize }) => {
+const Title = ({ size, color, uppercase, content, bold, italic, letterspacing, fontSize, listItem, listStyleType, listStylePosition }) => {
 
     const useStyles = makeStyles((theme) => ({
         title: {
             color: color ? color : theme.palette.orange.main,
             textTransform: uppercase ? "uppercase" : undefined,
             fontWeight: bold ? 'bold' : undefined,
+            fontStyle: italic ? 'italic' : undefined,
             letterSpacing: letterspacing ? letterspacing : '0px',
-            fontSize: fontSize ? fontSize : undefined
+            fontSize: fontSize ? fontSize : undefined,
+            display: listItem ? "list-item" : undefined,
+            listStyleType: listStyleType ? listStyleType : undefined,
+            listStylePosition: listStylePosition ? listStylePosition : undefined,
         }
     }))
     const classes = useStyles();

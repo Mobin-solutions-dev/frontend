@@ -1,14 +1,17 @@
 import { useState, Fragment } from 'react'
-import { Menu, MenuItem, Button, Box, AppBar, Toolbar, Link, Fade } from '@material-ui/core'
+import { Menu, MenuItem, Button, Box, AppBar, Toolbar, Link } from '@material-ui/core'
 import { makeStyles } from '@material-ui/core/styles';
-import { Icon } from '../../global'
-import { Banner } from '../../homepage'
+import { Icon, Title } from '../../global'
 import Router from "next/router";
 
 
 import { menuItems } from '../../../utils'
 
 const useStyles = makeStyles((theme) => ({
+    toolbar: {
+        paddingTop: '1em',
+        paddingBottom: '1em',
+    },
     navbar: {
         backgroundColor: theme.palette.background.default,
         marginBottom: "10px",
@@ -18,7 +21,23 @@ const useStyles = makeStyles((theme) => ({
         color: theme.palette.background.default,
         marginRight: '15px',
         paddingLeft: '3em',
-        paddingRight: '3em'
+        paddingRight: '3em',
+        '&:hover': {
+            backgroundColor: theme.palette.golden.main,
+        }
+    },
+    list: {
+        listStyleType: "disc",
+        fontSize: "20px",
+    },
+    items: {
+        display: "flex"
+    },
+    btn: {
+        '&:hover': {
+            backgroundColor: theme.palette.golden.main,
+            // color: '#FFF'
+        }
     }
 }))
 const Header = () => {
@@ -26,8 +45,6 @@ const Header = () => {
     const [anchorEl, setAnchorEl] = useState(null);
     const [itemClicked, setItemClicked] = useState(null)
     const open = Boolean(anchorEl);
-
-    console.log("anchorEl", anchorEl)
 
     const handleClick = (event, id) => {
         setAnchorEl(event.currentTarget);
@@ -40,100 +57,75 @@ const Header = () => {
     };
 
     const handleClickSubItem = (subItem = {}) => {
-        Router.push(subItem.link)
         setAnchorEl(null);
+        setItemClicked(null)
+        Router.push(subItem.link)
     };
 
     return (
         <AppBar position="static" className={classes.navbar}>
-            <Box pb={1} pt={1}>
-                <Toolbar>
-                    <Link href="/">
+            <Toolbar className={classes.toolbar}>
+                <Box style={{ flex: 1 }}>
+                    <Link href="/" classes={classes.logo}>
                         <Icon src="/static/icons/logo_mobin.jpg" />
                     </Link>
-                    <div>
+                </Box>
+                <div>
+                    <Box className={classes.items} alignItems="center">
+
                         {
                             menuItems.map((item, index) => (
-                                <Fragment key={index}>
-                                    <Button aria-controls="simple-menu" aria-haspopup="true" onClick={(event) => {
-                                        handleClick(event, item.id);
-                                    }}
-                                        className={classes.navbarItem}>
-                                        {item.title}
-                                    </Button>
-                                    <Menu
-                                        id="simple-menu"
-                                        anchorEl={anchorEl}
-                                        keepMounted
-                                        open={itemClicked === item.id}
-                                        onClose={handleClose}
-                                    // TransitionComponent={Fade}
-                                    >
-                                        {
-                                            item.subItems.map(subItem => (
-                                                <MenuItem onClick={() => handleClickSubItem(subItem)}>{subItem.title}</MenuItem>
-                                            ))
-                                        }
-                                    </Menu>
-                                </Fragment>
+                                <Box key={index}>
+                                    <Fragment>
+                                        <Button
+                                            aria-controls="simple-menu" aria-haspopup="true" onClick={(event) => {
+                                                handleClick(event, item.id);
+                                            }}
+                                            className={classes.navbarItem}>
+                                            {/* {item.title} */}
+                                            {
+                                                item.icon ?
+                                                    <Icon
+                                                        maxWidth="60px"
+                                                        src={`/static/icons/${item.icon}.png`} />
+                                                    :
+                                                    item.title
+
+                                            }
+                                        </Button>
+                                        <Menu
+                                            className={classes.list}
+                                            id="simple-menu"
+                                            anchorEl={anchorEl}
+                                            keepMounted
+                                            open={itemClicked === item.id}
+                                            onClose={handleClose}
+                                        // TransitionComponent={Fade}
+                                        >
+                                            {
+                                                item.subItems.map((subItem, index) => (
+                                                    <MenuItem key={index} onClick={() => handleClickSubItem(subItem)}>
+                                                        <Title
+                                                            listItem
+                                                            listStyleType="disc"
+                                                            listStylePosition="inside"
+                                                            uppercase
+                                                            fontSize="12px"
+                                                            letterspacing="1px"
+                                                            color="black"
+                                                            content={subItem.title} />
+                                                    </MenuItem>
+                                                ))
+                                            }
+                                        </Menu>
+                                    </Fragment>
+                                </Box>
                             ))
                         }
-
-                    </div>
-                    {/* <div style={{ display: 'flex' }}>
-                    </div>
-                    <Link href="/">
-                        <Icon src="/static/icons/logo_mobin.jpg" />
-                    </Link>
-                    <Box ml={2}>
-                        <Button
-                            className={classes.navbarItem}
-                            variant="contained"
-                            onClick={handleClick}
-                            aria-controls="fade-menu" aria-haspopup="true"
-                        >
-                            Nos Activités
-                 </Button>
-                        <Menu
-                            id="fade-menu"
-                            // anchorEl={anchorEl}
-                            keepMounted
-                            open={open}
-                            onClose={handleClose}
-                            TransitionComponent={Fade}
-                        >
-                            <MenuItem onClick={handleClose}>Profile</MenuItem>
-                            <MenuItem onClick={handleClose}>My account</MenuItem>
-                            <MenuItem onClick={handleClose}>Logout</MenuItem>
-                        </Menu>
+                        <Icon src="/static/icons/P.Adhérent1.png" maxWidth="50px" />
                     </Box>
-                    <Box ml={2}>
-                        <Button
-                            className={classes.navbarItem}
-                            variant="contained"
-                        >
-                            Nos Projets
-                 </Button>
-                    </Box>
-                    <Box ml={2}>
-                        <Button
-                            className={classes.navbarItem}
-                            variant="contained"
-                        >
-                            Notre Accompagnement
-                 </Button>
-                    </Box>
-                    <Box ml={2}>
-                        <Button
-                            className={classes.navbarItem}
-                            variant="contained"
-                        >
-                            Login
-                 </Button>
-                    </Box> */}
-                </Toolbar>
-            </Box>
-            {/* <Banner /> */}
+                </div>
+            </Toolbar>
         </AppBar>
     )
 }

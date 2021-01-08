@@ -1,6 +1,7 @@
 export const menuItems = [
     {
         id: 1,
+        // icon: "Mob'in",
         title: "Mob'In",
         subItems: [
             {
