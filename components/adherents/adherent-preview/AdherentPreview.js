@@ -2,6 +2,7 @@ import { Box, Grid, Paper, Card, CardContent, Button, Chip, Divider } from '@mat
 import { Title, Text } from '../../global'
 import { makeStyles } from '@material-ui/core/styles';
 import ArrowRight from "@material-ui/icons/ArrowRight"
+import Router from 'next/router'
 
 const useStyles = makeStyles((theme) => ({
     chip: {
@@ -11,15 +12,23 @@ const useStyles = makeStyles((theme) => ({
     },
     btn: {
         color: "black",
-        borderColor: theme.palette.orange.main
+        borderColor: theme.palette.orange.main,
+        '&:hover': {
+            backgroundColor: theme.palette.golden.main,
+            color: "#fff",
+            border: 'none'
+        }
     }
 }))
 
 const AdherentPreview = ({ adherent = {} }) => {
     const classes = useStyles();
-    const { nom_adherent, adresse, competences } = adherent
+    const { nom_adherent, adresse, competences, id } = adherent
+
+    const handleSeeAdherent = id => Router.push(`/adherents/${id}`)
+
     return (
-        <Grid item xs={12} sm={12} md={4}>
+        <Grid item xs={12} sm={12} md={6}>
             <Box mt={2} ml={2}>
                 <Paper>
                     <Card>
@@ -38,8 +47,8 @@ const AdherentPreview = ({ adherent = {} }) => {
                             <Box mb={2}>
                                 <Grid container>
                                     {
-                                        competences && competences.map(comp => (
-                                            <Grid item xs={12}>
+                                        competences && competences.map((comp, index) => (
+                                            <Grid item xs={12} key={index}>
                                                 <Box>
                                                     <Chip className={classes.chip} label={comp.type} />
                                                 </Box>
@@ -50,7 +59,7 @@ const AdherentPreview = ({ adherent = {} }) => {
                             </Box>
                             <Divider />
                             <Box mt={2}>
-                                <Button className={classes.btn} variant="outlined">
+                                <Button className={classes.btn} variant="outlined" onClick={() => handleSeeAdherent(id)}>
                                     Voir la structure
                                     <ArrowRight />
                                 </Button>

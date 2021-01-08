@@ -14,7 +14,7 @@ export const menuItems = [
             },
             {
                 title: "Nos adhérents",
-                link: "/"
+                link: "/adherents"
             },
             {
                 title: "Nos partenaires",

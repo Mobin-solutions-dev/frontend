@@ -11,7 +11,7 @@ import { Banner, Header, FiguresSection, NewsSection } from "../components"
 const useStyles = makeStyles((theme) => ({
   mainImage: {
     maxHeight: '100%',
-    maxWidth: '100%'
+    maxWidth: '100%',
   }
 }))
 
