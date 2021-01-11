@@ -5,12 +5,16 @@ export const menuItems = [
         title: "Mob'In",
         subItems: [
             {
-                title: "Notre historique, valeurs et missions",
-                link: "/"
+                title: "Présentation",
+                link: "/presentation"
+            },
+            {
+                title: "Notre histoire, nos valeurs et nos missions",
+                link: "/histoire-valeurs-missions"
             },
             {
                 title: "Notre fonctionnement",
-                link: "/"
+                link: "/fonctionnement"
             },
             {
                 title: "Nos adhérents",
@@ -47,6 +51,24 @@ export const menuItems = [
             {
                 title: "Integramob",
                 link: "/projets/integramob"
+            },
+            {
+                title: "Nos formations",
+                link: "/formations"
+            },
+        ]
+    },
+    {
+        id: 4,
+        title: "Notre accompagnement",
+        subItems: [
+            {
+                title: "Au service des territoires",
+                link: "/accompagnement/territoires"
+            },
+            {
+                title: "Au service des entreprises",
+                link: "/accompagnement/entreprises"
             },
         ]
     },

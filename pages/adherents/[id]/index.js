@@ -1,7 +1,9 @@
-import { Header, Title } from '../../../components'
+import { Header, Title, HtmlContent } from '../../../components'
 import { Box, Container, Grid, Table, TableBody, TableCell, Chip } from '@material-ui/core'
 import { getAdherent } from '../../../utils'
 import { makeStyles } from '@material-ui/core/styles';
+
+import showdown from 'showdown'
 
 const useStyles = makeStyles((theme) => ({
     cell1: {
@@ -25,8 +27,11 @@ const useStyles = makeStyles((theme) => ({
 
 const Adherent = ({ adherent = {} }) => {
     const classes = useStyles();
+    const converter = new showdown.Converter()
 
     const { nom_adherent, presentation_adherent, numero_telephone, email, site_internet, adresse, departements_actions, projets, competences } = adherent
+
+
     return (
         <>
             <Header />
@@ -111,7 +116,9 @@ const Adherent = ({ adherent = {} }) => {
                                     <TableCell className={classes.cell1} component="th" scope="row">
                                         Présentation
                                     </TableCell>
-                                    <TableCell className={classes.cell2} align="left">{presentation_adherent}</TableCell>
+                                    <TableCell className={classes.cell2} align="left">
+                                        <HtmlContent content={presentation_adherent} />
+                                    </TableCell>
                                 </TableBody>
                             </Table>
                         </Box>

@@ -47,88 +47,99 @@ const Region = ({ departments = [], adherents = [], coordinateurs = [] }) => {
                             </Box>
                         </Grid>
                     </Grid>
-                    <Grid container>
-                        <Grid item xs={12}>
-                            <img
-                                className={classes.mainImage}
-                                src={uniqueCoordinateur.logo.formats.small.url}
-                                alt="mobilite"
-                            />
-                        </Grid>
-                    </Grid>
-                    <Grid container>
-                        <Grid item xs={12} md={6}>
-                            <Box className={classes.banner}>
-                                <Table>
-                                    <TableBody>
-                                        <TableCell className={classes.cell}>
-                                            <Title
-                                                fontSize="16px"
-                                                color="black"
-                                                bold
-                                                content="Président de région" />
-                                        </TableCell>
-                                        <TableCell>
-                                            <Box mb={1}>
-                                                <Title
-                                                    fontSize="16px"
-                                                    color="#2699b0"
-                                                    bold
-                                                    content={uniqueCoordinateur.nom_president} />
-                                            </Box>
-                                            <Box mb={1}>
-                                                <Title
-                                                    fontSize="13px"
-                                                    color="black"
-                                                    bold
-                                                    content={uniqueCoordinateur.telephone_president} />
-                                            </Box>
-                                            <Box mb={1}>
-                                                <Title
-                                                    fontSize="13px"
-                                                    color="black"
-                                                    bold
-                                                    content={uniqueCoordinateur.email_president} />
-                                            </Box>
-                                        </TableCell>
-                                    </TableBody>
+                    {
+                        uniqueCoordinateur ?.logo && (
+                            <Grid container>
+                                <Grid item xs={12}>
+                                    <img
+                                        className={classes.mainImage}
+                                        src={uniqueCoordinateur.logo.formats.small.url}
+                                        alt="mobilite"
+                                    />
+                                </Grid>
+                            </Grid>
+                        )
+                    }
 
-                                    <TableBody>
-                                        <TableCell className={classes.cell}>
-                                            <Title
-                                                fontSize="16px"
-                                                color="black"
-                                                bold
-                                                content="Co-Président de région" />
-                                        </TableCell>
-                                        <TableCell>
-                                            <Box mb={1}>
-                                                <Title
-                                                    fontSize="16px"
-                                                    color="#2699b0"
-                                                    bold
-                                                    content={uniqueCoordinateur.nom_co_president} />
-                                            </Box>
-                                            <Box mb={1}>
-                                                <Title
-                                                    fontSize="13px"
-                                                    color="black"
-                                                    bold
-                                                    content={uniqueCoordinateur.telephone_co_president} />
-                                            </Box>
-                                            <Box mb={1}>
-                                                <Title
-                                                    fontSize="13px"
-                                                    color="black"
-                                                    bold
-                                                    content={uniqueCoordinateur.email_co_president} />
-                                            </Box>
-                                        </TableCell>
-                                    </TableBody>
-                                </Table>
-                            </Box>
-                        </Grid>
-                    </Grid>
+                    {
+                        uniqueCoordinateur && (
+                            <Grid container>
+                                <Grid item xs={12} md={6}>
+                                    <Box className={classes.banner}>
+                                        <Table>
+                                            <TableBody>
+                                                <TableCell className={classes.cell}>
+                                                    <Title
+                                                        fontSize="16px"
+                                                        color="black"
+                                                        bold
+                                                        content="Président de région" />
+                                                </TableCell>
+                                                <TableCell>
+                                                    <Box mb={1}>
+                                                        <Title
+                                                            fontSize="16px"
+                                                            color="#2699b0"
+                                                            bold
+                                                            content={uniqueCoordinateur.nom_president || ""} />
+                                                    </Box>
+                                                    <Box mb={1}>
+                                                        <Title
+                                                            fontSize="13px"
+                                                            color="black"
+                                                            bold
+                                                            content={uniqueCoordinateur.telephone_president || ""} />
+                                                    </Box>
+                                                    <Box mb={1}>
+                                                        <Title
+                                                            fontSize="13px"
+                                                            color="black"
+                                                            bold
+                                                            content={uniqueCoordinateur.email_president || ""} />
+                                                    </Box>
+                                                </TableCell>
+                                            </TableBody>
+
+                                            <TableBody>
+                                                <TableCell className={classes.cell}>
+                                                    <Title
+                                                        fontSize="16px"
+                                                        color="black"
+                                                        bold
+                                                        content="Co-Président de région" />
+                                                </TableCell>
+                                                <TableCell>
+                                                    <Box mb={1}>
+                                                        <Title
+                                                            fontSize="16px"
+                                                            color="#2699b0"
+                                                            bold
+                                                            content={uniqueCoordinateur.nom_co_president || ""} />
+                                                    </Box>
+                                                    <Box mb={1}>
+                                                        <Title
+                                                            fontSize="13px"
+                                                            color="black"
+                                                            bold
+                                                            content={uniqueCoordinateur.telephone_co_president || ""} />
+                                                    </Box>
+                                                    <Box mb={1}>
+                                                        <Title
+                                                            fontSize="13px"
+                                                            color="black"
+                                                            bold
+                                                            content={uniqueCoordinateur.email_co_president || ""} />
+                                                    </Box>
+                                                </TableCell>
+                                            </TableBody>
+                                        </Table>
+                                    </Box>
+                                </Grid>
+                            </Grid>
+                        )
+                    }
+
+
                     <Box mb={5}>
                         <Title
                             color="black"

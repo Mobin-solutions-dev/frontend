@@ -1,6 +1,7 @@
 import { Container, Box, Grid } from '@material-ui/core'
 import { Header, Title, Text, MoveCard } from '../../components'
 import { pouvoirBouger } from '../../utils'
+import Link from 'next/link'
 
 
 const PouvoirBougerPage = ({ }) => {
@@ -55,6 +56,11 @@ const PouvoirBougerPage = ({ }) => {
                                 ))
                             } */}
                         </Grid>
+                    </Box>
+                    <Box mt={4}>
+                        <Text fontSize="18px">
+                            Vous retrouverez la liste complète des activités proposées par les adhérents <Link href="/adherents">ici</Link>.
+                        </Text>
                     </Box>
                 </Container>
             </Box>
