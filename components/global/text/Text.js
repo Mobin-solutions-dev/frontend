@@ -15,7 +15,7 @@ const Text = ({ size, color, uppercase, children, bold, letterspacing, fontSize 
     const classes = useStyles();
 
     return (
-        <Typography className={classes.text} variant={size ? size : "h6"}>{children}</Typography>
+        <Typography className={classes.text} variant={size ? size : "body1"}>{children}</Typography>
     )
 }
 

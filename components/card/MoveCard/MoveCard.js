@@ -34,13 +34,13 @@ const useStyles = makeStyles((theme) => ({
 const MoveCard = ({ info = {} }) => {
     const classes = useStyles();
 
-    const { title, infos } = info
+    const { title, infos, icon } = info
     return (
         <Box mb={4} mr={3} className={classes.box}>
             <div className={classes.icon}>
                 <Icon
                     maxWidth="70px"
-                    src="/static/icons/P.Adhérents.png" />
+                    src={`/static/icons/${icon}.png`} />
             </div>
             <Card variant="outlined" className={classes.card}>
                 <CardContent>
@@ -48,7 +48,7 @@ const MoveCard = ({ info = {} }) => {
                     <List className={classes.list}>
                         {
                             infos.map((info, index) => (
-                                <Box mb={1}><li key={index}><Text fontSize="15px">{info}</Text></li></Box>
+                                <Box mb={1}><li key={index}><Text>{info}</Text></li></Box>
                             ))
                         }
 

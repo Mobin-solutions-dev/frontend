@@ -23,7 +23,7 @@ const History = ({ }) => {
                         </Grid>
                         <Grid item xs={12}>
                             <Box mt={2}>
-                                <Text fontSize="15px">
+                                <Text  >
                                     L’association Mob’In France a été créée le 30 août 2017, par d’ancien membre de l’association FARE.
                                 <br />
                                     <br />
@@ -51,7 +51,7 @@ const History = ({ }) => {
                         </Grid>
                         <Grid item xs={12}>
                             <Box mt={2}>
-                                <Text fontSize="15px">
+                                <Text  >
                                     L’association a pour objet d’accompagner les personnes en situation de fragilité vers une mobilité autonome et durable.
                                     <br />
                                     <br />
@@ -71,7 +71,7 @@ const History = ({ }) => {
                         </Grid>
                         <Grid item xs={12}>
                             <Box mt={2}>
-                                <Text fontSize="15px">
+                                <Text  >
                                     <li>Partager un cadre commun de valeurs et de principes d’action entre les Régions Mob’In et permettre la mutualisation des compétences, expériences, méthodes et outils</li>
                                     <br />
                                     <li>Assurer une représentation nationale des Mob’In régionaux et des projets locaux auprès des acteurs nationaux et des partenaires.</li>

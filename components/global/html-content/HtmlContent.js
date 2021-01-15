@@ -6,7 +6,6 @@ import ReactHtmlParser, { processNodes, convertNodeToElement, htmlparser2 } from
 const HtmlContent = ({ content = "" }) => {
     const converter = new showdown.Converter()
     const htmlContent = converter.makeHtml(content)
-    console.log("htmlContent", htmlContent)
     return (
         <Fragment>
             {ReactHtmlParser(htmlContent)}

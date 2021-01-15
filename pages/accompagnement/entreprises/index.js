@@ -15,7 +15,7 @@ const Entreprises = ({ }) => {
                     <Grid container>
                         <Grid item xs={12}>
                             <Box mt={4}>
-                                <Text fontSize="15px">
+                                <Text  >
                                     Vous souhaitez avoir des informations sur l’accompagnement proposé par Mob’In France ou vous avez un projet de mobilité solidaire sur votre territoire ou votre entreprise ?
                             <br />
                                     <br />

@@ -4,7 +4,6 @@ import { getTrainings } from '../../utils'
 import Link from 'next/link'
 
 const Formations = ({ trainings = [] }) => {
-    console.log("trainings", trainings)
     return (
         <>
             <Header />
@@ -38,7 +37,6 @@ const Formations = ({ trainings = [] }) => {
 export const getServerSideProps = async (context) => {
     const res = await fetch(getTrainings)
     const trainings = await res.json()
-    console.log(trainings)
     return {
         props: { trainings }
     };

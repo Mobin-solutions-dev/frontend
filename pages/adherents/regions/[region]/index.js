@@ -53,7 +53,7 @@ const Region = ({ departments = [], adherents = [], coordinateurs = [] }) => {
                                 <Grid item xs={12}>
                                     <img
                                         className={classes.mainImage}
-                                        src={uniqueCoordinateur.logo.formats.small.url}
+                                        src={uniqueCoordinateur ?.logo ?.formats ?.small ?.url || undefined}
                                         alt="mobilite"
                                     />
                                 </Grid>

@@ -21,7 +21,7 @@ const Banner = ({ }) => {
                 <Box pt={3} pb={3}>
                     <Grid container justify="center" spacing={4}>
                         <Grid item className={classes.box}>
-                            <Link href="adherents">
+                            <Link href="/adherents">
                                 <Box pl={3.5}>
                                     <Icon
                                         maxWidth="75px"
@@ -29,32 +29,36 @@ const Banner = ({ }) => {
                                 </Box>
 
                                 <Box>
-                                    <Title letterspacing="1px" uppercase bold content="nos adhérents" fontSize="15px" color="#2699b0" />
+                                    <Title letterspacing="1px" uppercase bold content="nos adhérents" size="h6" color="#2699b0" />
                                 </Box>
                             </Link>
 
                         </Grid>
 
                         <Grid item className={classes.box}>
-                            <Box pl={2}>
-                                <Icon
-                                    maxWidth="75px"
-                                    src="/static/icons/P.chiffres.png" />
-                            </Box>
-                            <Box>
-                                <Title letterspacing="1px" uppercase bold content="nos chiffres" fontSize="15px" color="#2699b0" />
-                            </Box>
+                            <Link href="/#figures">
+                                <Box pl={2}>
+                                    <Icon
+                                        maxWidth="75px"
+                                        src="/static/icons/P.chiffres.png" />
+                                </Box>
+                                <Box>
+                                    <Title letterspacing="1px" uppercase bold content="nos chiffres" size="h6" color="#2699b0" />
+                                </Box>
+                            </Link>
                         </Grid>
 
                         <Grid item className={classes.box}>
-                            <Box>
-                                <Icon
-                                    maxWidth="75px"
-                                    src="/static/icons/P.actus.png" />
-                            </Box>
-                            <Box>
-                                <Title letterspacing="1px" uppercase bold content="nos actus" fontSize="15px" color="#2699b0" />
-                            </Box>
+                            <Link href="/#news">
+                                <Box>
+                                    <Icon
+                                        maxWidth="75px"
+                                        src="/static/icons/P.actus.png" />
+                                </Box>
+                                <Box>
+                                    <Title letterspacing="1px" uppercase bold content="nos actus" size="h6" color="#2699b0" />
+                                </Box>
+                            </Link>
                         </Grid>
 
 

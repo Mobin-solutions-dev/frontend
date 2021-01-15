@@ -25,7 +25,7 @@ const Fonctionnement = ({ }) => {
                         </Grid>
                         <Grid item xs={12}>
                             <Box mt={2}>
-                                <Text fontSize="15px">
+                                <Text  >
                                     {
                                         regions.map((region, index) => (
                                             <Fragment key={index}>

@@ -14,7 +14,7 @@ const FiguresSection = () => {
         <Container>
             <Box pt={10} pb={10}>
                 <Grid>
-                    <Title content="les chiffres" size="h3" uppercase bold letterspacing="2px" />
+                    <Title content="les chiffres" size="h4" uppercase bold letterspacing="2px" />
                     <Box pt={5} pb={5}>
                         <Grid container spacing={5}>
                             <Grid item xs={12} sm={6} md={3}>
@@ -23,7 +23,7 @@ const FiguresSection = () => {
                                     <Title bold size="h3" content="2500" color="black" />
                                 </Box>
                                 <Box pl={4}>
-                                    <Title content="Nombre de personnes reçues" color="black" fontSize="15px" />
+                                    <Title content="Nombre de personnes reçues" color="black" size="h6" />
                                 </Box>
                             </Grid>
 
@@ -33,7 +33,7 @@ const FiguresSection = () => {
                                     <Title bold size="h3" content="85" color="black" />
                                 </Box>
                                 <Box pl={4}>
-                                    <Title content="Nombre de conseillers mobilité" color="black" fontSize="15px" />
+                                    <Title content="Nombre de conseillers mobilité" color="black" size="h6" />
                                 </Box>
                             </Grid>
 
@@ -43,7 +43,7 @@ const FiguresSection = () => {
                                     <Title bold size="h3" content="750" color="black" />
                                 </Box>
                                 <Box pl={4}>
-                                    <Title content="Nombre de jours de location" color="black" fontSize="15px" />
+                                    <Title content="Nombre de jours de location" color="black" size="h6" />
                                 </Box>
                             </Grid>
 
@@ -53,7 +53,7 @@ const FiguresSection = () => {
                                     <Title bold size="h3" content="150" color="black" />
                                 </Box>
                                 <Box pl={4}>
-                                    <Title content="Nombre d'adhérents" color="black" fontSize="15px" />
+                                    <Title content="Nombre d'adhérents" color="black" size="h6" />
                                 </Box>
                             </Grid>
                         </Grid>
