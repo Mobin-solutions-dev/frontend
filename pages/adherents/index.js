@@ -1,11 +1,10 @@
 import { Container, Box, Grid } from '@material-ui/core'
-import { Header, Title, FranceMap } from '../../components'
+import { Layout, Title, FranceMap } from '../../components'
 
 
 const Adherents = ({ }) => {
     return (
-        <>
-            <Header />
+        <Layout>
             <Box mt={7}>
                 <Container maxWidth="lg">
                     <Grid container>
@@ -18,7 +17,7 @@ const Adherents = ({ }) => {
                     </Grid>
                 </Container>
             </Box>
-        </>
+        </Layout>
     )
 }
 

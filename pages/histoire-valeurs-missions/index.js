@@ -1,11 +1,10 @@
 import { Container, Box, Grid } from '@material-ui/core'
-import { Header, Title, Text } from '../../components'
+import { Layout, Title, Text } from '../../components'
 
 
 const History = ({ }) => {
     return (
-        <>
-            <Header />
+        <Layout>
             <Box mt={7}>
                 <Container maxWidth="lg">
                     <Grid container>
@@ -14,16 +13,14 @@ const History = ({ }) => {
                         </Box>
                     </Grid>
                     <Grid container>
-                        <Grid item xs={12}>
+                        <Grid item xs={12} md={8}>
                             <Box mt={4}>
                                 <Title
                                     color="black"
                                     content="Notre histoire" size="h6" uppercase bold letterspacing="2px" />
                             </Box>
-                        </Grid>
-                        <Grid item xs={12}>
                             <Box mt={2}>
-                                <Text  >
+                                <Text fontSize="15px">
                                     L’association Mob’In France a été créée le 30 août 2017, par d’ancien membre de l’association FARE.
                                 <br />
                                     <br />
@@ -40,6 +37,10 @@ const History = ({ }) => {
                                 </Text>
                             </Box>
                         </Grid>
+                        <Grid item xs={12} md={4}>
+                            Image
+                        </Grid>
+
                     </Grid>
                     <Grid container>
                         <Grid item xs={12}>
@@ -51,7 +52,7 @@ const History = ({ }) => {
                         </Grid>
                         <Grid item xs={12}>
                             <Box mt={2}>
-                                <Text  >
+                                <Text fontSize="15px">
                                     L’association a pour objet d’accompagner les personnes en situation de fragilité vers une mobilité autonome et durable.
                                     <br />
                                     <br />
@@ -71,7 +72,7 @@ const History = ({ }) => {
                         </Grid>
                         <Grid item xs={12}>
                             <Box mt={2}>
-                                <Text  >
+                                <Text fontSize="15px">
                                     <li>Partager un cadre commun de valeurs et de principes d’action entre les Régions Mob’In et permettre la mutualisation des compétences, expériences, méthodes et outils</li>
                                     <br />
                                     <li>Assurer une représentation nationale des Mob’In régionaux et des projets locaux auprès des acteurs nationaux et des partenaires.</li>
@@ -83,7 +84,7 @@ const History = ({ }) => {
                     </Grid>
                 </Container>
             </Box>
-        </>
+        </Layout>
     )
 }
 

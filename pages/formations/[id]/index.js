@@ -1,5 +1,5 @@
 import { Container, Box, Grid } from '@material-ui/core'
-import { Header, Title, HtmlContent } from '../../../components'
+import { Layout, Title, HtmlContent } from '../../../components'
 import { getTraining } from '../../../utils'
 
 const Formation = ({ training = {} }) => {
@@ -7,8 +7,7 @@ const Formation = ({ training = {} }) => {
     const { titre = "", description = "" } = training
 
     return (
-        <>
-            <Header />
+        <Layout>
             <Box mt={7}>
                 <Container maxWidth="lg">
                     <Grid container>
@@ -26,7 +25,7 @@ const Formation = ({ training = {} }) => {
                     </Grid>
                 </Container>
             </Box>
-        </>
+        </Layout>
     )
 }
 

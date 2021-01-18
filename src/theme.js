@@ -31,6 +31,12 @@ let theme = createMuiTheme({
     green: {
       main: "#4ba829"
     },
+    gray: {
+      main: "#ecf0f1"
+    },
+    black: {
+      main: "#000000"
+    }
   },
 });
 

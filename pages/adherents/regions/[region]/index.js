@@ -1,5 +1,5 @@
 import { Container, Box, Grid, Table, TableBody, TableCell } from '@material-ui/core'
-import { Header, Title, AdherentPreview } from '../../../../components'
+import { Layout, Title, AdherentPreview } from '../../../../components'
 import { useRouter } from 'next/router'
 import { getDepartments, getAdherents, getCoordinateurs } from '../../../../utils'
 import { makeStyles } from '@material-ui/core/styles';
@@ -36,8 +36,7 @@ const Region = ({ departments = [], adherents = [], coordinateurs = [] }) => {
     const uniqueCoordinateur = coordinateurs.find(c => c.region.nom_region === region)
 
     return (
-        <>
-            <Header />
+        <Layout>
             <Box mt={7}>
                 <Container maxWidth="md">
                     <Grid container>
@@ -169,7 +168,7 @@ const Region = ({ departments = [], adherents = [], coordinateurs = [] }) => {
                     {/* </Grid> */}
                 </Container>
             </Box>
-        </>
+        </Layout>
     )
 }
 

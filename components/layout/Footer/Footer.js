@@ -1,9 +1,102 @@
 import { Fragment } from 'react'
+import { Box, Grid, List, ListItem, Button } from '@material-ui/core';
+import { makeStyles } from '@material-ui/core/styles';
+import { Facebook, LinkedIn, Twitter } from '@material-ui/icons';
+
+import Icon from '@material-ui/core/Icon';
+import { Text } from '../../global'
+import { footerLinks, footerButtons, socialLinks } from '../../../utils'
+import Link from 'next/link'
+
+const useStyles = makeStyles((theme) => ({
+    box: {
+        minHeight: '200px',
+        backgroundColor: theme.palette.blue.main
+    },
+    listItem: {
+        color: theme.palette.background.default,
+    },
+    link: {
+        textDecoration: 'none',
+    },
+    btn: {
+        color: theme.palette.background.default,
+        backgroundColor: theme.palette.orange.main,
+        '&:hover': {
+            backgroundColor: theme.palette.background.default,
+            color: theme.palette.black.main,
+            border: 'none'
+        }
+    },
+    icon: {
+        color: theme.palette.background.default,
+        fontSize: '35px'
+    }
+}))
 
 const Footer = ({ }) => {
+    const classes = useStyles();
     return (
         <Fragment>
-            FOOTER
+            <Box className={classes.box}>
+                <Grid container spacing={2}>
+                    <Grid item xs={12} md={3}>
+                        <List>
+                            {
+                                footerLinks && footerLinks.map((link, index) => (
+                                    <ListItem key={index}>
+                                        <Link href={link ?.path || "/" }>
+                                            <a className={classes.link}><Text bold color="#fff">
+                                                {link ?.title || ""}
+                                            </Text></a>
+                                        </Link>
+                                    </ListItem>
+                                ))
+                            }
+                        </List>
+                    </Grid>
+                    <Grid item xs={12} md={6}>
+                        <Grid container>
+                            {
+                                footerButtons && footerButtons.map((btn, index) => (
+                                    <Grid key={index} item xs={12} md={12}>
+                                        <Box mt={0} p={1}>
+                                            <Button className={classes.btn}>
+                                                {btn.title}
+                                            </Button>
+                                        </Box>
+                                    </Grid>
+                                ))
+                            }
+                        </Grid>
+                    </Grid>
+                    <Grid item xs={12} md={3}>
+                        <List>
+                            <ListItem>
+                                <Link href="/">
+                                    <a target="_blank" className={classes.link}>
+                                        <LinkedIn className={classes.icon} />
+                                    </a>
+                                </Link>
+                            </ListItem>
+                            <ListItem>
+                                <Link href="https://twitter.com/mobin_solutions">
+                                    <a target="_blank" className={classes.link}>
+                                        <Twitter className={classes.icon} />
+                                    </a>
+                                </Link>
+                            </ListItem>
+                            <ListItem>
+                                <Link href="https://www.facebook.com/MobInFrance">
+                                    <a target="_blank" className={classes.link}>
+                                        <Facebook className={classes.icon} />
+                                    </a>
+                                </Link>
+                            </ListItem>
+                        </List>
+                    </Grid>
+                </Grid>
+            </Box>
         </Fragment>
     )
 }

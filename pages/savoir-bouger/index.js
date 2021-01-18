@@ -1,12 +1,11 @@
 import { Container, Box, Grid } from '@material-ui/core'
-import { Header, Title, Text, MoveCard } from '../../components'
+import { Layout, Title, Text, MoveCard } from '../../components'
 import { savoirBouger } from '../../utils'
 import Link from 'next/link'
 
 const SavoirBougerPage = ({ }) => {
     return (
-        <>
-            <Header />
+        <Layout>
             <Box mt={7}>
                 <Container maxWidth="lg">
                     <Title content="Savoir Bouger" size="h4" uppercase bold letterspacing="2px" />
@@ -63,7 +62,7 @@ const SavoirBougerPage = ({ }) => {
                     </Box>
                 </Container>
             </Box>
-        </>
+        </Layout>
     )
 }
 

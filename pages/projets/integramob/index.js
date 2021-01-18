@@ -1,11 +1,10 @@
 import { Container, Box } from '@material-ui/core'
-import { Header, Title, Text, Banner } from '../../../components'
+import { Layout, Title, Text, Banner } from '../../../components'
 
 
 const Integramob = ({ }) => {
     return (
-        <>
-            <Header />
+        <Layout>
             <Box mt={7}>
                 <Container maxWidth="lg">
                     <Title content="Integramob" size="h4" uppercase bold letterspacing="2px" />
@@ -16,7 +15,7 @@ const Integramob = ({ }) => {
                     </Box>
                 </Container>
             </Box>
-        </>
+        </Layout>
     )
 }
 

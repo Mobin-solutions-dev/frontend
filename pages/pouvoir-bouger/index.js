@@ -1,13 +1,12 @@
 import { Container, Box, Grid } from '@material-ui/core'
-import { Header, Title, Text, MoveCard } from '../../components'
+import { Layout, Title, Text, MoveCard } from '../../components'
 import { pouvoirBouger } from '../../utils'
 import Link from 'next/link'
 
 
 const PouvoirBougerPage = ({ }) => {
     return (
-        <>
-            <Header />
+        <Layout>
             <Box mt={7}>
                 <Container maxWidth="lg">
                     <Title content="Pouvoir Bouger" size="h4" uppercase bold letterspacing="2px" />
@@ -64,7 +63,7 @@ const PouvoirBougerPage = ({ }) => {
                     </Box>
                 </Container>
             </Box>
-        </>
+        </Layout>
     )
 }
 

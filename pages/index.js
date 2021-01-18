@@ -20,41 +20,39 @@ const Home = ({ news = [] }) => {
   const classes = useStyles();
 
   return (
-    <>
-      <Layout>
-        <Container maxWidth="lg">
-          <Banner />
-          <Grid container spacing={1}>
-            <Grid container item xs={12} md={9}
-            >
-              <Box>
-                <img
-                  className={classes.mainImage}
-                  src="/static/icons/main_image.png"
-                  alt="mobilite"
-                />
-              </Box>
-            </Grid>
-            <Grid container item xs={12} md={3} alignItems="flex-end">
-              <Box display={{ xs: 'none', md: 'block' }}>
-                <img
-                  className={classes.mainImage}
-                  src="/static/icons/PavéT1.png"
-                  alt="mobilite"
-                />
-
-              </Box>
-            </Grid>
+    <Layout>
+      <Container maxWidth="lg">
+        <Banner />
+        <Grid container spacing={1}>
+          <Grid container item xs={12} md={9}
+          >
+            <Box>
+              <img
+                className={classes.mainImage}
+                src="/static/icons/main_image.png"
+                alt="mobilite"
+              />
+            </Box>
           </Grid>
-          <section id="figures">
-            <FiguresSection />
-          </section>
-          <section id="news">
-            <NewsSection news={news} />
-          </section>
-        </Container>
-      </Layout>
-    </>
+          <Grid container item xs={12} md={3} alignItems="flex-end">
+            <Box display={{ xs: 'none', md: 'block' }}>
+              <img
+                className={classes.mainImage}
+                src="/static/icons/PavéT1.png"
+                alt="mobilite"
+              />
+
+            </Box>
+          </Grid>
+        </Grid>
+        <section id="figures">
+          <FiguresSection />
+        </section>
+        <section id="news">
+          <NewsSection news={news} />
+        </section>
+      </Container>
+    </Layout>
   );
 }
 

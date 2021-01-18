@@ -1,11 +1,10 @@
 import { Container, Box } from '@material-ui/core'
-import { Header, Title, Text } from '../../../components'
+import { Layout, Title, Text } from '../../../components'
 
 
 const Integracode = ({ }) => {
     return (
-        <>
-            <Header />
+        <Layout>
             <Box mt={7}>
                 <Container maxWidth="lg">
                     <Title content="Integracode" size="h4" uppercase bold letterspacing="2px" />
@@ -16,7 +15,7 @@ const Integracode = ({ }) => {
                     </Box>
                 </Container>
             </Box>
-        </>
+        </Layout>
     )
 }
 

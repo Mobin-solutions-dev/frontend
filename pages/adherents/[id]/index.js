@@ -1,4 +1,4 @@
-import { Header, Title, HtmlContent } from '../../../components'
+import { Layout, Title, HtmlContent } from '../../../components'
 import { Box, Container, Grid, Table, TableBody, TableCell, Chip } from '@material-ui/core'
 import { getAdherent } from '../../../utils'
 import { makeStyles } from '@material-ui/core/styles';
@@ -33,8 +33,7 @@ const Adherent = ({ adherent = {} }) => {
 
 
     return (
-        <>
-            <Header />
+        <Layout>
             <Box mt={7}>
                 <Container maxWidth="lg">
                     <Grid container>
@@ -125,7 +124,7 @@ const Adherent = ({ adherent = {} }) => {
                     </Grid>
                 </Container>
             </Box>
-        </>
+        </Layout>
     )
 }
 

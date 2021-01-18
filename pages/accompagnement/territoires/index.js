@@ -1,10 +1,9 @@
 import { Container, Box, Grid } from '@material-ui/core'
-import { Header, Title, Text } from '../../../components'
+import { Layout, Title, Text } from '../../../components'
 
 const Territoires = ({ }) => {
     return (
-        <>
-            <Header />
+        <Layout>
             <Box mt={7}>
                 <Container maxWidth="lg">
                     <Grid container>
@@ -43,7 +42,7 @@ const Territoires = ({ }) => {
                     </Grid>
                 </Container>
             </Box>
-        </>
+        </Layout>
     )
 }
 
