@@ -8,6 +8,14 @@ import Router from "next/router";
 import { menuItems } from '../../../utils'
 
 const useStyles = makeStyles((theme) => ({
+    menuDesktop: {
+        [theme.breakpoints.down('sm')]: {
+            visibility: "hidden"
+        },
+        [theme.breakpoints.up('md')]: {
+            visibility: "visible"
+        },
+    },
     toolbar: {
         paddingTop: '1em',
         paddingBottom: '1em',
@@ -70,7 +78,7 @@ const Header = () => {
                         <Icon src="/static/icons/logo_mobin.jpg" />
                     </Link>
                 </Box>
-                <div>
+                <div className={classes.menuDesktop}>
                     <Box className={classes.items} alignItems="center">
 
                         {

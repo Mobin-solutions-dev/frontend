@@ -3,3 +3,4 @@ export * from './pouvoir-bouger'
 export * from "./menu"
 export * from './routes'
 export * from './static'
+export * from './svg'

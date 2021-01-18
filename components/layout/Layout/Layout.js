@@ -13,7 +13,7 @@ const useStyles = makeStyles((theme) => ({
         paddingBottom: '3em'
     },
     footer: {
-        flexShrink: 0
+        flexShrink: 0,
     }
 
 }))
