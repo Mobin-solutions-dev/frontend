@@ -4,19 +4,16 @@ import { makeStyles } from '@material-ui/core/styles';
 
 const useStyles = makeStyles((theme) => ({
     container: {
-        position: "relative",
-        minHeight: "100vh",
-        // width: "100%"
+        display: "flex",
+        flexDirection: "column",
+        minHeight: "100vh"
     },
     content: {
-        paddingBottom: "3em"
+        flex: "1 0 auto",
+        paddingBottom: '3em'
     },
     footer: {
-        position: "absolute",
-        width: "100%"
-        // left: 0,
-        // bottom: 0,
-        // right: 0
+        flexShrink: 0
     }
 
 }))

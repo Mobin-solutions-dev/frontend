@@ -3,6 +3,7 @@ import { SVGMap, France } from "react-svg-map";
 import "react-svg-map/lib/index.css";
 import { useRouter } from 'next/router'
 
+
 const FranceMap = (props) => {
     const router = useRouter()
     const _handleChooseLocation = (loc) => {
@@ -11,10 +12,9 @@ const FranceMap = (props) => {
         router.push(`/adherents/regions/${region}`)
     }
     return (
-        <div style={{ maxWidth: '800px' }}>
+        <div>
             <SVGMap
                 map={France}
-                // onLocationClick={(locationRole) => _handleChooseLocation(locationRole)}
                 onLocationClick={(loc) => _handleChooseLocation(loc)}
             />
         </div>
