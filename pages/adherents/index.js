@@ -48,7 +48,6 @@ const Adherents = ({ }) => {
 
     return (
         <Layout>
-            MAP
             <div className="map" id="map">
                 <div>{ReactHtmlParser(html)}</div>
             </div>
