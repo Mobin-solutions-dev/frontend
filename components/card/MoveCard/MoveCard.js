@@ -48,7 +48,7 @@ const MoveCard = ({ info = {} }) => {
                     <List className={classes.list}>
                         {
                             infos.map((info, index) => (
-                                <Box mb={1}><li key={index}><Text>{info}</Text></li></Box>
+                                <Box key={index} mb={1}><li><Text>{info}</Text></li></Box>
                             ))
                         }
 

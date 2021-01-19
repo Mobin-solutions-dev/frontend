@@ -1,7 +1,8 @@
 import { Layout, Title, HtmlContent } from '../../../components'
-import { Box, Container, Grid, Table, TableBody, TableCell, Chip } from '@material-ui/core'
+import { Box, Container, Grid, Table, TableBody, TableCell, Chip, Button } from '@material-ui/core'
 import { getAdherent } from '../../../utils'
 import { makeStyles } from '@material-ui/core/styles';
+import { useRouter } from 'next/router'
 
 import showdown from 'showdown'
 
@@ -23,13 +24,32 @@ const useStyles = makeStyles((theme) => ({
         backgroundColor: theme.palette.green.main,
         color: "#fff"
     },
+    btn: {
+        textTransform: 'none',
+        textDecoration: "underline"
+    }
 }))
 
 const Adherent = ({ adherent = {} }) => {
     const classes = useStyles();
+    const router = useRouter()
+
     const converter = new showdown.Converter()
 
-    const { nom_adherent, presentation_adherent, numero_telephone, email, site_internet, adresse, departements_actions, projets, competences } = adherent
+    const { nom_adherent = "", presentation_adherent = "", numero_telephone = "", email = "", site_internet = "", adresse = "", departements_actions = [], projets = [], competences = [] } = adherent
+
+    const isWindowContext = typeof window !== "undefined";
+
+    const _handleClick = site => {
+        let url = site
+        let prefix = 'http://';
+        if (url.substr(0, prefix.length) !== prefix) {
+            url = prefix + url;
+        }
+        if (isWindowContext) {
+            window.open(url, '_blank');
+        }
+    }
 
 
     return (
@@ -70,7 +90,16 @@ const Adherent = ({ adherent = {} }) => {
                                     <TableCell className={classes.cell1} component="th" scope="row">
                                         Site internet
                                     </TableCell>
-                                    <TableCell className={classes.cell2} align="left">{site_internet}</TableCell>
+                                    <TableCell className={classes.cell2} align="left">
+                                        {/* <a
+                                            href={site_internet}
+                                            target="_blank">{site_internet}</a> */}
+                                        <Button
+                                            className={classes.btn}
+                                            onClick={() => _handleClick(site_internet)}>
+                                            {site_internet}
+                                        </Button>
+                                    </TableCell>
                                 </TableBody>
 
                                 <TableBody>
@@ -78,7 +107,7 @@ const Adherent = ({ adherent = {} }) => {
                                         Compétences
                                     </TableCell>
                                     <TableCell className={classes.cell2} align="left">
-                                        <Grid container>
+                                        <Grid container spacing={2}>
                                             {
                                                 competences && competences.map((comp, index) => (
                                                     <Grid item xs={12} key={index}>

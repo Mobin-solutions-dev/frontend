@@ -1,7 +1,12 @@
 import { useState, Fragment } from 'react'
-import { Menu, MenuItem, Button, Box, AppBar, Toolbar, Link } from '@material-ui/core'
+import clsx from 'clsx';
+
+import { List, ListItem, Menu, MenuItem, Button, Box, AppBar, Toolbar, Link, SwipeableDrawer, IconButton, ListItemText, Collapse } from '@material-ui/core'
 import { makeStyles } from '@material-ui/core/styles';
-import { Icon, Title } from '../../global'
+import ExpandLess from '@material-ui/icons/ExpandLess';
+import ExpandMore from '@material-ui/icons/ExpandMore';
+import MenuIcon from '@material-ui/icons/Menu';
+import { Icon, Title, Text } from '../../global'
 import Router from "next/router";
 
 
@@ -10,10 +15,18 @@ import { menuItems } from '../../../utils'
 const useStyles = makeStyles((theme) => ({
     menuDesktop: {
         [theme.breakpoints.down('sm')]: {
-            visibility: "hidden"
+            display: "none"
         },
         [theme.breakpoints.up('md')]: {
-            visibility: "visible"
+            display: "flex"
+        },
+    },
+    menuMobile: {
+        [theme.breakpoints.down('sm')]: {
+            display: "flex"
+        },
+        [theme.breakpoints.up('md')]: {
+            display: "none"
         },
     },
     toolbar: {
@@ -46,13 +59,45 @@ const useStyles = makeStyles((theme) => ({
             backgroundColor: theme.palette.golden.main,
             // color: '#FFF'
         }
-    }
+    },
+    iconBtn: {
+        backgroundColor: theme.palette.orange.main,
+        color: theme.palette.background.default,
+        '&:hover': {
+            backgroundColor: theme.palette.golden.main,
+            // color: '#FFF'
+        }
+    },
+    list: {
+        width: 250,
+    },
+    fullList: {
+        width: 'auto',
+    },
 }))
 const Header = () => {
     const classes = useStyles();
     const [anchorEl, setAnchorEl] = useState(null);
+    const [anchor, setAnchor] = useState('left')
+    const [openCollapseId, setOpenCollapseId] = useState(null);
     const [itemClicked, setItemClicked] = useState(null)
     const open = Boolean(anchorEl);
+
+    const [state, setState] = useState({
+        top: false,
+        left: false,
+        bottom: false,
+        right: false,
+    });
+
+
+    const toggleDrawer = (anchor, open) => (event) => {
+        if (event && event.type === 'keydown' && (event.key === 'Tab' || event.key === 'Shift')) {
+            return;
+        }
+
+        setState({ ...state, [anchor]: open });
+    };
 
     const handleClick = (event, id) => {
         setAnchorEl(event.currentTarget);
@@ -69,6 +114,12 @@ const Header = () => {
         setItemClicked(null)
         Router.push(subItem.link)
     };
+    const handleClickCollapse = id => {
+        setOpenCollapseId(id)
+    };
+
+
+    console.log("anchor", anchor)
 
     return (
         <AppBar position="static" className={classes.navbar}>
@@ -112,7 +163,8 @@ const Header = () => {
                                         >
                                             {
                                                 item.subItems.map((subItem, index) => (
-                                                    <MenuItem key={index} onClick={() => handleClickSubItem(subItem)}>
+                                                    <MenuItem
+                                                        key={index} onClick={() => handleClickSubItem(subItem)}>
                                                         <Title
                                                             listItem
                                                             listStyleType="disc"
@@ -131,6 +183,71 @@ const Header = () => {
                             ))
                         }
                         <Icon src="/static/icons/P.Adhérent1.png" maxWidth="50px" />
+                    </Box>
+                </div>
+                <div className={classes.menuMobile}>
+                    <Box alignItems="center">
+                        <Fragment>
+                            <IconButton
+                                className={classes.iconBtn}
+                                onClick={toggleDrawer("left", true)}><MenuIcon /></IconButton>
+                            <SwipeableDrawer
+                                anchor={anchor}
+                                open={state[anchor]}
+                                onClose={toggleDrawer(anchor, false)}
+                                onOpen={toggleDrawer(anchor, true)}
+                            >
+                                <div
+                                    className={clsx(classes.list, {
+                                        [classes.fullList]: anchor === 'top' || anchor === 'bottom',
+                                    })}
+                                    role="presentation"
+                                // onClick={toggleDrawer(anchor, false)}
+                                // onKeyDown={toggleDrawer(anchor, false)}
+                                >
+                                    <List component="nav"
+                                    >
+                                        {
+                                            menuItems.map((item, index) => (
+                                                <Fragment key={index}>
+                                                    <ListItem button onClick={() => handleClickCollapse(item.id)}>
+                                                        <ListItemText>
+                                                            <Title bold size="body1" content={item.title || ""} />
+                                                        </ListItemText>
+                                                        {openCollapseId === item.id ? <ExpandLess /> : <ExpandMore />}
+                                                    </ListItem>
+                                                    <Collapse in={openCollapseId === item.id} timeout="auto" unmountOnExit>
+                                                        <List component="div" disablePadding>
+                                                            {
+                                                                item.subItems.map((subItem, i) => (
+                                                                    <ListItem
+                                                                        key={i}
+                                                                        button
+                                                                        onClick={() => Router.push(subItem.link)}
+                                                                        className={classes.nested}>
+                                                                        <Box pl={3}>
+                                                                            <Text
+                                                                                size="body2"
+                                                                                uppercase>
+                                                                                {subItem.title || ""}
+                                                                            </Text>
+                                                                        </Box>
+                                                                    </ListItem>
+                                                                ))
+                                                            }
+
+                                                        </List>
+                                                    </Collapse>
+                                                </Fragment>
+                                            ))
+                                        }
+
+                                    </List>
+                                </div>
+
+                            </SwipeableDrawer>
+                        </Fragment>
+
                     </Box>
                 </div>
             </Toolbar>

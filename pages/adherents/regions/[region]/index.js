@@ -27,13 +27,13 @@ const Region = ({ departments = [], adherents = [], coordinateurs = [] }) => {
     const { region } = router.query
 
     // Get filtered Departments
-    const regionDepartments = departments.filter(dep => dep.region.nom_region === region)
+    const regionDepartments = departments.filter(dep => dep ?.region ?.nom_region || "" === region)
 
     // Get filtered Regions
-    const regionAdherents = adherents.filter(adh => adh.region_siege.nom_region === region)
+    const regionAdherents = adherents.filter(adh => adh ?.region_siege ?.nom_region || "" === region)
 
     // Get filtered coordinateur
-    const uniqueCoordinateur = coordinateurs.find(c => c.region.nom_region === region)
+    const uniqueCoordinateur = coordinateurs.find(c => c ?.region ?.nom_region || "" === region)
 
     return (
         <Layout>
@@ -152,7 +152,7 @@ const Region = ({ departments = [], adherents = [], coordinateurs = [] }) => {
                                     <Box>
                                         <Title
                                             color="black"
-                                            content={dep.nom_departement} size="h6" uppercase bold letterspacing="2px" fontSize="12px" />
+                                            content={dep.nom_departement || ""} size="h6" uppercase bold letterspacing="2px" fontSize="12px" />
                                     </Box>
                                     <Grid container>
                                         {
