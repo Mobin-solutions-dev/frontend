@@ -67,12 +67,17 @@ const NewsCardSummary = ({ newsItem = {} }) => {
                             </Grid>
                             <Grid item xs={6} md={12}>
                                 <Box mt={1}>
-                                    <Image
-                                        src={image_principale ?.formats ?.medium ?.url}
-                                        width={500}
-                                        height={300}
-                                        layout="responsive"
-                                    />
+                                    {
+                                        image_principale && (
+                                            <Image
+                                                src={image_principale.formats.medium.url}
+                                                width={500}
+                                                height={300}
+                                                layout="responsive"
+                                            />
+                                        )
+                                    }
+
                                 </Box>
                             </Grid>
                         </Grid>

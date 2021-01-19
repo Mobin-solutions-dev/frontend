@@ -11,8 +11,11 @@ const PouvoirBougerPage = ({ }) => {
                 <Container maxWidth="lg">
                     <Title content="Pouvoir Bouger" size="h4" uppercase bold letterspacing="2px" />
                     <Box mt={2} mb={2}>
-                        <Text  >
-                            Splendida porro oculi fugitant uitanque tueri; sol etiam caecat, contra si tendere pergas propterea quia uis ma- gnast ipsius, et alte aera per purum grauiter simulacra feruntur, et feriunt oculos turbantia composituras. Praeterea spleendor quicumque est acer adurit saepe oculos, ideo quod semina possidet ignis multa.
+                        <Text justify>
+                            Le réseau Mob’In propose une offre globale et coordonnée d’actions qui permettent d’agir au service du « Savoir bouger » et du « Pouvoir bouger ».
+                                <br />
+                            <br />
+                            Les actions au service du « Pouvoir bouger » permettent de lever les freins matériels et financiers et de disposer de moyens matériels pour se déplacer.
                     </Text>
                     </Box>
                     <Box mt={4} mb={2}>

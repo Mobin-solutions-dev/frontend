@@ -22,7 +22,7 @@ export const menuItems = [
             },
             {
                 title: "Nos partenaires",
-                link: "/"
+                link: "/partenaires"
             },
         ]
     },
