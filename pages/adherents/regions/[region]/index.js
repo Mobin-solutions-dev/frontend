@@ -15,10 +15,15 @@ const useStyles = makeStyles((theme) => ({
         verticalAlign: 'top'
     },
     mainImage: {
-        maxHeight: '100%',
-        maxWidth: '100%',
-        marginBottom: '3em'
-    }
+        width: "100%",
+        maxHeight: "200px",
+        objectFit: "contain",
+        marginBottom: '1em'
+    },
+    gridItem: {
+        textAlign: "center",
+        justifyContent: "center"
+    },
 }))
 
 const Region = ({ departments = [], adherents = [], coordinateurs = [] }) => {
@@ -27,13 +32,16 @@ const Region = ({ departments = [], adherents = [], coordinateurs = [] }) => {
     const { region } = router.query
 
     // Get filtered Departments
-    const regionDepartments = departments.filter(dep => dep ?.region ?.nom_region || "" === region)
+    console.log("departments", departments)
+    console.log("region", region)
+
+    const regionDepartments = departments.filter(dep => dep ?.region ?.nom_region === region)
 
     // Get filtered Regions
-    const regionAdherents = adherents.filter(adh => adh ?.region_siege ?.nom_region || "" === region)
+    const regionAdherents = adherents.filter(adh => adh ?.region_siege ?.nom_region === region)
 
     // Get filtered coordinateur
-    const uniqueCoordinateur = coordinateurs.find(c => c ?.region ?.nom_region || "" === region)
+    const uniqueCoordinateur = coordinateurs.find(c => c ?.region ?.nom_region === region)
 
     return (
         <Layout>
@@ -59,15 +67,14 @@ const Region = ({ departments = [], adherents = [], coordinateurs = [] }) => {
                             </Grid>
                         )
                     }
-
                     {
                         uniqueCoordinateur && (
-                            <Grid container>
-                                <Grid item xs={12} md={6}>
+                            <Grid container spacing={3}>
+                                <Grid item className={classes.gridItem} xs={12} sm={12} md={12}>
                                     <Box className={classes.banner}>
                                         <Table>
                                             <TableBody>
-                                                <TableCell className={classes.cell}>
+                                                <TableCell className={classes.cell} align="right">
                                                     <Title
                                                         fontSize="16px"
                                                         color="black"
@@ -100,7 +107,7 @@ const Region = ({ departments = [], adherents = [], coordinateurs = [] }) => {
                                             </TableBody>
 
                                             <TableBody>
-                                                <TableCell className={classes.cell}>
+                                                <TableCell className={classes.cell} align="right">
                                                     <Title
                                                         fontSize="16px"
                                                         color="black"
