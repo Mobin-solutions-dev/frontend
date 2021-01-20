@@ -31,7 +31,8 @@ const useStyles = makeStyles((theme) => ({
         webkitColumnWidth: "220px",
         columnWidth: "250px",
         height: "100%",
-        textAlign: "left"
+        // textAlign: "left",
+        textAlign: "center"
     },
     btn: {
         color: "black",
@@ -41,6 +42,11 @@ const useStyles = makeStyles((theme) => ({
             color: "#fff",
             border: 'none'
         }
+    },
+    img: {
+        width: "100%",
+        height: "150px",
+        objectFit: "contain"
     }
 
 }))
@@ -48,7 +54,7 @@ const useStyles = makeStyles((theme) => ({
 const NewsCardSummary = ({ newsItem = {} }) => {
     const classes = useStyles();
 
-    const { contenu_article, image_principale, titre_article, created_at, id } = newsItem
+    const { contenu_article = "", image_principale = undefined, titre_article = "", created_at = "", id = "" } = newsItem
 
     const handleSeeArticle = (id) => Router.push(`/articles/${id}`)
     return (
@@ -66,24 +72,19 @@ const NewsCardSummary = ({ newsItem = {} }) => {
                                 </Box>
                             </Grid>
                             <Grid item xs={6} md={12}>
-                                <Box mt={1}>
-                                    {
-                                        image_principale && (
-                                            <Image
-                                                src={image_principale.url}
-                                                width={500}
-                                                height={300}
-                                                layout="responsive"
-                                            />
-                                        )
-                                    }
-
-                                </Box>
+                                {
+                                    image_principale && (
+                                        <img
+                                            className={classes.img}
+                                            src={image_principale.url}
+                                        />
+                                    )
+                                }
                             </Grid>
                         </Grid>
                         <Grid container>
                             <Grid item xs={12}>
-                                <Box pt={3}>
+                                <Box pt={3} style={{ textAlign: "center" }}>
                                     <Button className={classes.btn} variant="outlined" onClick={() => handleSeeArticle(id)}>
                                         En savoir plus
                                     <ArrowRight />

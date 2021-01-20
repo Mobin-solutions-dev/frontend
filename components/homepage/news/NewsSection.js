@@ -10,7 +10,7 @@ const NewsSection = ({ news = [] }) => {
 
                 {
                     news.map(newsItem => (
-                        <Grid item xs={12} md={4} lg={3} key={newsItem.id}>
+                        <Grid item xs={12} sm={6} md={3} lg={3} key={newsItem.id}>
                             <NewsCardSummary newsItem={newsItem} />
                         </Grid>
                     ))
