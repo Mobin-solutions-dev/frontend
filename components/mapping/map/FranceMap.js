@@ -8,7 +8,6 @@ const FranceMap = (props) => {
     const router = useRouter()
     const _handleChooseLocation = (loc) => {
         const region = loc ?.target ?.attributes[1] ?.nodeValue;
-        console.log("REGION SELECTED =", region)
         router.push(`/adherents/regions/${region}`)
     }
     return (

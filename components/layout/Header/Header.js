@@ -119,7 +119,6 @@ const Header = () => {
     };
 
 
-    console.log("anchor", anchor)
 
     return (
         <AppBar position="static" className={classes.navbar}>

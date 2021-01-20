@@ -42,8 +42,9 @@ const Adherent = ({ adherent = {} }) => {
 
     const _handleClick = site => {
         let url = site
-        let prefix = 'http://';
-        if (url.substr(0, prefix.length) !== prefix) {
+        let prefixHttp = 'http://';
+        let prefixHttps = 'https://';
+        if (url.substr(0, prefixHttp.length) !== prefixHttp && url.substr(0, prefixHttps.length) !== prefixHttps) {
             url = prefix + url;
         }
         if (isWindowContext) {
