@@ -17,7 +17,6 @@ const useStyles = makeStyles((theme) => ({
 }))
 
 const Home = ({ news = [] }) => {
-  console.log(news)
   const classes = useStyles();
 
   return (

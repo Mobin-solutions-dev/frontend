@@ -2,8 +2,19 @@ import { Container, Box, Grid } from '@material-ui/core'
 import { Layout, Title, HtmlContent } from '../../../components'
 import { getNewsItem } from '../../../utils'
 import Image from 'next/image'
+import { makeStyles } from '@material-ui/core/styles';
+
+const useStyles = makeStyles((theme) => ({
+    img: {
+        width: "100%",
+        maxHeight: "200px",
+        objectFit: "contain"
+    }
+
+}))
 
 const Article = ({ article = {} }) => {
+    const classes = useStyles();
 
     const { titre_article, contenu_article, image_principale } = article
     return (
@@ -18,13 +29,15 @@ const Article = ({ article = {} }) => {
                     <Grid container>
                         <Grid item xs={12} sm={6} md={4}>
                             <Box mt={1}>
-                                <Image
-                                    src={image_principale ?.formats ?.large ?.url}
-                                    width={500}
-                                    height={300}
-                                    layout="responsive"
-                                // layout="fill"
-                                />
+                                {
+                                    image_principale && (
+                                        <img
+                                            src={image_principale ?.url}
+                                            className={classes.img}
+                                        />
+                                    )
+                                }
+
                             </Box>
                         </Grid>
                     </Grid>

@@ -32,8 +32,7 @@ const Region = ({ departments = [], adherents = [], coordinateurs = [] }) => {
     const { region } = router.query
 
     // Get filtered Departments
-    console.log("departments", departments)
-    console.log("region", region)
+
 
     const regionDepartments = departments.filter(dep => dep ?.region ?.nom_region === region)
 
@@ -58,11 +57,16 @@ const Region = ({ departments = [], adherents = [], coordinateurs = [] }) => {
                         uniqueCoordinateur ?.logo && (
                             <Grid container>
                                 <Grid item xs={12}>
-                                    <img
-                                        className={classes.mainImage}
-                                        src={uniqueCoordinateur ?.logo ?.formats ?.small ?.url || undefined}
-                                        alt="mobilite"
-                                    />
+                                    {
+                                        uniqueCoordinateur.logo && (
+                                            <img
+                                                className={classes.mainImage}
+                                                src={uniqueCoordinateur ?.logo ?.url}
+                                                alt="mobilite"
+                                            />
+                                        )
+                                    }
+
                                 </Grid>
                             </Grid>
                         )

@@ -70,7 +70,7 @@ const NewsCardSummary = ({ newsItem = {} }) => {
                                     {
                                         image_principale && (
                                             <Image
-                                                src={image_principale.formats.medium.url}
+                                                src={image_principale.url}
                                                 width={500}
                                                 height={300}
                                                 layout="responsive"
