@@ -1,4 +1,4 @@
-import { Container, Typography, Box, Grid, Link } from '@material-ui/core';
+import { Container, Typography, Box, Grid, Link, Divider } from '@material-ui/core';
 import { makeStyles } from '@material-ui/core/styles';
 // import Link from 'next/link'
 import { Icon, Title } from '../../global'
@@ -29,7 +29,7 @@ const Banner = ({ }) => {
                                 </Box>
 
                                 <Box>
-                                    <Title letterspacing="1px" uppercase bold content="nos adhérents" size="h6" color="#2699b0" />
+                                    <Title letterspacing="1px" uppercase bold content="nos adhérents" size="body1" color="#2699b0" />
                                 </Box>
                             </Link>
 
@@ -43,7 +43,7 @@ const Banner = ({ }) => {
                                         src="/static/icons/P.chiffres.png" />
                                 </Box>
                                 <Box>
-                                    <Title letterspacing="1px" uppercase bold content="nos chiffres" size="h6" color="#2699b0" />
+                                    <Title letterspacing="1px" uppercase bold content="nos chiffres" size="body1" color="#2699b0" />
                                 </Box>
                             </Link>
                         </Grid>
@@ -56,7 +56,7 @@ const Banner = ({ }) => {
                                         src="/static/icons/P.actus.png" />
                                 </Box>
                                 <Box>
-                                    <Title letterspacing="1px" uppercase bold content="nos actus" size="h6" color="#2699b0" />
+                                    <Title letterspacing="1px" uppercase bold content="nos actus" size="body1" color="#2699b0" />
                                 </Box>
                             </Link>
                         </Grid>
@@ -64,6 +64,7 @@ const Banner = ({ }) => {
 
                     </Grid>
                 </Box>
+                <Divider />
             </Grid>
         </Grid >
     )

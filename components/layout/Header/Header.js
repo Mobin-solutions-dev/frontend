@@ -69,7 +69,7 @@ const useStyles = makeStyles((theme) => ({
         }
     },
     list: {
-        width: 250,
+        width: "100%",
     },
     fullList: {
         width: 'auto',
@@ -163,16 +163,19 @@ const Header = () => {
                                             {
                                                 item.subItems.map((subItem, index) => (
                                                     <MenuItem
-                                                        key={index} onClick={() => handleClickSubItem(subItem)}>
-                                                        <Title
-                                                            listItem
-                                                            listStyleType="disc"
-                                                            listStylePosition="inside"
-                                                            uppercase
-                                                            fontSize="12px"
-                                                            letterspacing="1px"
-                                                            color="black"
-                                                            content={subItem.title} />
+                                                        key={index}
+                                                    >
+                                                        <Link href={subItem.link}>
+                                                            <Title
+                                                                listItem
+                                                                listStyleType="disc"
+                                                                listStylePosition="inside"
+                                                                uppercase
+                                                                fontSize="12px"
+                                                                letterspacing="1px"
+                                                                color="black"
+                                                                content={subItem.title} />
+                                                        </Link>
                                                     </MenuItem>
                                                 ))
                                             }
@@ -222,14 +225,19 @@ const Header = () => {
                                                                     <ListItem
                                                                         key={i}
                                                                         button
-                                                                        onClick={() => Router.push(subItem.link)}
+                                                                        // onClick={() => Router.push(subItem.link)}
                                                                         className={classes.nested}>
                                                                         <Box pl={3}>
-                                                                            <Text
-                                                                                size="body2"
-                                                                                uppercase>
-                                                                                {subItem.title || ""}
-                                                                            </Text>
+                                                                            <Link href={subItem.link}>
+                                                                                <Text
+                                                                                    bold
+                                                                                    color="#2699b0"
+                                                                                    size="body2"
+                                                                                    uppercase>
+                                                                                    {subItem.title || ""}
+                                                                                </Text>
+                                                                            </Link>
+
                                                                         </Box>
                                                                     </ListItem>
                                                                 ))

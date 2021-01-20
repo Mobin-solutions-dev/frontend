@@ -9,6 +9,10 @@ import { footerLinks, footerButtons, socialLinks } from '../../../utils'
 import Link from 'next/link'
 
 const useStyles = makeStyles((theme) => ({
+    gridItem: {
+        textAlign: "center",
+        justifyContent: "center"
+    },
     box: {
         minHeight: '200px',
         backgroundColor: theme.palette.blue.main
@@ -30,7 +34,7 @@ const useStyles = makeStyles((theme) => ({
     },
     icon: {
         color: theme.palette.background.default,
-        fontSize: '35px'
+        fontSize: '25px'
     }
 }))
 
@@ -40,8 +44,8 @@ const Footer = ({ }) => {
         <Fragment>
             <Box className={classes.box}>
                 <Grid container spacing={2}>
-                    <Grid item xs={12} md={3}>
-                        <List>
+                    <Grid item xs={12} md={4} className={classes.gridItem}>
+                        <List style={{ justifyContent: "center" }}>
                             {
                                 footerLinks && footerLinks.map((link, index) => (
                                     <ListItem key={index}>
@@ -55,7 +59,7 @@ const Footer = ({ }) => {
                             }
                         </List>
                     </Grid>
-                    <Grid item xs={12} md={6}>
+                    <Grid item xs={12} md={4}>
                         <Grid container>
                             {
                                 footerButtons && footerButtons.map((btn, index) => (
@@ -70,7 +74,7 @@ const Footer = ({ }) => {
                             }
                         </Grid>
                     </Grid>
-                    <Grid item xs={12} md={3}>
+                    <Grid item xs={12} md={4} className={classes.gridItem}>
                         <List>
                             <ListItem>
                                 <Link href="/">

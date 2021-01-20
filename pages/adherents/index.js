@@ -13,8 +13,13 @@ const Adherents = ({ }) => {
             <Box mt={7}>
                 <Container maxWidth="lg">
                     <Grid container>
-                        <Box mb={5}>
+                        <Box mb={1}>
                             <Title content="Nos Adhérents" size="h4" uppercase bold letterspacing="2px" />
+                        </Box>
+                    </Grid>
+                    <Grid container>
+                        <Box mb={3}>
+                            <Title content="Sélectionnez une région:" bold size="body1" color="#000" />
                         </Box>
                     </Grid>
                 </Container>
@@ -23,7 +28,9 @@ const Adherents = ({ }) => {
                 <Grid xs={12}>
                     <Box>
                         <div className="map" id="map">
-                            <div>{ReactHtmlParser(html)}</div>
+                            <div style={{
+                                textAlign: "center",
+                            }}>{ReactHtmlParser(html)}</div>
                         </div>
                     </Box>
                 </Grid>
