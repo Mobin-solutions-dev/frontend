@@ -1,5 +1,5 @@
 
-var SibApiV3Sdk = require('sib-api-v3-sdk');
+import SibApiV3Sdk from 'sib-api-v3-sdk';
 var defaultClient = SibApiV3Sdk.ApiClient.instance;
 var apiKey = defaultClient.authentications['api-key'];
 apiKey.apiKey = process.env.SENDINBLUE_API_KEY;
