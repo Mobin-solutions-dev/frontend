@@ -6,7 +6,7 @@ import Box from '@material-ui/core/Box';
 
 import { makeStyles } from '@material-ui/core/styles';
 
-import { Banner, Layout, FiguresSection, NewsSection } from "../components"
+import { Banner, Layout, FiguresSection, NewsSection, NewsletterSection } from "../components"
 import { getNews } from '../utils'
 
 const useStyles = makeStyles((theme) => ({
@@ -50,6 +50,9 @@ const Home = ({ news = [] }) => {
         </section>
         <section id="news">
           <NewsSection news={news} />
+        </section>
+        <section id="news">
+          <NewsletterSection />
         </section>
       </Container>
     </Layout>
