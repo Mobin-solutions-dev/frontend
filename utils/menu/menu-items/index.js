@@ -24,6 +24,10 @@ export const menuItems = [
                 title: "Nos partenaires",
                 link: "/partenaires"
             },
+            {
+                title: "Contact",
+                link: "/contact"
+            },
         ]
     },
     {

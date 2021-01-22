@@ -15,6 +15,10 @@ export const footerLinks = [
         title: "Pouvoir bouger",
         path: "/pouvoir-bouger"
     },
+    {
+        title: "Contact",
+        path: "/contact"
+    },
 ]
 
 export const footerButtons = [
