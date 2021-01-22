@@ -4143,10 +4143,9 @@ showdown@^1.9.1:
   dependencies:
     yargs "^14.2"
 
-sib-api-v3-sdk@^8.1.1:
-  version "8.1.1"
-  resolved "https://registry.yarnpkg.com/sib-api-v3-sdk/-/sib-api-v3-sdk-8.1.1.tgz#fd2be5a14e49e3d111a257018ea36fe1fbdfd8f5"
-  integrity sha512-gCM+Gg5W8PI+ugpullS7ca0eHACXH6YEWj9W5I0bZMuCMm9gvCPZVjLJ2pWZEqXVan7JhgCGkBE/F0kKeKFrsQ==
+"sib-api-v3-sdk@github:sendinblue/APIv3-nodejs-library":
+  version "8.2.0"
+  resolved "https://codeload.github.com/sendinblue/APIv3-nodejs-library/tar.gz/a14292e604fc9ed734bd0b701855b028485b085c"
   dependencies:
     superagent "3.7.0"
 
