@@ -36,6 +36,11 @@ const useStyles = makeStyles((theme) => ({
     navbar: {
         backgroundColor: theme.palette.background.default,
         marginBottom: "10px",
+        "@media (min-width: 960px)": {
+            position: "-webkit-sticky",
+            position: "sticky",
+            top: "0px"
+        }
     },
     navbarItem: {
         backgroundColor: theme.palette.blue.main,
@@ -136,7 +141,11 @@ const Header = () => {
                                 <Box key={index}>
                                     <Fragment>
                                         <Button
-                                            aria-controls="simple-menu" aria-haspopup="true" onClick={(event) => {
+                                            aria-controls="simple-menu" aria-haspopup="true"
+                                            // onClick={(event) => {
+                                            //     handleClick(event, item.id);
+                                            // }}
+                                            onMouseOver={(event) => {
                                                 handleClick(event, item.id);
                                             }}
                                             className={classes.navbarItem}>
@@ -158,7 +167,8 @@ const Header = () => {
                                             keepMounted
                                             open={itemClicked === item.id}
                                             onClose={handleClose}
-                                        // TransitionComponent={Fade}
+                                        // anchorOrigin={{ vertical: "bottom", horizontal: "center" }}
+                                        // transformOrigin={{ vertical: "bottom", horizontal: "center" }}
                                         >
                                             {
                                                 item.subItems.map((subItem, index) => (

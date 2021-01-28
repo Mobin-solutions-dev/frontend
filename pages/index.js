@@ -6,14 +6,40 @@ import Box from '@material-ui/core/Box';
 
 import { makeStyles } from '@material-ui/core/styles';
 
-import { Banner, Layout, FiguresSection, NewsSection, NewsletterSection } from "../components"
+import { Banner, Layout, FiguresSection, NewsSection, NewsletterSection, Title } from "../components"
 import { getNews } from '../utils'
 
 const useStyles = makeStyles((theme) => ({
   mainImage: {
     maxHeight: '100%',
     maxWidth: '100%',
+    opacity: 0.3
+  },
+  container: {
+    position: "relative",
+    textAlign: "center"
+  },
+  imageText: {
+    // backgroundColor: theme.palette.background.default,
+    // opacity: 0.7,
+    padding: '5px',
+    borderRadiux: "50px",
+    position: "absolute",
+    top: "30%",
+    left: "50%",
+    transform: "translate(-50%, -50%)",
   }
+  // mainTitleBox: {
+  //   backgroundImage: `url(static/icons/main_image.png)`,
+  //   backgroundPosition: 'center',
+  //   backgroundSize: 'cover',
+  //   backgroundRepeat: 'no-repeat',
+  //   minHeight: '600px'
+  // },
+  // box: {
+  //   textAlign: "center",
+  //   alignContent: 'center'
+  // }
 }))
 
 const Home = ({ news = [] }) => {
@@ -21,26 +47,22 @@ const Home = ({ news = [] }) => {
 
   return (
     <Layout>
-      <Container maxWidth="lg">
-        <Banner />
-        <Grid container spacing={1}>
-          <Grid container item xs={12} md={9}
+      <Container maxWidth="xl">
+        {/* <Banner /> */}
+        <Grid container>
+          <Grid container item xs={12} md={12}
           >
-            <Box>
+            <Box className={classes.container}>
               <img
                 className={classes.mainImage}
                 src="/static/icons/main_image.png"
                 alt="mobilite"
               />
-            </Box>
-          </Grid>
-          <Grid container item xs={12} md={3} alignItems="flex-end">
-            <Box display={{ xs: 'none', md: 'block' }}>
-              <img
-                className={classes.mainImage}
-                src="/static/icons/PavéT1.png"
-                alt="mobilite"
-              />
+              <Box className={classes.imageText}>
+                <Banner />
+
+                <Title letterspacing="1px" color="#e95e2e" size="h2" bold content="Les acteurs territoriaux de la mobilité inclusive" />
+              </Box>
 
             </Box>
           </Grid>
