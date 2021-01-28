@@ -1,7 +1,8 @@
-import { Container, Box, Grid, Table, TableBody, TableCell } from '@material-ui/core'
+import { useState, useEffect } from 'react'
+import { Container, Box, Grid, Table, TableBody, TableCell, FormControl, InputLabel, Select, MenuItem, Input } from '@material-ui/core'
 import { Layout, Title, AdherentPreview } from '../../../../components'
 import { useRouter } from 'next/router'
-import { getDepartments, getAdherents, getCoordinateurs } from '../../../../utils'
+import { getDepartments, getAdherents, getCoordinateurs, filterAdherentsFromSelectedDepartments, getExpertises, filterAdherentsFromSelectedExpertises } from '../../../../utils'
 import { makeStyles } from '@material-ui/core/styles';
 
 const useStyles = makeStyles((theme) => ({
@@ -24,23 +25,89 @@ const useStyles = makeStyles((theme) => ({
         textAlign: "center",
         justifyContent: "center"
     },
+    formControl: {
+        margin: '1em',
+        minWidth: "100%",
+        // maxWidth: 300,
+    },
+    chips: {
+        display: 'flex',
+        flexWrap: 'wrap',
+    },
+    chip: {
+        margin: 2,
+    },
+    noLabel: {
+        marginTop: "1em",
+    },
+    inputLabel: {
+        fontSize: '15px'
+    },
+    grid: {
+        // textAlign: 'center'
+    }
 }))
 
-const Region = ({ departments = [], adherents = [], coordinateurs = [] }) => {
+const ITEM_HEIGHT = 48;
+const ITEM_PADDING_TOP = 8;
+const MenuProps = {
+    PaperProps: {
+        style: {
+            maxHeight: ITEM_HEIGHT * 4.5 + ITEM_PADDING_TOP,
+            width: 250,
+        },
+    },
+};
+
+const Region = ({ departments = [], adherents = [], coordinateurs = [], expertises = [] }) => {
     const classes = useStyles()
     const router = useRouter()
     const { region } = router.query
+    const [mainDepartementSelected, setMainDepartmentSelected] = useState([]);
+    const [mainExpertiseSelected, setMainExpertiseSelected] = useState([]);
 
+    const adherentsFiltered = adherents.filter(adh => adh ?.region_siege ?.nom_region === region)
+    const [adherentsToDisplay, setAdherentsToDisplay] = useState(adherents.filter(adh => adh ?.region_siege ?.nom_region === region))
+    const [adherentsToDisplayExpertise, setAdherentsToDisplayExpertise] = useState(adherents.filter(adh => adh ?.region_siege ?.nom_region === region))
     // Get filtered Departments
-
-
     const regionDepartments = departments.filter(dep => dep ?.region ?.nom_region === region)
-
-    // Get filtered Regions
-    const regionAdherents = adherents.filter(adh => adh ?.region_siege ?.nom_region === region)
 
     // Get filtered coordinateur
     const uniqueCoordinateur = coordinateurs.find(c => c ?.region ?.nom_region === region)
+
+    const getStyles = (departement, mainDepartementSelected) => {
+        return {
+            fontWeight:
+                mainDepartementSelected.indexOf(departement) === -1
+                    ? "normal"
+                    : "bold",
+        };
+    }
+
+    const getStylesExp = (exp, mainExpertiseSelected) => {
+        return {
+            fontWeight:
+                mainExpertiseSelected.indexOf(exp) === -1
+                    ? "normal"
+                    : "bold",
+        };
+    }
+
+
+    useEffect(() => {
+        const resultDeps = filterAdherentsFromSelectedDepartments(adherentsFiltered, mainDepartementSelected)
+        setAdherentsToDisplay(resultDeps)
+    }, [mainDepartementSelected])
+
+
+    useEffect(() => {
+        const resultExp = filterAdherentsFromSelectedExpertises(adherentsFiltered, mainExpertiseSelected)
+        setAdherentsToDisplayExpertise(resultExp)
+    }, [mainExpertiseSelected])
+
+
+    // Get filtered Regions
+    const regionAdherents = adherentsToDisplay.filter(element => adherentsToDisplayExpertise.includes(element))
 
     return (
         <Layout>
@@ -157,6 +224,47 @@ const Region = ({ departments = [], adherents = [], coordinateurs = [] }) => {
                         <Title
                             color="black"
                             content="Filtrer les résultats :" size="h6" uppercase italic bold letterspacing="2px" fontSize="12px" />
+                        <Grid container>
+                            <Grid item xs={12} className={classes.grid}>
+                                <FormControl className={classes.formControl}>
+                                    <InputLabel className={classes.inputLabel}>Département du siège</InputLabel>
+                                    <Select
+                                        multiple
+                                        value={mainDepartementSelected}
+                                        // onChange={handleChangeDepartment}
+                                        onChange={(event) => setMainDepartmentSelected(event.target.value)}
+                                        input={<Input />}
+                                        MenuProps={MenuProps}
+                                    >
+                                        {regionDepartments.map((dep, index) => (
+                                            <MenuItem key={index} value={dep.nom_departement} style={getStyles(dep.nom_departement, mainDepartementSelected)}>
+                                                {dep.nom_departement}
+                                            </MenuItem>
+                                        ))}
+                                    </Select>
+                                </FormControl>
+                            </Grid>
+                            <Grid item xs={12}>
+                                <FormControl className={classes.formControl}>
+                                    <InputLabel className={classes.inputLabel}>Expertise</InputLabel>
+                                    <Select
+                                        multiple
+                                        value={mainExpertiseSelected}
+                                        // onChange={handleChangeDepartment}
+                                        onChange={(event) => setMainExpertiseSelected(event.target.value)}
+                                        input={<Input />}
+                                        MenuProps={MenuProps}
+                                    >
+                                        {expertises.map((exp, index) => (
+                                            <MenuItem key={index} value={exp.type} style={getStylesExp(exp.type, mainExpertiseSelected)}>
+                                                {exp.type}
+                                            </MenuItem>
+                                        ))}
+                                    </Select>
+                                </FormControl>
+
+                            </Grid>
+                        </Grid>
                         {
                             regionDepartments.map((dep, index) => (
                                 <Box key={index} mt={3}>
@@ -190,8 +298,10 @@ export const getServerSideProps = async () => {
     const adherents = await res2.json()
     const res3 = await fetch(getCoordinateurs)
     const coordinateurs = await res3.json()
+    const res4 = await fetch(getExpertises)
+    const expertises = await res4.json()
     return {
-        props: { departments, adherents, coordinateurs }
+        props: { departments, adherents, coordinateurs, expertises }
     };
 }
 
