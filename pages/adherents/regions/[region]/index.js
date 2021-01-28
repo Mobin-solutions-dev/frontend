@@ -220,7 +220,7 @@ const Region = ({ departments = [], adherents = [], coordinateurs = [], expertis
                                 <Grid item xs={6} className={classes.box}>
 
                                     {
-                                        uniqueCoordinateur.logo && (
+                                        uniqueCoordinateur && uniqueCoordinateur.logo && (
                                             <img
                                                 className={classes.mainImage}
                                                 src={uniqueCoordinateur ?.logo ?.url}
