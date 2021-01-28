@@ -17,12 +17,16 @@ const useStyles = makeStyles((theme) => ({
     chip: {
         marginTop: "1em",
         backgroundColor: theme.palette.blue.main,
-        color: "#fff"
+        color: "#fff",
+        marginRight: '5px',
+        borderRadius: "5px"
     },
     chip2: {
         marginTop: "1em",
         backgroundColor: theme.palette.green.main,
-        color: "#fff"
+        color: "#fff",
+        marginRight: '5px',
+        borderRadius: "5px"
     },
     btn: {
         textTransform: 'none',
@@ -111,11 +115,9 @@ const Adherent = ({ adherent = {} }) => {
                                         <Grid container spacing={2}>
                                             {
                                                 competences && competences.map((comp, index) => (
-                                                    <Grid item xs={12} key={index}>
-                                                        <Box>
-                                                            <Chip className={classes.chip} label={comp.type} />
-                                                        </Box>
-                                                    </Grid>
+                                                    <Box key={index}>
+                                                        <Chip className={classes.chip} label={comp.type} />
+                                                    </Box>
                                                 ))
                                             }
                                         </Grid>
@@ -130,11 +132,9 @@ const Adherent = ({ adherent = {} }) => {
                                         <Grid container>
                                             {
                                                 projets && projets.map((proj, index) => (
-                                                    <Grid item xs={12} key={index}>
-                                                        <Box>
-                                                            <Chip className={classes.chip2} label={proj.nom} />
-                                                        </Box>
-                                                    </Grid>
+                                                    <Box key={index}>
+                                                        <Chip className={classes.chip2} label={proj.nom} />
+                                                    </Box>
                                                 ))
                                             }
                                         </Grid>

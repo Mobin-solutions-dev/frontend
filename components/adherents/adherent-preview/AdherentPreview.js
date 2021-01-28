@@ -7,8 +7,11 @@ import Router from 'next/router'
 const useStyles = makeStyles((theme) => ({
     chip: {
         marginTop: "1em",
+        marginRight: '5px',
         backgroundColor: theme.palette.blue.main,
-        color: "#fff"
+        color: "#fff",
+        borderRadius: "5px",
+        // width: "100%"
     },
     btn: {
         color: "black",
@@ -48,11 +51,9 @@ const AdherentPreview = ({ adherent = {} }) => {
                                 <Grid container>
                                     {
                                         competences && competences.map((comp, index) => (
-                                            <Grid item xs={12} key={index}>
-                                                <Box>
-                                                    <Chip className={classes.chip} label={comp.type} />
-                                                </Box>
-                                            </Grid>
+                                            <Box key={index}>
+                                                <Chip className={classes.chip} label={comp.type} />
+                                            </Box>
                                         ))
                                     }
                                 </Grid>
