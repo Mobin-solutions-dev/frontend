@@ -1,3 +1,4 @@
+import { useEffect } from 'react'
 import { Layout, Title, HtmlContent } from '../../../components'
 import { Box, Container, Grid, Table, TableBody, TableCell, Chip, Button } from '@material-ui/core'
 import { getAdherent } from '../../../utils'
@@ -55,6 +56,16 @@ const Adherent = ({ adherent = {} }) => {
             window.open(url, '_blank');
         }
     }
+
+    useEffect(() => {
+        router.events.on('routeChangeComplete', () => {
+            window.scroll({
+                top: 0,
+                left: 0,
+                // behavior: 'smooth'
+            });
+        });
+    }, [])
 
 
     return (
