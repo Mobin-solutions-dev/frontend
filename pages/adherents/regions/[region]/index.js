@@ -45,7 +45,31 @@ const useStyles = makeStyles((theme) => ({
     },
     grid: {
         // textAlign: 'center'
-    }
+    },
+    box: {
+        display: "flex",
+        flexDirection: "column",
+        justifyContent: "center"
+    },
+    coordBox: {
+        "@media (min-width: 960px)": {
+            position: "-webkit-sticky",
+            position: "sticky",
+            top: "0px"
+        }
+    },
+    item1: {
+        order: 1,
+        [theme.breakpoints.down('sm')]: {
+            order: 2,
+        },
+    },
+    item2: {
+        order: 2,
+        [theme.breakpoints.down('sm')]: {
+            order: 1,
+        },
+    },
 }))
 
 const ITEM_HEIGHT = 48;
@@ -112,7 +136,7 @@ const Region = ({ departments = [], adherents = [], coordinateurs = [], expertis
     return (
         <Layout>
             <Box mt={7}>
-                <Container maxWidth="md">
+                <Container maxWidth="lg">
                     <Grid container>
                         <Grid item xs={12} md={12}>
                             <Box mb={5}>
@@ -120,10 +144,81 @@ const Region = ({ departments = [], adherents = [], coordinateurs = [], expertis
                             </Box>
                         </Grid>
                     </Grid>
-                    {
-                        uniqueCoordinateur ?.logo && (
-                            <Grid container>
-                                <Grid item xs={12}>
+
+                    <Grid container spacing={2}>
+                        <Grid item xs={12} md={8} className={classes.item1}>
+                            <Box mb={5} pr={7}>
+                                <Title
+                                    color="black"
+                                    content="Toutes les structures" size="h6" uppercase bold letterspacing="2px" />
+                                <Title
+                                    color="black"
+                                    content="Filtrer les résultats :" size="h6" uppercase italic bold letterspacing="2px" fontSize="12px" />
+                                <Grid container>
+                                    <Grid item xs={12} className={classes.grid}>
+                                        <FormControl className={classes.formControl}>
+                                            <InputLabel className={classes.inputLabel}>Département du siège</InputLabel>
+                                            <Select
+                                                multiple
+                                                value={mainDepartementSelected}
+                                                // onChange={handleChangeDepartment}
+                                                onChange={(event) => setMainDepartmentSelected(event.target.value)}
+                                                input={<Input />}
+                                                MenuProps={MenuProps}
+                                            >
+                                                {regionDepartments.map((dep, index) => (
+                                                    <MenuItem key={index} value={dep.nom_departement} style={getStyles(dep.nom_departement, mainDepartementSelected)}>
+                                                        {dep.nom_departement}
+                                                    </MenuItem>
+                                                ))}
+                                            </Select>
+                                        </FormControl>
+                                    </Grid>
+                                    <Grid item xs={12}>
+                                        <FormControl className={classes.formControl}>
+                                            <InputLabel className={classes.inputLabel}>Expertise</InputLabel>
+                                            <Select
+                                                multiple
+                                                value={mainExpertiseSelected}
+                                                // onChange={handleChangeDepartment}
+                                                onChange={(event) => setMainExpertiseSelected(event.target.value)}
+                                                input={<Input />}
+                                                MenuProps={MenuProps}
+                                            >
+                                                {expertises.map((exp, index) => (
+                                                    <MenuItem key={index} value={exp.type} style={getStylesExp(exp.type, mainExpertiseSelected)}>
+                                                        {exp.type}
+                                                    </MenuItem>
+                                                ))}
+                                            </Select>
+                                        </FormControl>
+
+                                    </Grid>
+                                </Grid>
+                                {
+                                    regionDepartments.map((dep, index) => (
+                                        <Box key={index} mt={3}>
+                                            <Box>
+                                                <Title
+                                                    color="black"
+                                                    content={dep.nom_departement || ""} size="h6" uppercase bold letterspacing="2px" fontSize="12px" />
+                                            </Box>
+                                            <Grid container>
+                                                {
+                                                    regionAdherents.filter(adh => adh.departement_siege.nom_departement === dep.nom_departement).map((d, i) => (
+                                                        <AdherentPreview key={i} adherent={d} />
+                                                    ))
+                                                }
+                                            </Grid>
+                                        </Box>
+                                    ))
+                                }
+                            </Box>
+                        </Grid>
+                        <Grid item xs={12} md={4} className={classes.item2}>
+                            <Grid container spacing={2} className={classes.coordBox}>
+                                <Grid item xs={6} className={classes.box}>
+
                                     {
                                         uniqueCoordinateur.logo && (
                                             <img
@@ -134,160 +229,97 @@ const Region = ({ departments = [], adherents = [], coordinateurs = [], expertis
                                         )
                                     }
 
+
                                 </Grid>
-                            </Grid>
-                        )
-                    }
-                    {
-                        uniqueCoordinateur && (
-                            <Grid container spacing={3}>
-                                <Grid item className={classes.gridItem} xs={12} sm={12} md={12}>
-                                    <Box className={classes.banner}>
-                                        <Table>
-                                            <TableBody>
-                                                <TableCell className={classes.cell} align="right">
-                                                    <Title
-                                                        fontSize="16px"
-                                                        color="black"
-                                                        bold
-                                                        content="Président de région" />
-                                                </TableCell>
-                                                <TableCell>
-                                                    <Box mb={1}>
-                                                        <Title
-                                                            fontSize="16px"
-                                                            color="#2699b0"
-                                                            bold
-                                                            content={uniqueCoordinateur.nom_president || ""} />
-                                                    </Box>
-                                                    <Box mb={1}>
-                                                        <Title
-                                                            fontSize="13px"
-                                                            color="black"
-                                                            bold
-                                                            content={uniqueCoordinateur.telephone_president || ""} />
-                                                    </Box>
-                                                    <Box mb={1}>
-                                                        <Title
-                                                            fontSize="13px"
-                                                            color="black"
-                                                            bold
-                                                            content={uniqueCoordinateur.email_president || ""} />
-                                                    </Box>
-                                                </TableCell>
-                                            </TableBody>
+                                <Grid item xs={6} className={classes.box}>
+                                    {
+                                        uniqueCoordinateur && (
+                                            <Grid container spacing={3}>
+                                                <Grid item className={classes.gridItem} xs={12} sm={12} md={12}>
+                                                    <Box className={classes.banner}>
+                                                        <Table>
+                                                            <TableBody>
+                                                                <TableCell className={classes.cell} align="right">
+                                                                    <Title
+                                                                        fontSize="16px"
+                                                                        color="black"
+                                                                        bold
+                                                                        content="Président de région" />
+                                                                </TableCell>
+                                                                <TableCell>
+                                                                    <Box mb={1}>
+                                                                        <Title
+                                                                            fontSize="16px"
+                                                                            color="#2699b0"
+                                                                            bold
+                                                                            content={uniqueCoordinateur.nom_president || ""} />
+                                                                    </Box>
+                                                                    <Box mb={1}>
+                                                                        <Title
+                                                                            fontSize="13px"
+                                                                            color="black"
+                                                                            bold
+                                                                            content={uniqueCoordinateur.telephone_president || ""} />
+                                                                    </Box>
+                                                                    <Box mb={1}>
+                                                                        <Title
+                                                                            fontSize="13px"
+                                                                            color="black"
+                                                                            bold
+                                                                            content={uniqueCoordinateur.email_president || ""} />
+                                                                    </Box>
+                                                                </TableCell>
+                                                            </TableBody>
 
-                                            <TableBody>
-                                                <TableCell className={classes.cell} align="right">
-                                                    <Title
-                                                        fontSize="16px"
-                                                        color="black"
-                                                        bold
-                                                        content="Co-Président de région" />
-                                                </TableCell>
-                                                <TableCell>
-                                                    <Box mb={1}>
-                                                        <Title
-                                                            fontSize="16px"
-                                                            color="#2699b0"
-                                                            bold
-                                                            content={uniqueCoordinateur.nom_co_president || ""} />
+                                                            <TableBody>
+                                                                <TableCell className={classes.cell} align="right">
+                                                                    <Title
+                                                                        fontSize="16px"
+                                                                        color="black"
+                                                                        bold
+                                                                        content="Co-Président de région" />
+                                                                </TableCell>
+                                                                <TableCell>
+                                                                    <Box mb={1}>
+                                                                        <Title
+                                                                            fontSize="16px"
+                                                                            color="#2699b0"
+                                                                            bold
+                                                                            content={uniqueCoordinateur.nom_co_president || ""} />
+                                                                    </Box>
+                                                                    <Box mb={1}>
+                                                                        <Title
+                                                                            fontSize="13px"
+                                                                            color="black"
+                                                                            bold
+                                                                            content={uniqueCoordinateur.telephone_co_president || ""} />
+                                                                    </Box>
+                                                                    <Box mb={1}>
+                                                                        <Title
+                                                                            fontSize="13px"
+                                                                            color="black"
+                                                                            bold
+                                                                            content={uniqueCoordinateur.email_co_president || ""} />
+                                                                    </Box>
+                                                                </TableCell>
+                                                            </TableBody>
+                                                        </Table>
                                                     </Box>
-                                                    <Box mb={1}>
-                                                        <Title
-                                                            fontSize="13px"
-                                                            color="black"
-                                                            bold
-                                                            content={uniqueCoordinateur.telephone_co_president || ""} />
-                                                    </Box>
-                                                    <Box mb={1}>
-                                                        <Title
-                                                            fontSize="13px"
-                                                            color="black"
-                                                            bold
-                                                            content={uniqueCoordinateur.email_co_president || ""} />
-                                                    </Box>
-                                                </TableCell>
-                                            </TableBody>
-                                        </Table>
-                                    </Box>
+                                                </Grid>
+                                            </Grid>
+                                        )
+                                    }
                                 </Grid>
-                            </Grid>
-                        )
-                    }
-
-
-                    <Box mb={5}>
-                        <Title
-                            color="black"
-                            content="Toutes les structures" size="h6" uppercase bold letterspacing="2px" />
-                        <Title
-                            color="black"
-                            content="Filtrer les résultats :" size="h6" uppercase italic bold letterspacing="2px" fontSize="12px" />
-                        <Grid container>
-                            <Grid item xs={12} className={classes.grid}>
-                                <FormControl className={classes.formControl}>
-                                    <InputLabel className={classes.inputLabel}>Département du siège</InputLabel>
-                                    <Select
-                                        multiple
-                                        value={mainDepartementSelected}
-                                        // onChange={handleChangeDepartment}
-                                        onChange={(event) => setMainDepartmentSelected(event.target.value)}
-                                        input={<Input />}
-                                        MenuProps={MenuProps}
-                                    >
-                                        {regionDepartments.map((dep, index) => (
-                                            <MenuItem key={index} value={dep.nom_departement} style={getStyles(dep.nom_departement, mainDepartementSelected)}>
-                                                {dep.nom_departement}
-                                            </MenuItem>
-                                        ))}
-                                    </Select>
-                                </FormControl>
-                            </Grid>
-                            <Grid item xs={12}>
-                                <FormControl className={classes.formControl}>
-                                    <InputLabel className={classes.inputLabel}>Expertise</InputLabel>
-                                    <Select
-                                        multiple
-                                        value={mainExpertiseSelected}
-                                        // onChange={handleChangeDepartment}
-                                        onChange={(event) => setMainExpertiseSelected(event.target.value)}
-                                        input={<Input />}
-                                        MenuProps={MenuProps}
-                                    >
-                                        {expertises.map((exp, index) => (
-                                            <MenuItem key={index} value={exp.type} style={getStylesExp(exp.type, mainExpertiseSelected)}>
-                                                {exp.type}
-                                            </MenuItem>
-                                        ))}
-                                    </Select>
-                                </FormControl>
-
                             </Grid>
                         </Grid>
-                        {
-                            regionDepartments.map((dep, index) => (
-                                <Box key={index} mt={3}>
-                                    <Box>
-                                        <Title
-                                            color="black"
-                                            content={dep.nom_departement || ""} size="h6" uppercase bold letterspacing="2px" fontSize="12px" />
-                                    </Box>
-                                    <Grid container>
-                                        {
-                                            regionAdherents.filter(adh => adh.departement_siege.nom_departement === dep.nom_departement).map((d, i) => (
-                                                <AdherentPreview key={i} adherent={d} />
-                                            ))
-                                        }
-                                    </Grid>
-                                </Box>
-                            ))
-                        }
-                    </Box>
+                    </Grid>
+
+
+
                     {/* </Grid> */}
                 </Container>
             </Box>
-        </Layout>
+        </Layout >
     )
 }
 
