@@ -1,7 +1,20 @@
 import { Container, Box, Grid } from '@material-ui/core'
 import { Layout, Title, Text } from '../../components'
+import { makeStyles } from '@material-ui/core/styles';
+
+const useStyles = makeStyles((theme) => ({
+    mainImage: {
+        maxHeight: '100%',
+        maxWidth: '100%',
+        opacity: 0.9,
+        display: "block",
+        textAlign: 'center'
+    },
+}))
 
 const Presentation = ({ }) => {
+    const classes = useStyles();
+
     return (
         <Layout>
             <Box mt={7}>
@@ -13,7 +26,7 @@ const Presentation = ({ }) => {
                     </Grid>
                     <Grid container>
                         <Grid item xs={12} md={8}>
-                            <Box mt={2}>
+                            <Box mt={2} mb={8}>
                                 <Text>
                                     Le réseau Mob’In fédère les acteurs de la mobilité inclusive, solidaire et durable sous la forme d’organisations régionales.
                                 <br />
@@ -26,15 +39,23 @@ const Presentation = ({ }) => {
                             </Box>
                         </Grid>
                         <Grid item xs={12} md={4}>
-                            IMAGE
+                            <img
+                                className={classes.mainImage}
+                                src="/static/photos/formation.jpg"
+                                alt="mobilite"
+                            />
                         </Grid>
                     </Grid>
                     <Grid container>
-                        <Grid item xs={12} md={8}>
-                            IMAGE
+                        <Grid item xs={12} md={5}>
+                            <img
+                                className={classes.mainImage}
+                                src="/static/photos/code1.jpg"
+                                alt="mobilite"
+                            />
                         </Grid>
-                        <Grid item xs={12} md={4}>
-                            <Box mt={2}>
+                        <Grid item xs={12} md={7}>
+                            <Box mt={2} pl={10}>
                                 <Text>
                                     Le réseau Mob’In c’est :
                                     <ul>
