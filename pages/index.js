@@ -13,11 +13,13 @@ const useStyles = makeStyles((theme) => ({
   mainImage: {
     maxHeight: '100%',
     maxWidth: '100%',
-    opacity: 0.3
+    opacity: 0.3,
+    display: "block"
   },
   container: {
     position: "relative",
-    textAlign: "center"
+    textAlign: "center",
+    display: "inline-block"
   },
   imageText: {
     // backgroundColor: theme.palette.background.default,
@@ -25,10 +27,10 @@ const useStyles = makeStyles((theme) => ({
     padding: '5px',
     borderRadiux: "50px",
     position: "absolute",
-    top: "30%",
+    top: "50%",
     left: "50%",
     transform: "translate(-50%, -50%)",
-  }
+  },
   // mainTitleBox: {
   //   backgroundImage: `url(static/icons/main_image.png)`,
   //   backgroundPosition: 'center',
@@ -40,6 +42,49 @@ const useStyles = makeStyles((theme) => ({
   //   textAlign: "center",
   //   alignContent: 'center'
   // }
+  wrapper: {
+    position: "relative",
+    width: "100%",
+    height: "100%",
+    minHeight: "550px"
+  },
+  image: {
+    position: "absolute",
+    top: 0,
+    left: 0,
+    width: "100%",
+    height: "100%",
+    minHeight: "550px",
+    "@media (min-width: 960px)": {
+      background: `url(static/icons/main_image.png)`,
+      backgroundRepeat: "no-repeat",
+      backgroundSize: "100% auto",
+      backgroundPosition: "",
+      opacity: 0.25,
+    },
+    "@media (max-width: 960px)": {
+      backgroundColor: theme.palette.blue.main,
+      opacity: 0.1,
+    }
+  },
+  text: {
+    position: "absolute",
+    paddingTop: "5%",
+    top: 0,
+    left: 0,
+    width: "100%",
+    textAlign: "center",
+    fontSize: "5vw",
+    "@media (min-width: 1200px)": {
+      fontSize: "60px"
+    }
+  },
+  title: {
+    "@media (min-width: 960px)": {
+      marginLeft: '2em',
+      marginRight: '2em'
+    }
+  }
 }))
 
 const Home = ({ news = [] }) => {
@@ -48,8 +93,19 @@ const Home = ({ news = [] }) => {
   return (
     <Layout>
       <Container maxWidth="xl">
+        <section>
+          <div className={classes.wrapper}>
+            <div className={classes.image}></div>
+            <div className={classes.text}>
+              <Banner />
+              <Box className={classes.title}>
+                <Title letterspacing="1px" color="#e95e2e" size="h3" bold content="Les acteurs territoriaux de la mobilité inclusive" />
+              </Box>
+            </div>
+          </div>
+        </section>
         {/* <Banner /> */}
-        <Grid container>
+        {/* <Grid container>
           <Grid container item xs={12} md={12}
           >
             <Box className={classes.container}>
@@ -60,13 +116,12 @@ const Home = ({ news = [] }) => {
               />
               <Box className={classes.imageText}>
                 <Banner />
-
                 <Title letterspacing="1px" color="#e95e2e" size="h2" bold content="Les acteurs territoriaux de la mobilité inclusive" />
               </Box>
 
             </Box>
           </Grid>
-        </Grid>
+        </Grid> */}
         <section id="figures">
           <FiguresSection />
         </section>

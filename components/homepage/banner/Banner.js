@@ -13,8 +13,9 @@ const useStyles = makeStyles((theme) => ({
         color: theme.palette.blue.main
     },
     whiteBox: {
-        backgroundColor: "#fff",
-        opacity: 1
+        backgroundColor: theme.palette.green.main,
+        paddingLeft: "6px",
+        paddingRight: "6px"
     }
 }))
 const Banner = ({ }) => {
@@ -26,14 +27,14 @@ const Banner = ({ }) => {
                     <Grid container justify="center" spacing={4}>
                         <Grid item className={classes.box}>
                             <Link href="/adherents">
-                                <Box pl={3.5} className={classes.whiteBox}>
+                                <Box pl={3.5}>
                                     <Icon
-                                        maxWidth="75px"
-                                        src="/static/icons/P.Adhérents.png" />
+                                        maxWidth="100px"
+                                        src="/static/icons/P.Adherents2.png" />
                                 </Box>
 
                                 <Box className={classes.whiteBox}>
-                                    <Title letterspacing="1px" uppercase bold content="nos adhérents" size="h6" color="#333" />
+                                    <Title italic letterspacing="0px" uppercase bold content="nos adhérents" size="h6" color="#fff" />
                                 </Box>
                             </Link>
 
@@ -41,26 +42,26 @@ const Banner = ({ }) => {
 
                         <Grid item className={classes.box}>
                             <Link href="/#figures">
-                                <Box pl={2} className={classes.whiteBox}>
+                                <Box pl={2}>
                                     <Icon
                                         maxWidth="75px"
-                                        src="/static/icons/P.chiffres.png" />
+                                        src="/static/icons/P.chiffres2.png" />
                                 </Box>
                                 <Box className={classes.whiteBox}>
-                                    <Title letterspacing="1px" uppercase bold content="nos chiffres" size="h6" color="#333" />
+                                    <Title italic letterspacing="0px" uppercase bold content="nos chiffres" size="h6" color="#fff" />
                                 </Box>
                             </Link>
                         </Grid>
 
                         <Grid item className={classes.box}>
                             <Link href="/#news">
-                                <Box className={classes.whiteBox}>
+                                <Box>
                                     <Icon
                                         maxWidth="75px"
-                                        src="/static/icons/P.actus.png" />
+                                        src="/static/icons/P.actus2.png" />
                                 </Box>
                                 <Box className={classes.whiteBox}>
-                                    <Title letterspacing="1px" uppercase bold content="nos actus" size="h6" color="#333" />
+                                    <Title italic letterspacing="0px" uppercase bold content="nos actus" size="h6" color="#fff" />
                                 </Box>
                             </Link>
                         </Grid>
