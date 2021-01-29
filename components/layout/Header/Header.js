@@ -36,11 +36,11 @@ const useStyles = makeStyles((theme) => ({
     navbar: {
         backgroundColor: theme.palette.background.default,
         marginBottom: "10px",
-        "@media (min-width: 960px)": {
-            position: "-webkit-sticky",
-            position: "sticky",
-            top: "0px"
-        }
+        // "@media (min-width: 960px)": {
+        //     position: "-webkit-sticky",
+        //     position: "sticky",
+        //     top: "0px"
+        // }
     },
     navbarItem: {
         backgroundColor: theme.palette.blue.main,

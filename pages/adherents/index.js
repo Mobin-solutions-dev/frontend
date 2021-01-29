@@ -25,7 +25,7 @@ const Adherents = ({ }) => {
                 </Container>
             </Box>
             <Box>
-                <Grid xs={12}>
+                <Grid>
                     <Box>
                         <div className="map" id="map">
                             <div style={{
