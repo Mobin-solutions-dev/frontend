@@ -1,5 +1,5 @@
 import { useEffect } from 'react'
-import { Layout, Title, HtmlContent } from '../../../components'
+import { Layout, Title, HtmlContent, Text } from '../../../components'
 import { Box, Container, Grid, Table, TableBody, TableCell, Chip, Button } from '@material-ui/core'
 import { getAdherent } from '../../../utils'
 import { makeStyles } from '@material-ui/core/styles';
@@ -32,6 +32,10 @@ const useStyles = makeStyles((theme) => ({
     btn: {
         textTransform: 'none',
         textDecoration: "underline"
+    },
+    borderBox: {
+        borderLeft: `2px solid ${theme.palette.green.main}`,
+        paddingLeft: "2em"
     }
 }))
 
@@ -79,7 +83,104 @@ const Adherent = ({ adherent = {} }) => {
                     </Grid>
                     <Grid container>
                         <Box mb={5}>
-                            <Table>
+                            <Box mb={3}>
+                                <Grid container>
+                                    <Grid item xs={2} md={4}>
+
+                                        <Title color="#000" size="body2" bold content="Adresse" />
+                                    </Grid>
+                                    <Grid item xs={10} md={8}>
+                                        <Box className={classes.borderBox}>
+                                            <Text color="#000" size="body1">{adresse || ""}</Text>
+                                        </Box>
+                                    </Grid>
+                                </Grid>
+                            </Box>
+                            <Box mb={3}>
+                                <Grid container>
+                                    <Grid item xs={2} md={4}>
+                                        <Title color="#000" size="body2" bold content="Téléphone" />
+                                    </Grid>
+                                    <Grid item xs={10} md={8}>
+                                        <Box className={classes.borderBox}>
+                                            <Text color="#000" size="body1">{numero_telephone || ""}</Text>
+                                        </Box>
+                                    </Grid>
+                                </Grid>
+                            </Box>
+                            <Box mb={3}>
+                                <Grid container>
+                                    <Grid item xs={2} md={4}>
+                                        <Title color="#000" size="body2" bold content="Site internet" />
+                                    </Grid>
+                                    <Grid item xs={10} md={8}>
+                                        <Box className={classes.borderBox}>
+                                            <Button
+                                                className={classes.btn}
+                                                onClick={() => _handleClick(site_internet)}>
+                                                {site_internet || ""}
+                                            </Button>
+                                        </Box>
+                                    </Grid>
+                                </Grid>
+                            </Box>
+                            <Box mb={3}>
+                                <Grid container>
+                                    <Grid item xs={2} md={4}>
+                                        <Title color="#000" size="body2" bold content="Expertise" />
+                                    </Grid>
+                                    <Grid item xs={10} md={8}>
+                                        {
+                                            competences && (
+                                                <Box className={classes.borderBox}>
+                                                    {
+                                                        competences && competences.map((comp, index) => (
+                                                            <Box key={index}>
+                                                                <Chip className={classes.chip} label={comp.type} />
+                                                            </Box>
+                                                        ))
+                                                    }
+                                                </Box>
+                                            )
+                                        }
+
+                                    </Grid>
+                                </Grid>
+                            </Box>
+                            <Box mb={3}>
+                                <Grid container>
+                                    <Grid item xs={2} md={4}>
+                                        <Title color="#000" size="body2" bold content="Projets" />
+                                    </Grid>
+                                    <Grid item xs={10} md={8}>
+                                        {
+                                            projets && (
+                                                <Box className={classes.borderBox}>
+                                                    {
+                                                        projets.map((proj, index) => (
+                                                            <Box key={index}>
+                                                                <Chip className={classes.chip2} label={proj.nom} />
+                                                            </Box>
+                                                        ))
+                                                    }
+                                                </Box>
+                                            )
+                                        }
+
+                                    </Grid>
+                                </Grid>
+                            </Box>
+                            <Box mb={3}>
+                                <Grid container>
+                                    <Grid item xs={2} md={4}>
+                                        <Title color="#000" size="body2" bold content="Présentation" />
+                                    </Grid>
+                                    <Grid item xs={10} md={8}>
+                                        <HtmlContent content={presentation_adherent || ""} />
+                                    </Grid>
+                                </Grid>
+                            </Box>
+                            {/* <Table>
 
                                 <TableBody>
                                     <TableCell className={classes.cell1} component="th" scope="row">
@@ -107,9 +208,7 @@ const Adherent = ({ adherent = {} }) => {
                                         Site internet
                                     </TableCell>
                                     <TableCell className={classes.cell2} align="left">
-                                        {/* <a
-                                            href={site_internet}
-                                            target="_blank">{site_internet}</a> */}
+                                      
                                         <Button
                                             className={classes.btn}
                                             onClick={() => _handleClick(site_internet)}>
@@ -160,7 +259,7 @@ const Adherent = ({ adherent = {} }) => {
                                         <HtmlContent content={presentation_adherent} />
                                     </TableCell>
                                 </TableBody>
-                            </Table>
+                            </Table> */}
                         </Box>
                     </Grid>
                 </Container>

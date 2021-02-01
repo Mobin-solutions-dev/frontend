@@ -6,7 +6,7 @@ const useStyles = makeStyles((theme) => ({
     mainImage: {
         maxHeight: '100%',
         maxWidth: '100%',
-        opacity: 0.9,
+        // opacity: 0.9,
         display: "block",
         textAlign: 'center'
     },
@@ -41,7 +41,8 @@ const Presentation = ({ }) => {
                         <Grid item xs={12} md={4}>
                             <img
                                 className={classes.mainImage}
-                                src="/static/photos/formation.jpg"
+                                // src="/static/photos/formation.jpg"
+                                src="/static/icons/PavéT1.png"
                                 alt="mobilite"
                             />
                         </Grid>
@@ -50,8 +51,10 @@ const Presentation = ({ }) => {
                         <Grid item xs={12} md={5}>
                             <img
                                 className={classes.mainImage}
-                                src="/static/photos/code1.jpg"
+                                // src="/static/photos/code1.jpg"
                                 alt="mobilite"
+                                src="/static/icons/PavéT1.png"
+
                             />
                         </Grid>
                         <Grid item xs={12} md={7}>

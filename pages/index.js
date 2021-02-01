@@ -46,25 +46,33 @@ const useStyles = makeStyles((theme) => ({
     position: "relative",
     width: "100%",
     height: "100%",
-    minHeight: "550px"
+    minHeight: "650px",
   },
   image: {
     position: "absolute",
     top: 0,
     left: 0,
-    width: "100%",
-    height: "100%",
-    minHeight: "550px",
+    // width: "100%",
+    // height: "100%",
+    // minHeight: "500px",
     "@media (min-width: 960px)": {
-      background: `url(static/icons/main_image.png)`,
+      background: `url(static/icons/main_image2.png)`,
       backgroundRepeat: "no-repeat",
       backgroundSize: "100% auto",
-      backgroundPosition: "",
-      opacity: 0.25,
+      opacity: 0.15,
+      width: "100%",
+      height: "100%",
+      minHeight: "650px",
     },
     "@media (max-width: 960px)": {
       backgroundColor: theme.palette.blue.main,
       opacity: 0.1,
+      border: `20px solid ${theme.palette.blue.main}`,
+      borderRadius: "10px",
+      minHeight: "300px",
+      width: "100%",
+      height: "100%",
+
     }
   },
   text: {

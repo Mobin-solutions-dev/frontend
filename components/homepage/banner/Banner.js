@@ -34,7 +34,7 @@ const Banner = ({ }) => {
                                 </Box>
 
                                 <Box className={classes.whiteBox}>
-                                    <Title italic letterspacing="0px" uppercase bold content="nos adhérents" size="h6" color="#fff" />
+                                    <Title italic letterspacing="0px" uppercase bold content="nos adhérents" size="body1" color="#fff" />
                                 </Box>
                             </Link>
 
@@ -48,7 +48,7 @@ const Banner = ({ }) => {
                                         src="/static/icons/P.chiffres2.png" />
                                 </Box>
                                 <Box className={classes.whiteBox}>
-                                    <Title italic letterspacing="0px" uppercase bold content="nos chiffres" size="h6" color="#fff" />
+                                    <Title italic letterspacing="0px" uppercase bold content="nos chiffres" size="body1" color="#fff" />
                                 </Box>
                             </Link>
                         </Grid>
@@ -61,7 +61,7 @@ const Banner = ({ }) => {
                                         src="/static/icons/P.actus2.png" />
                                 </Box>
                                 <Box className={classes.whiteBox}>
-                                    <Title italic letterspacing="0px" uppercase bold content="nos actus" size="h6" color="#fff" />
+                                    <Title italic letterspacing="0px" uppercase bold content="nos actus" size="body1" color="#fff" />
                                 </Box>
                             </Link>
                         </Grid>
