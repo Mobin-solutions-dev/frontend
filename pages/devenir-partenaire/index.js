@@ -20,7 +20,7 @@ const useStyles = makeStyles((theme) => ({
     },
 }))
 
-const Contact = ({ contactEmails }) => {
+const BecomePartner = ({ contactEmails }) => {
     const classes = useStyles();
 
     const [message, setMessage] = useState("")
@@ -76,13 +76,7 @@ const Contact = ({ contactEmails }) => {
                 <Container maxWidth="lg">
                     <Grid container>
                         <Box mb={2}>
-                            <Title content="Contactez-nous" size="h4" uppercase bold letterspacing="2px" />
-                        </Box>
-                        <Box mb={2}>
-                            <Text size="body1">
-                                Vous souhaitez avoir des informations sur l’accompagnement proposé par Mob’In France ou vous avez un projet de mobilité solidaire sur votre territoire ou votre entreprise ?
-                            N’hésitez pas à nous laisser un message par le biais de ce formulaire de contact :
-                            </Text>
+                            <Title content="Vous souhaitez devenir partenaire ? Ecrivez-nous !" size="h4" uppercase bold letterspacing="2px" />
                         </Box>
                     </Grid>
                     <Grid container>
@@ -147,4 +141,4 @@ export const getServerSideProps = async (context) => {
 }
 
 
-export default Contact
+export default BecomePartner

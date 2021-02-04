@@ -24,11 +24,11 @@ export const footerLinks = [
 export const footerButtons = [
     {
         title: "Rejoignez-nous",
-        path: "/"
+        path: "/devenir-partenaire"
     },
     {
         title: "Inscription à la newsletter",
-        path: "/"
+        path: "/#newsletter"
     },
     {
         title: "Presse",

@@ -136,7 +136,7 @@ const Home = ({ news = [] }) => {
         <section id="news">
           <NewsSection news={news} />
         </section>
-        <section id="news">
+        <section id="newsletter">
           <NewsletterSection />
         </section>
       </Container>

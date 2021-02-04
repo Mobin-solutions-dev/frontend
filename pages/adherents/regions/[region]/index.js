@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react'
-import { Container, Box, Grid, Table, TableBody, TableCell, FormControl, InputLabel, Select, MenuItem, Input } from '@material-ui/core'
+import { Container, Box, Grid, FormControl, InputLabel, Select, MenuItem, Input, Button } from '@material-ui/core'
 import { Layout, Title, AdherentPreview } from '../../../../components'
 import { useRouter } from 'next/router'
 import { getDepartments, getAdherents, getCoordinateurs, filterAdherentsFromSelectedDepartments, getExpertises, filterAdherentsFromSelectedExpertises } from '../../../../utils'
@@ -73,6 +73,10 @@ const useStyles = makeStyles((theme) => ({
             order: 1,
         },
     },
+    btn: {
+        textTransform: 'none',
+        // textDecoration: "underline"
+    },
 }))
 
 const ITEM_HEIGHT = 48;
@@ -101,7 +105,7 @@ const Region = ({ departments = [], adherents = [], coordinateurs = [], expertis
 
     // Get filtered coordinateur
     const uniqueCoordinateur = coordinateurs.find(c => c ?.region ?.nom_region === region)
-
+    console.log(uniqueCoordinateur)
     const getStyles = (departement, mainDepartementSelected) => {
         return {
             fontWeight:
@@ -135,6 +139,18 @@ const Region = ({ departments = [], adherents = [], coordinateurs = [], expertis
 
     // Get filtered Regions
     const regionAdherents = adherentsToDisplay.filter(element => adherentsToDisplayExpertise.includes(element))
+
+    const _handleClick = site => {
+        let url = site
+        let prefixHttp = 'http://';
+        let prefixHttps = 'https://';
+        if (url.substr(0, prefixHttp.length) !== prefixHttp && url.substr(0, prefixHttps.length) !== prefixHttps) {
+            url = prefix + url;
+        }
+        if (isWindowContext) {
+            window.open(url, '_blank');
+        }
+    }
 
     return (
         <Layout>
@@ -306,6 +322,28 @@ const Region = ({ departments = [], adherents = [], coordinateurs = [], expertis
                                                             </Grid>
                                                         </Grid>
 
+                                                        {
+                                                            uniqueCoordinateur.site_internet && (
+                                                                <Grid container spacing={2}>
+                                                                    <Grid item xs={6}>
+                                                                        <Title
+                                                                            fontSize="16px"
+                                                                            color="black"
+                                                                            bold
+                                                                            content="Site internet" />
+                                                                    </Grid>
+                                                                    <Grid item xs={6}>
+                                                                        <Box mb={1}>
+                                                                            <Button
+                                                                                className={classes.btn}
+                                                                                onClick={() => _handleClick(uniqueCoordinateur.site_internet)}>
+                                                                                {uniqueCoordinateur.site_internet || ""}
+                                                                            </Button>
+                                                                        </Box>
+                                                                    </Grid>
+                                                                </Grid>
+                                                            )
+                                                        }
                                                     </Box>
                                                 </Grid>
                                             </Grid>

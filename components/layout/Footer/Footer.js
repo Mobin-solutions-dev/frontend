@@ -2,8 +2,7 @@ import { Fragment } from 'react'
 import { Box, Grid, List, ListItem, Button } from '@material-ui/core';
 import { makeStyles } from '@material-ui/core/styles';
 import { Facebook, LinkedIn, Twitter } from '@material-ui/icons';
-
-import Icon from '@material-ui/core/Icon';
+import { useRouter } from 'next/router'
 import { Text } from '../../global'
 import { footerLinks, footerButtons, socialLinks } from '../../../utils'
 import Link from 'next/link'
@@ -40,6 +39,8 @@ const useStyles = makeStyles((theme) => ({
 
 const Footer = ({ }) => {
     const classes = useStyles();
+    const router = useRouter()
+    const handleClick = path => router.push(path)
     return (
         <Fragment>
             <Box className={classes.box}>
@@ -65,7 +66,7 @@ const Footer = ({ }) => {
                                 footerButtons && footerButtons.map((btn, index) => (
                                     <Grid key={index} item xs={12} md={12}>
                                         <Box mt={0} p={1}>
-                                            <Button className={classes.btn}>
+                                            <Button onClick={() => handleClick(btn.path)} className={classes.btn}>
                                                 {btn.title}
                                             </Button>
                                         </Box>

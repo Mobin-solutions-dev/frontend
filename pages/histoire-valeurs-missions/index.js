@@ -1,8 +1,27 @@
 import { Container, Box, Grid } from '@material-ui/core'
 import { Layout, Title, Text } from '../../components'
+import { makeStyles } from '@material-ui/core/styles';
+import ArrowRightAlt from "@material-ui/icons/ArrowRightAlt"
 
+const useStyles = makeStyles((theme) => ({
+    mainImage: {
+        maxHeight: '100%',
+        maxWidth: 'auto',
+        // opacity: 0.9,
+        display: "block",
+        textAlign: 'center'
+    },
+    gridItem: {
+        display: "flex",
+        flexDirection: "column",
+        justifyContent: "center",
+        marginBottom: "1em"
+    }
+}))
 
 const History = ({ }) => {
+    const classes = useStyles();
+
     return (
         <Layout>
             <Box mt={7}>
@@ -12,7 +31,7 @@ const History = ({ }) => {
                             <Title content="Notre histoire, nos valeurs et nos missions" size="h4" uppercase bold letterspacing="2px" />
                         </Box>
                     </Grid>
-                    <Grid container>
+                    <Grid container spacing={2}>
                         <Grid item xs={12} md={8}>
                             <Box mt={4}>
                                 <Title
@@ -20,8 +39,8 @@ const History = ({ }) => {
                                     content="Notre histoire" size="h6" uppercase bold letterspacing="2px" />
                             </Box>
                             <Box mt={2}>
-                                <Text fontSize="15px">
-                                    L’association Mob’In France a été créée le 30 août 2017, par d’ancien membre de l’association FARE.
+                                <Text size="h6" color="#2699b0">
+                                    L’association Mob’In France a été créée le 30 août 2017, par d’anciens membres de l’association FARE.
                                 <br />
                                     <br />
                                     FARE était la Fédération française des structures associatives de la mobilité, créée en 1988 par des éducateurs militants.
@@ -37,49 +56,50 @@ const History = ({ }) => {
                                 </Text>
                             </Box>
                         </Grid>
-                        <Grid item xs={12} md={4}>
-                            Image
+                        <Grid item xs={9} sm={6} md={4} className={classes.gridItem}>
+                            <img
+                                className={classes.mainImage}
+                                src="/static/verbatims/Verbatim Bleu3.png"
+                                alt="mobilite"
+                            />
                         </Grid>
-
                     </Grid>
-                    <Grid container>
-                        <Grid item xs={12}>
+                    <Grid container spacing={2}>
+                        <Grid item xs={12} md={8}>
                             <Box mt={4}>
                                 <Title
                                     color="black"
                                     content="Nos valeurs" size="h6" uppercase bold letterspacing="2px" />
                             </Box>
-                        </Grid>
-                        <Grid item xs={12}>
                             <Box mt={2}>
-                                <Text fontSize="15px">
+                                <Text size="h6" color="#2699b0">
                                     L’association a pour objet d’accompagner les personnes en situation de fragilité vers une mobilité autonome et durable.
                                     <br />
                                     <br />
                                     L’association Mob’In France est indépendante et fédère des associations régionales elles-aussi indépendantes dans leur fonctionnement et dans leur financement.
                                 </Text>
                             </Box>
-                        </Grid>
-                    </Grid>
-
-                    <Grid container>
-                        <Grid item xs={12}>
                             <Box mt={4}>
                                 <Title
                                     color="black"
                                     content="Nos missions" size="h6" uppercase bold letterspacing="2px" />
                             </Box>
-                        </Grid>
-                        <Grid item xs={12}>
                             <Box mt={2}>
-                                <Text fontSize="15px">
-                                    <li>Partager un cadre commun de valeurs et de principes d’action entre les Régions Mob’In et permettre la mutualisation des compétences, expériences, méthodes et outils</li>
-                                    <br />
-                                    <li>Assurer une représentation nationale des Mob’In régionaux et des projets locaux auprès des acteurs nationaux et des partenaires.</li>
-                                    <br />
-                                    <li>Accompagner la mise en place d’organisations régionales dans un cadre national cohérent et les accompagner dans leur développement et la définition d’une stratégie et d’un plan d’action</li>
-                                </Text>
+                                <Title size="h6" italic content="Partager un cadre commun de valeurs et de principes d’action entre les Régions Mob’In et permettre la mutualisation des compétences, expériences, méthodes et outils" />
+
+                                <br />
+                                <Title size="h6" italic content="Assurer une représentation nationale des Mob’In régionaux et des projets locaux auprès des acteurs nationaux et des partenaires." />
+                                <br />
+                                <Title size="h6" italic content="Accompagner la mise en place d’organisations régionales dans un cadre national cohérent et les accompagner dans leur développement et la définition d’une stratégie et d’un plan d’action" />
+                                <br />
                             </Box>
+                        </Grid>
+                        <Grid item xs={9} sm={6} md={4} className={classes.gridItem}>
+                            <img
+                                className={classes.mainImage}
+                                src="/static/verbatims/Verbatim Vert4.png"
+                                alt="mobilite"
+                            />
                         </Grid>
                     </Grid>
                 </Container>

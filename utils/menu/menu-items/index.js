@@ -74,6 +74,10 @@ export const menuItems = [
                 title: "Au service des entreprises",
                 link: "/accompagnement/entreprises"
             },
+            {
+                title: "Devenir partenaire",
+                link: "/devenir-partenaire"
+            },
         ]
     },
 ]

@@ -5,11 +5,17 @@ import { makeStyles } from '@material-ui/core/styles';
 const useStyles = makeStyles((theme) => ({
     mainImage: {
         maxHeight: '100%',
-        maxWidth: '100%',
+        maxWidth: 'auto',
         // opacity: 0.9,
         display: "block",
         textAlign: 'center'
     },
+    gridItem: {
+        display: "flex",
+        flexDirection: "column",
+        justifyContent: "center",
+        marginBottom: "1em"
+    }
 }))
 
 const Presentation = ({ }) => {
@@ -24,10 +30,10 @@ const Presentation = ({ }) => {
                             <Title content="Présentation de Mob'In " size="h4" uppercase bold letterspacing="2px" />
                         </Box>
                     </Grid>
-                    <Grid container>
-                        <Grid item xs={12} md={8}>
+                    <Grid container spacing={4}>
+                        <Grid item xs={12} md={8} className={classes.gridItem}>
                             <Box mt={2} mb={8}>
-                                <Text>
+                                <Text size="h6" color="#2699b0">
                                     Le réseau Mob’In fédère les acteurs de la mobilité inclusive, solidaire et durable sous la forme d’organisations régionales.
                                 <br />
                                     <br />
@@ -38,37 +44,43 @@ const Presentation = ({ }) => {
                                 </Text>
                             </Box>
                         </Grid>
-                        <Grid item xs={12} md={4}>
+                        <Grid item xs={9} sm={6} md={4} className={classes.gridItem}>
                             <img
                                 className={classes.mainImage}
-                                // src="/static/photos/formation.jpg"
-                                src="/static/icons/PavéT1.png"
+                                src="/static/verbatims/Verbatim Bleu.png"
                                 alt="mobilite"
                             />
                         </Grid>
                     </Grid>
-                    <Grid container>
-                        <Grid item xs={12} md={5}>
+                    <Grid container spacing={4}>
+
+                        <Grid item xs={9} sm={6} md={4} className={classes.gridItem}>
                             <img
                                 className={classes.mainImage}
-                                // src="/static/photos/code1.jpg"
                                 alt="mobilite"
-                                src="/static/icons/PavéT1.png"
-
+                                src="/static/verbatims/Verbatim Jaune-orangé2.png"
                             />
                         </Grid>
-                        <Grid item xs={12} md={7}>
+                        <Grid item xs={12} md={8} className={classes.gridItem}>
                             <Box mt={2} pl={10}>
-                                <Text>
-                                    Le réseau Mob’In c’est :
-                                    <ul>
+                                <Text size="h5">Le réseau Mob’In c’est :</Text>
+                                <br />
+                                <Title italic size="h4" content="8 régions Mob'In constituées" />
+                                <br />
+                                <Title italic size="h4" content="+ de 120 adhérents" />
+                                <br />
+                                <Title italic size="h4" content="+ de 35 000 personnes accompagnées" />
+                                <br />
+                                <Title italic size="h4" content="+ de 60 conseillers mobilité" />
+                                <br />
+                                {/* <ul>
                                         <li><strong>8 régions</strong> Mob’In constituées</li>
                                         <li><strong>+ de 120 adhérents</strong></li>
                                         <li><strong>+ de 35 000 personnes accompagnées</strong></li>
                                         <li><strong>+ de 60 conseillers mobilité</strong></li>
-                                    </ul>
-                                </Text>
+                                    </ul> */}
                             </Box>
+
                         </Grid>
                     </Grid>
                 </Container>
