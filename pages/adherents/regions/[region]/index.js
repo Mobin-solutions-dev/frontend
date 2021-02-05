@@ -105,7 +105,6 @@ const Region = ({ departments = [], adherents = [], coordinateurs = [], expertis
 
     // Get filtered coordinateur
     const uniqueCoordinateur = coordinateurs.find(c => c ?.region ?.nom_region === region)
-    console.log(uniqueCoordinateur)
     const getStyles = (departement, mainDepartementSelected) => {
         return {
             fontWeight:
@@ -139,6 +138,8 @@ const Region = ({ departments = [], adherents = [], coordinateurs = [], expertis
 
     // Get filtered Regions
     const regionAdherents = adherentsToDisplay.filter(element => adherentsToDisplayExpertise.includes(element))
+
+    const isWindowContext = typeof window !== "undefined";
 
     const _handleClick = site => {
         let url = site
