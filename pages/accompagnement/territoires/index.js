@@ -1,5 +1,6 @@
 import { Container, Box, Grid } from '@material-ui/core'
-import { Layout, Title, Text } from '../../../components'
+import { Layout, Title, Text, HtmlContent } from '../../../components'
+import { accompagnerTerritoires, developpementEcoleConduite, mobiliteMigrants } from '../../../utils'
 
 const Territoires = ({ }) => {
     return (
@@ -18,6 +19,9 @@ const Territoires = ({ }) => {
                                     color="black"
                                     content="Accompagner les territoires à la création d’une offre mobilité solidaire" size="h6" uppercase bold letterspacing="1px" />
                             </Box>
+                            <Box>
+                                {accompagnerTerritoires}
+                            </Box>
                         </Grid>
                     </Grid>
 
@@ -28,6 +32,9 @@ const Territoires = ({ }) => {
                                     color="black"
                                     content="Développement d’une école de conduite à statut associatif" size="h6" uppercase bold letterspacing="1px" />
                             </Box>
+                            <Box>
+                                {developpementEcoleConduite}
+                            </Box>
                         </Grid>
                     </Grid>
 
@@ -37,6 +44,9 @@ const Territoires = ({ }) => {
                                 <Title
                                     color="black"
                                     content="Offre de mobilité pour les migrants" size="h6" uppercase bold letterspacing="1px" />
+                            </Box>
+                            <Box>
+                                {mobiliteMigrants}
                             </Box>
                         </Grid>
                     </Grid>

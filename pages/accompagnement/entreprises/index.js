@@ -1,32 +1,147 @@
-import { Container, Box, Grid } from '@material-ui/core'
+import { useState } from 'react'
+import { Container, Box, Grid, TextField, Button } from '@material-ui/core'
+import { makeStyles } from '@material-ui/core/styles';
 import { Layout, Title, Text } from '../../../components'
+import { sendMail } from "../../../src/services/sendEmail";
+import { getContactEmails } from '../../../utils'
 
-const Entreprises = ({ }) => {
+const useStyles = makeStyles((theme) => ({
+    textField: {
+        width: '100%'
+    },
+    btn: {
+        color: "black",
+        borderColor: theme.palette.orange.main,
+        '&:hover': {
+            backgroundColor: theme.palette.golden.main,
+            color: "#fff",
+            border: 'none'
+        }
+    },
+}))
+
+const Entreprises = ({ contactEmails }) => {
+    const classes = useStyles();
+
+    const [message, setMessage] = useState("")
+    const [errorMessage, setErrorMessage] = useState(null)
+    const [successMessage, setSuccessMessage] = useState(null)
+
+    const [senderEmail, setSenderEmail] = useState("")
+    const [errorSenderEmail, setErrorSenderEmail] = useState(null)
+
+    const minCharacters = 10
+
+    const validateEmail = (email) => {
+        const re = /\S+@\S+\.\S+/;
+        return re.test(email);
+    }
+
+    const handleClick = async () => {
+        setErrorMessage(null)
+        setErrorSenderEmail(null)
+        if (message.length < minCharacters) {
+            setErrorMessage(`Votre message doit contenir au moins ${minCharacters} caractères.`)
+            return
+        }
+
+        if (!validateEmail(senderEmail)) {
+            setErrorSenderEmail("Merci de saisir votre email de contact.")
+            return
+        }
+
+
+        let emails = contactEmails.map(e => {
+            return { email: e.email }
+        })
+        let variables = {
+            message,
+            emails,
+            senderEmail
+        }
+        let response = await sendMail(variables);
+
+        if (response) {
+            setMessage("")
+            setSenderEmail("")
+            alert("Message envoyé !")
+        } else {
+            alert("Erreur dans l'envoi du message. Veuillez recommencer.")
+        }
+    }
+
     return (
         <Layout>
             <Box mt={7}>
                 <Container maxWidth="lg">
                     <Grid container>
                         <Box mb={2}>
-                            <Title content="Au service des entreprises" size="h4" uppercase bold letterspacing="2px" />
+                            <Title content="Vous souhaitez avoir des informations sur l’accompagnement proposé par Mob’In France ou vous avez un projet de mobilité solidaire au sein de votre entreprise ?" size="body1" bold letterspacing="1px" />
+                        </Box>
+                        <Box mb={2}>
+                            <Title content="N’hésitez pas à nous laisser un message par le biais de ce formulaire de contact :" size="body1" color="#000" />
                         </Box>
                     </Grid>
                     <Grid container>
-                        <Grid item xs={12}>
-                            <Box mt={4}>
-                                <Text  >
-                                    Vous souhaitez avoir des informations sur l’accompagnement proposé par Mob’In France ou vous avez un projet de mobilité solidaire sur votre territoire ou votre entreprise ?
-                            <br />
-                                    <br />
-                                    N’hésitez pas à nous laisser un message par le biais de ce formulaire de contact :
-                            </Text>
+                        <Grid item xs={12} sm={8} md={3}>
+                            <Box mt={2} mb={4}>
+                                <TextField
+                                    className={classes.textField}
+                                    label="Saisissez votre email"
+                                    value={senderEmail}
+                                    onChange={e => setSenderEmail(e.target.value)}
+                                    variant="outlined"
+                                // variant="filled"
+                                />
+                            </Box>
+                            <Box mb={4}>
+                                <Text color="#e5352c">{errorSenderEmail}</Text>
                             </Box>
                         </Grid>
                     </Grid>
+                    <Grid container>
+                        <Grid item xs={12}>
+                            <Box mt={2} mb={4}>
+                                <TextField
+                                    className={classes.textField}
+                                    label="Ecrivez-nous ici votre demande"
+                                    multiline
+                                    rows={6}
+                                    value={message}
+                                    onChange={e => setMessage(e.target.value)}
+                                    variant="outlined"
+                                />
+                            </Box>
+                            <Box mb={4}>
+                                <Text color="#e5352c">{errorMessage}</Text>
+                            </Box>
+                        </Grid>
+                        <Grid item xs={12}>
+
+                            <Box mb={4}>
+                                <Button
+                                    className={classes.btn}
+                                    variant="outlined"
+                                    onClick={() => handleClick()}>
+                                    Envoyer
+                                </Button>
+                            </Box>
+                        </Grid>
+
+                    </Grid>
                 </Container>
             </Box>
-        </Layout>
+        </Layout >
     )
 }
+
+export const getServerSideProps = async (context) => {
+    const res = await fetch(getContactEmails)
+    const emails = await res.json()
+    return {
+        props: { contactEmails: emails }
+    };
+}
+
 
 export default Entreprises

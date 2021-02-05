@@ -1,8 +1,10 @@
+import { useEffect } from 'react'
 import { Container, Box, Grid } from '@material-ui/core'
 import { Layout, Title, HtmlContent } from '../../../components'
 import { getNewsItem } from '../../../utils'
 import Image from 'next/image'
 import { makeStyles } from '@material-ui/core/styles';
+import { useRouter } from 'next/router'
 
 const useStyles = makeStyles((theme) => ({
     img: {
@@ -15,6 +17,17 @@ const useStyles = makeStyles((theme) => ({
 
 const Article = ({ article = {} }) => {
     const classes = useStyles();
+    const router = useRouter()
+
+    useEffect(() => {
+        router.events.on('routeChangeComplete', () => {
+            window.scroll({
+                top: 0,
+                left: 0,
+                // behavior: 'smooth'
+            });
+        });
+    }, [])
 
     const { titre_article, contenu_article, image_principale } = article
     return (
@@ -23,7 +36,7 @@ const Article = ({ article = {} }) => {
                 <Container maxWidth="lg">
                     <Grid container>
                         <Box mb={2}>
-                            <Title content={titre_article} size="h4" uppercase bold letterspacing="2px" />
+                            <Title content={titre_article} size="h4" bold letterspacing="2px" />
                         </Box>
                     </Grid>
                     <Grid container>

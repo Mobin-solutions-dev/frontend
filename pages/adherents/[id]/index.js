@@ -113,15 +113,20 @@ const Adherent = ({ adherent = {} }) => {
                                     <Grid item xs={2} md={4}>
                                         <Title color="#000" size="body2" bold content="Site internet" />
                                     </Grid>
-                                    <Grid item xs={10} md={8}>
-                                        <Box className={classes.borderBox}>
-                                            <Button
-                                                className={classes.btn}
-                                                onClick={() => _handleClick(site_internet)}>
-                                                {site_internet || ""}
-                                            </Button>
-                                        </Box>
-                                    </Grid>
+                                    {
+                                        site_internet && (
+                                            <Grid item xs={10} md={8}>
+                                                <Box className={classes.borderBox}>
+                                                    <Button
+                                                        className={classes.btn}
+                                                        onClick={() => _handleClick(site_internet)}>
+                                                        {site_internet || ""}
+                                                    </Button>
+                                                </Box>
+                                            </Grid>
+                                        )
+                                    }
+
                                 </Grid>
                             </Box>
                             <Box mb={3}>

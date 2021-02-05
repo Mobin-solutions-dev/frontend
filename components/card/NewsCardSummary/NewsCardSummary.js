@@ -32,7 +32,7 @@ const useStyles = makeStyles((theme) => ({
         columnWidth: "250px",
         height: "100%",
         // textAlign: "left",
-        textAlign: "center"
+        // textAlign: "center"
     },
     btn: {
         color: "black",
@@ -67,7 +67,7 @@ const NewsCardSummary = ({ newsItem = {} }) => {
                             <Grid item xs={6} md={12}>
                                 <Box className={classes.articleTitleContainer} mr={2}>
                                     <Box className={classes.wrapper}>
-                                        <Title content={titre_article} size="h6" uppercase bold letterspacing="1px" />
+                                        <Title content={titre_article} size="body1" bold letterspacing="1px" />
                                     </Box>
                                 </Box>
                             </Grid>
