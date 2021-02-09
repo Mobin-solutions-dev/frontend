@@ -1,4 +1,4 @@
-import { useState, Fragment } from 'react'
+import { useState, Fragment, useContext } from 'react'
 import clsx from 'clsx';
 
 import { List, ListItem, Menu, MenuItem, Button, Box, AppBar, Toolbar, Link, SwipeableDrawer, IconButton, ListItemText, Collapse } from '@material-ui/core'
@@ -8,9 +8,8 @@ import ExpandMore from '@material-ui/icons/ExpandMore';
 import MenuIcon from '@material-ui/icons/Menu';
 import { Icon, Title, Text } from '../../global'
 import Router from "next/router";
-
-
 import { menuItems } from '../../../utils'
+import AppContext from "../../../context/AppContext";
 
 const useStyles = makeStyles((theme) => ({
     menuDesktop: {
@@ -87,14 +86,14 @@ const Header = () => {
     const [openCollapseId, setOpenCollapseId] = useState(null);
     const [itemClicked, setItemClicked] = useState(null)
     const open = Boolean(anchorEl);
-
     const [state, setState] = useState({
         top: false,
         left: false,
         bottom: false,
         right: false,
     });
-
+    const { user, isAuthenticated } = useContext(AppContext);
+    console.log("isAuthenticated", isAuthenticated)
 
     const toggleDrawer = (anchor, open) => (event) => {
         if (event && event.type === 'keydown' && (event.key === 'Tab' || event.key === 'Shift')) {
@@ -123,6 +122,9 @@ const Header = () => {
         setOpenCollapseId(id)
     };
 
+    const onLogin = () => Router.push("/login")
+    const onLogout = () => { }
+
 
 
     return (
@@ -145,7 +147,7 @@ const Header = () => {
                                             // onClick={(event) => {
                                             //     handleClick(event, item.id);
                                             // }}
-                                            onMouseOver={(event) => {
+                                            onClick={(event) => {
                                                 handleClick(event, item.id);
                                             }}
                                             className={classes.navbarItem}>
@@ -194,7 +196,21 @@ const Header = () => {
                                 </Box>
                             ))
                         }
-                        <Icon src="/static/icons/P.Adhérent1.png" maxWidth="50px" />
+                        {
+                            isAuthenticated ? (
+                                <Button
+                                    onClick={() => onLogout()}
+                                    style={{ backgroundColor: 'transparent' }}>
+                                    >Déconnexion</Button>
+                            ) : (
+                                    <Button
+                                        onClick={() => onLogin()}
+                                        style={{ backgroundColor: 'transparent' }}>
+                                        <Icon src="/static/icons/P.Adhérent1.png" maxWidth="50px" />
+                                    </Button>
+                                )
+                        }
+
                     </Box>
                 </div>
                 <div className={classes.menuMobile}>

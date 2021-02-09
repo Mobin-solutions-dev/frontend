@@ -59,7 +59,7 @@ const useStyles = makeStyles((theme) => ({
       background: `url(static/icons/main_image2.png)`,
       backgroundRepeat: "no-repeat",
       backgroundSize: "100% auto",
-      opacity: 0.15,
+      opacity: 0.3,
       width: "100%",
       height: "100%",
       minHeight: "650px",
