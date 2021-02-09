@@ -1,11 +1,27 @@
-import { Container, Grid } from '@material-ui/core'
+import { Container, Grid, Box } from '@material-ui/core'
 import { Title, NewsCardSummary } from '../../../components'
-import { getNews } from '../../../utils'
+import { makeStyles } from '@material-ui/core/styles';
+
+const useStyles = makeStyles((theme) => ({
+
+    flexBox: {
+        display: "flex",
+        alignItems: 'center'
+    },
+}))
 
 const NewsSection = ({ news = [] }) => {
+    const classes = useStyles();
+
     return (
         <Container>
-            <Title content="les actus" size="h4" uppercase bold letterspacing="2px" />
+            <Box mb={3} className={classes.flexBox}>
+                <Box mr={1}>
+                    <Title color="#2699b0" content="Les" size="h3" bold letterspacing="2px" />
+                </Box>
+                <Title content="actus" size="h3" bold letterspacing="2px" />
+
+            </Box>
             <Grid container>
 
                 {

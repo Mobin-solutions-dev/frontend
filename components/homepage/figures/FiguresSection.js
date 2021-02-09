@@ -1,4 +1,7 @@
 import { Container, Grid, Box } from '@material-ui/core'
+import CountUp from 'react-countup';
+import VisibilitySensor from 'react-visibility-sensor';
+
 import { Title, Icon } from '../../global'
 import { makeStyles } from '@material-ui/core/styles';
 
@@ -11,7 +14,11 @@ const useStyles = makeStyles((theme) => ({
     },
     iconSection: {
         paddingBottom: "10px"
-    }
+    },
+    flexBox: {
+        display: "flex",
+        alignItems: 'center'
+    },
 }))
 const FiguresSection = () => {
     const classes = useStyles();
@@ -20,43 +27,74 @@ const FiguresSection = () => {
         <Container>
             <Box pt={10} pb={10}>
                 <Grid>
-                    <Title content="les chiffres" size="h4" uppercase bold letterspacing="2px" />
+                    <Box mb={3} className={classes.flexBox}>
+                        <Box mr={1}>
+                            <Title color="#2699b0" content="Les" size="h3" bold letterspacing="2px" />
+                        </Box>
+                        <Title content="chiffres" size="h3" bold letterspacing="2px" />
+
+                    </Box>
                     <Box pt={5} pb={5} className={classes.box}>
                         <Grid container spacing={5}>
-                            <Grid item xs={12} md={6} lg={3}>
+                            <Grid item xs={12} md={6} lg={6}>
                                 <Box display="flex" alignItems="flex-end" className={classes.iconSection}>
                                     <Icon src="/static/icons/P.reçus.png" maxWidth="180px" />
-                                    <Title bold size="h3" content="2500" color="black" />
+                                    <Title bold size="h3" content={
+                                        <VisibilitySensor>
+                                            {({ isVisible }) =>
+                                                <div>{isVisible ? <CountUp separator=" " end={32000} /> : "32000"}</div>
+                                            }
+                                        </VisibilitySensor>
+
+                                    } color="black" />
                                 </Box>
                                 <Box pl={4}>
                                     <Title content="Nombre de personnes reçues" color="black" size="h6" />
                                 </Box>
                             </Grid>
 
-                            <Grid item xs={12} md={6} lg={3}>
+                            <Grid item xs={12} md={6} lg={6}>
                                 <Box display="flex" alignItems="flex-end" className={classes.iconSection}>
                                     <Icon src="/static/icons/P.conseillers.png" maxWidth="180px" />
-                                    <Title bold size="h3" content="85" color="black" />
+                                    <Title bold size="h3" content={
+                                        <VisibilitySensor>
+                                            {({ isVisible }) =>
+                                                <div>{isVisible ? <CountUp end={132} /> : "132"}</div>
+                                            }
+                                        </VisibilitySensor>
+                                    } color="black" />
                                 </Box>
                                 <Box pl={4}>
                                     <Title content="Nombre de conseillers mobilité" color="black" size="h6" />
                                 </Box>
                             </Grid>
 
-                            <Grid item xs={12} md={6} lg={3}>
+                            <Grid item xs={12} md={6} lg={6}>
                                 <Box display="flex" alignItems="flex-end" className={classes.iconSection}>
                                     <Icon src="/static/icons/P.location.png" maxWidth="180px" />
-                                    <Title bold size="h3" content="750" color="black" />
+                                    <Title bold size="h3" content={
+                                        <VisibilitySensor>
+                                            {({ isVisible }) =>
+                                                <div>{isVisible ? <CountUp separator=" " end={414346} /> : "414346"}</div>
+                                            }
+                                        </VisibilitySensor>
+                                    } color="black" />
                                 </Box>
                                 <Box pl={4}>
                                     <Title content="Nombre de jours de location" color="black" size="h6" />
                                 </Box>
                             </Grid>
 
-                            <Grid item xs={12} md={6} lg={3}>
+                            <Grid item xs={12} md={6} lg={6}>
                                 <Box display="flex" alignItems="flex-end" className={classes.iconSection}>
                                     <Icon src="/static/icons/P.Adherents2.png" maxWidth="180px" />
-                                    <Title bold size="h3" content="150" color="black" />
+                                    <Title bold size="h3" content={
+                                        <VisibilitySensor>
+                                            {({ isVisible }) =>
+                                                <div>{isVisible ? <CountUp end={150} /> : "150"}</div>
+                                            }
+                                        </VisibilitySensor>
+                                    } color="black" />
                                 </Box>
                                 <Box pl={4}>
                                     <Title content="Nombre d'adhérents" color="black" size="h6" />

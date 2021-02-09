@@ -11,7 +11,9 @@ const useStyles = makeStyles((theme) => ({
     box: {
         border: `2px ${theme.palette.orange.main} solid`,
         borderRadius: "10px",
-        padding: "2em"
+        padding: "2em",
+        backgroundColor: theme.palette.background.default,
+
     },
     textField: {
         color: theme.palette.orange.main
@@ -26,6 +28,7 @@ const useStyles = makeStyles((theme) => ({
         justifyContent: "center"
     },
     btn: {
+        fontWeight: 'bold',
         color: "#2699b0",
         borderColor: theme.palette.orange.main,
         '&:hover': {
@@ -33,6 +36,12 @@ const useStyles = makeStyles((theme) => ({
             color: "#fff",
             border: 'none'
         }
+    },
+    greyBox: {
+        marginTop: "1em",
+        backgroundColor: theme.palette.gray.main,
+        borderRadius: '10px',
+        padding: "4em"
     },
 }))
 const FiguresSection = () => {
@@ -68,12 +77,12 @@ const FiguresSection = () => {
 
     return (
         <Container>
-            <Box pt={10} pb={10}>
+            <Box className={classes.greyBox}>
                 <Grid container>
                     <Grid item xs={12} md={12} className={classes.grid}>
                         <Box className={classes.box}>
-                            <Title content="Vous souhaitez être tenu au courant des actualités du réseau ?" size="h6" uppercase bold letterspacing="2px" />
-                            <Text size="body1" bold color="#2699b0">
+                            <Title color="#2699b0" content="Vous souhaitez être tenu au courant des actualités du réseau ?" size="h6" uppercase bold letterspacing="2px" />
+                            <Text size="body1" bold color="#e95e2e">
                                 Inscrivez-vous à notre newsletter mensuelle !
                             </Text>
                             {/* <FormControl fullWidth variant="outlined" className={classes.form}>
