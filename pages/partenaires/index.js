@@ -40,7 +40,7 @@ const Partenaires = ({ partners = [] }) => {
                 <Container maxWidth="lg">
                     <Grid container>
                         <Box mb={4}>
-                            <Title content="Nos partenaires" size="h4" uppercase bold letterspacing="2px" />
+                            <Title color="#2699b0" content="Nos partenaires" size="h4" bold letterspacing="2px" />
                         </Box>
                     </Grid>
                     <Grid container spacing={3}>

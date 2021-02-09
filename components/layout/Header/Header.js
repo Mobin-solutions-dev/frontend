@@ -50,6 +50,7 @@ const useStyles = makeStyles((theme) => ({
         paddingRight: '3em',
         '&:hover': {
             backgroundColor: theme.palette.golden.main,
+            color: '#000'
         }
     },
     list: {
@@ -62,7 +63,7 @@ const useStyles = makeStyles((theme) => ({
     btn: {
         '&:hover': {
             backgroundColor: theme.palette.golden.main,
-            // color: '#FFF'
+            color: '#000'
         }
     },
     iconBtn: {
@@ -70,7 +71,7 @@ const useStyles = makeStyles((theme) => ({
         color: theme.palette.background.default,
         '&:hover': {
             backgroundColor: theme.palette.golden.main,
-            // color: '#FFF'
+            color: '#000'
         }
     },
     list: {
@@ -145,7 +146,7 @@ const Header = () => {
                                             // onClick={(event) => {
                                             //     handleClick(event, item.id);
                                             // }}
-                                            onMouseOver={(event) => {
+                                            onClick={(event) => {
                                                 handleClick(event, item.id);
                                             }}
                                             className={classes.navbarItem}>
@@ -156,7 +157,7 @@ const Header = () => {
                                                         maxWidth="60px"
                                                         src={`/static/icons/${item.icon}.png`} />
                                                     :
-                                                    item.title
+                                                    <Title bold color="#fff" size="body2" content={item.title} />
 
                                             }
                                         </Button>
@@ -181,6 +182,7 @@ const Header = () => {
                                                                 listStyleType="disc"
                                                                 listStylePosition="inside"
                                                                 uppercase
+                                                                bold
                                                                 fontSize="12px"
                                                                 letterspacing="1px"
                                                                 color="black"

@@ -96,7 +96,7 @@ const Fonctionnement = ({ }) => {
                                 <Box mt={4}>
                                     <Title
                                         color="black"
-                                        content="Les status de l'association" size="h6" uppercase bold letterspacing="2px" />
+                                        content="Les statuts de l'association" size="h6" uppercase bold letterspacing="2px" />
                                 </Box>
                             </Grid>
                         </Grid>
