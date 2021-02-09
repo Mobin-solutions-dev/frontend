@@ -26,7 +26,7 @@ const SavoirBougerPage = ({ }) => {
 
                     </Box>
                     <Box mt={2} mb={2}>
-                        <Text justify>
+                        <Text size="h6">
                             Le réseau Mob’In propose une offre globale et coordonnée d’actions qui permettent d’agir au service du « Savoir bouger » et du « Pouvoir bouger ».
                         <br />
                             <br />
@@ -78,7 +78,7 @@ const SavoirBougerPage = ({ }) => {
                         </Grid>
                     </Box>
                     <Box mt={4}>
-                        <Text fontSize="18px">
+                        <Text size="h6">
                             Vous retrouverez la liste complète des activités proposées par les adhérents <Link href="/adherents">ici</Link>.
                         </Text>
                     </Box>

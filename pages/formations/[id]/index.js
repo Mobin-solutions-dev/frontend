@@ -1,10 +1,10 @@
 import { Container, Box, Grid } from '@material-ui/core'
-import { Layout, Title, HtmlContent } from '../../../components'
+import { Layout, Title, HtmlContent, Text } from '../../../components'
 import { getTraining } from '../../../utils'
 
 const Formation = ({ training = {} }) => {
-
-    const { titre = "", description = "" } = training
+    console.log("training", training)
+    const { titre = "", description = "", document_pdf = null } = training
 
     return (
         <Layout>
@@ -15,6 +15,16 @@ const Formation = ({ training = {} }) => {
                             <Title content={titre} size="h4" uppercase bold letterspacing="2px" />
                         </Box>
                     </Grid>
+                    {
+                        document_pdf && (
+                            <Grid container>
+                                <Text size="body1" color="#000">
+                                    <a target="_blank" href={document_pdf ?.url}>Télécharger le document de présentation</a>
+                                </Text>
+                            </Grid>
+                        )
+                    }
+
                     <Grid container>
                         <Box mt={2}>
                             <Box mt={4}>

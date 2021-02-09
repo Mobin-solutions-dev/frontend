@@ -76,7 +76,7 @@ const Entreprises = ({ contactEmails }) => {
                 <Container maxWidth="lg">
                     <Grid container>
                         <Box mb={2}>
-                            <Title content="Vous souhaitez avoir des informations sur l’accompagnement proposé par Mob’In France ou vous avez un projet de mobilité solidaire au sein de votre entreprise ?" size="body1" bold letterspacing="1px" />
+                            <Title content="Vous souhaitez avoir des informations sur l’accompagnement proposé par Mob’In France ou vous avez un projet de mobilité solidaire au sein de votre entreprise ?" size="h5" bold letterspacing="2px" />
                         </Box>
                         <Box mb={2}>
                             <Title content="N’hésitez pas à nous laisser un message par le biais de ce formulaire de contact :" size="body1" color="#000" />

@@ -63,7 +63,7 @@ const Fonctionnement = ({ }) => {
 
                                 <img
                                     className={classes.mainImage}
-                                    src="/static/verbatims/Verbatim Orange9.png"
+                                    src="/static/verbatims/Verbatim Vert9.png"
                                     alt="mobilite"
                                 />
                             </Grid>

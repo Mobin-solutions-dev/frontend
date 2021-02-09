@@ -159,8 +159,8 @@ const Region = ({ departments = [], adherents = [], coordinateurs = [], expertis
                 <Container maxWidth="lg">
                     <Grid container>
                         <Grid item xs={12} md={12}>
-                            <Box mb={5}>
-                                <Title content={region} size="h4" uppercase bold letterspacing="2px" />
+                            <Box mb={4}>
+                                <Title color="#2699b0" content={region} size="h4" bold letterspacing="2px" />
                             </Box>
                         </Grid>
                     </Grid>
@@ -266,13 +266,20 @@ const Region = ({ departments = [], adherents = [], coordinateurs = [], expertis
                                                                     content="Président de région" />
                                                             </Grid>
                                                             <Grid item xs={6}>
-                                                                <Box mb={1}>
-                                                                    <Title
-                                                                        fontSize="16px"
-                                                                        color="#2699b0"
-                                                                        bold
-                                                                        content={uniqueCoordinateur.nom_president || ""} />
-                                                                </Box>
+
+                                                                {
+                                                                    uniqueCoordinateur.nom_president && (
+                                                                        <Box mb={1}>
+                                                                            <Title
+                                                                                fontSize="16px"
+                                                                                color="#2699b0"
+                                                                                bold
+                                                                                content={uniqueCoordinateur.nom_president || ""} />
+                                                                        </Box>
+                                                                    )
+                                                                }
+
+
                                                                 <Box mb={1}>
                                                                     <Title
                                                                         fontSize="13px"
@@ -285,18 +292,23 @@ const Region = ({ departments = [], adherents = [], coordinateurs = [], expertis
                                                                         fontSize="13px"
                                                                         color="black"
                                                                         bold
-                                                                        content={uniqueCoordinateur.email_president || ""} />
+                                                                        content={<a href={`mailto:${uniqueCoordinateur.email_president}`}>{uniqueCoordinateur.email_president}</a> || ""} />
                                                                 </Box>
                                                             </Grid>
                                                         </Grid>
 
                                                         <Grid container spacing={2}>
                                                             <Grid item xs={6}>
-                                                                <Title
-                                                                    fontSize="16px"
-                                                                    color="black"
-                                                                    bold
-                                                                    content="Co-Président de région" />
+                                                                {
+                                                                    uniqueCoordinateur.nom_co_president && (
+                                                                        <Title
+                                                                            fontSize="16px"
+                                                                            color="black"
+                                                                            bold
+                                                                            content="Co-Président de région" />
+                                                                    )
+                                                                }
+
                                                             </Grid>
                                                             <Grid item xs={6}>
                                                                 <Box mb={1}>
@@ -318,7 +330,7 @@ const Region = ({ departments = [], adherents = [], coordinateurs = [], expertis
                                                                         fontSize="13px"
                                                                         color="black"
                                                                         bold
-                                                                        content={uniqueCoordinateur.email_co_president || ""} />
+                                                                        content={<a href={`mailto:${uniqueCoordinateur.email_co_president}`}>{uniqueCoordinateur.email_co_president}</a> || ""} />
                                                                 </Box>
                                                             </Grid>
                                                         </Grid>
