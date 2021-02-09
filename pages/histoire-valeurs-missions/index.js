@@ -1,7 +1,6 @@
 import { Container, Box, Grid } from '@material-ui/core'
 import { Layout, Title, Text, Icon } from '../../components'
 import { makeStyles } from '@material-ui/core/styles';
-import ArrowRightAlt from "@material-ui/icons/ArrowRightAlt"
 
 const useStyles = makeStyles((theme) => ({
     mainImage: {
@@ -55,44 +54,46 @@ const History = ({ }) => {
                             <Title color="#b1b3b4" content="et nos missions" size="h4" bold letterspacing="2px" />
                         </Box>
                     </Grid>
-                    <Grid container spacing={2}>
-                        <Grid item xs={12} sm={6} md={8}>
-                            <Box mt={4} mb={4} className={classes.flex}>
-                                <Box mr={2}>
-                                    <Icon
-                                        src="/static/icons/P.ensavoirplus.png"
-                                        maxWidth="30px"
-                                    />
+                    <Box mb={5}>
+                        <Grid container spacing={4}>
+                            <Grid item xs={12} sm={6} md={8}>
+                                <Box mt={4} mb={4} className={classes.flex}>
+                                    <Box mr={2}>
+                                        <Icon
+                                            src="/static/icons/P.ensavoirplus.png"
+                                            maxWidth="30px"
+                                        />
+                                    </Box>
+                                    <Title color="#2699b0" content="Notre histoire" size="h5" bold letterspacing="1px" />
                                 </Box>
-                                <Title color="#2699b0" content="Notre histoire" size="h5" bold letterspacing="1px" />
-                            </Box>
-                            <Box mt={2}>
-                                <Text size="body1" color="#000">
-                                    L’association Mob’In France a été créée le 30 août 2017, par d’anciens membres de l’<span style={{ color: "#2699b0", fontWeight: 'bold' }}>association FARE</span>.
+                                <Box mt={2}>
+                                    <Text size="body1" color="#000">
+                                        L’association Mob’In France a été créée le 30 août 2017, par d’anciens membres de l’<span style={{ color: "#2699b0", fontWeight: 'bold' }}>association FARE</span>.
                                 <br />
-                                    <br />
-                                    FARE était la <span style={{ color: "#2699b0", fontWeight: 'bold' }}>Fédération française des structures associatives de la mobilité</span>, créée en 1988 par des éducateurs militants.
+                                        <br />
+                                        FARE était la <span style={{ color: "#2699b0", fontWeight: 'bold' }}>Fédération française des structures associatives de la mobilité</span>, créée en 1988 par des éducateurs militants.
                                 <br />
-                                    <br />
-                                    Fare est devenue peu à peu la fédération nationale des associations et de professionnels afin de <span style={{ color: "#2699b0", fontWeight: 'bold' }}>favoriser l’accès à la mobilité pour tous</span>, en particulier les publics en difficulté en fédérant les acteurs de la mobilité et en devenant un interlocuteur national.
+                                        <br />
+                                        Fare est devenue peu à peu la fédération nationale des associations et de professionnels afin de <span style={{ color: "#2699b0", fontWeight: 'bold' }}>favoriser l’accès à la mobilité pour tous</span>, en particulier les publics en difficulté en fédérant les acteurs de la mobilité et en devenant un interlocuteur national.
                                 <br />
-                                    <br />
-                                    Suite à sa disparition en octobre 2016, de nombreux acteurs sont restés réunis autour de l’<span style={{ color: "#2699b0", fontWeight: 'bold' }}>idée du réseau</span>.
+                                        <br />
+                                        Suite à sa disparition en octobre 2016, de nombreux acteurs sont restés réunis autour de l’<span style={{ color: "#2699b0", fontWeight: 'bold' }}>idée du réseau</span>.
                                 <br />
-                                    <br />
-                                    <span style={{ color: "#2699b0", fontWeight: 'bold' }}>Le réseau Mob’In</span> a d’abord été constitué par l’échelle locale grâce aux structures du terrain ; puis à une échelle régionale avec la constitution des « Mob’In régionaux » ; et enfin la représentation nationale Mob’In France.
+                                        <br />
+                                        <span style={{ color: "#2699b0", fontWeight: 'bold' }}>Le réseau Mob’In</span> a d’abord été constitué par l’échelle locale grâce aux structures du terrain ; puis à une échelle régionale avec la constitution des « Mob’In régionaux » ; et enfin la représentation nationale Mob’In France.
                                 </Text>
-                            </Box>
+                                </Box>
+                            </Grid>
+                            <Grid item xs={12} sm={6} md={4} className={classes.gridItem}>
+                                <img
+                                    className={classes.mainImage}
+                                    src="/static/verbatims/Verbatim Orange7.png"
+                                    alt="mobilite"
+                                />
+                            </Grid>
                         </Grid>
-                        <Grid item xs={12} sm={6} md={4} className={classes.gridItem}>
-                            <img
-                                className={classes.mainImage}
-                                src="/static/verbatims/Verbatim Orange7.png"
-                                alt="mobilite"
-                            />
-                        </Grid>
-                    </Grid>
-                    <Box mb={4} className={classes.greyBox}>
+                    </Box>
+                    <Box mb={5} className={classes.greyBox}>
                         <Grid container spacing={4}>
                             <Grid item xs={12} sm={6} md={4} className={[classes.gridItem, classes.item1]}>
 

@@ -12,7 +12,8 @@ const Text = ({ size, color, uppercase, children, bold, letterspacing, fontSize,
             fontSize: fontSize ? fontSize : undefined,
             textAlign: justify ? "justify" : undefined,
             textAlign: "justify",
-            textJustify: "inter-word"
+            textJustify: "inter-word",
+            lineHeight: '30px'
         }
     }))
     const classes = useStyles();

@@ -44,7 +44,7 @@ const Presentation = ({ }) => {
             <Box mt={7}>
                 <Container maxWidth="lg">
                     <Grid container>
-                        <Box mb={5}>
+                        <Box mb={4}>
                             <Title content="Présentation" size="h4" bold letterspacing="2px" />
                             <Title color="#2699b0" content="de Mob'In " size="h4" bold letterspacing="2px" />
                         </Box>

@@ -2,13 +2,29 @@ import { Container, Box, Grid } from '@material-ui/core'
 import { Layout, Title, Text, MoveCard } from '../../components'
 import { savoirBouger } from '../../utils'
 import Link from 'next/link'
+import { makeStyles } from '@material-ui/core/styles';
+
+const useStyles = makeStyles((theme) => ({
+    flexBox: {
+        display: "flex",
+        alignItems: 'center'
+    },
+}))
 
 const SavoirBougerPage = ({ }) => {
+    const classes = useStyles();
+
     return (
         <Layout>
             <Box mt={7}>
                 <Container maxWidth="lg">
-                    <Title content="Savoir Bouger" size="h4" uppercase bold letterspacing="2px" />
+                    <Box mb={3} className={classes.flexBox}>
+                        <Box mr={1}>
+                            <Title color="#2699b0" content="Savoir" size="h4" bold letterspacing="2px" />
+                        </Box>
+                        <Title content="bouger" size="h4" bold letterspacing="2px" />
+
+                    </Box>
                     <Box mt={2} mb={2}>
                         <Text justify>
                             Le réseau Mob’In propose une offre globale et coordonnée d’actions qui permettent d’agir au service du « Savoir bouger » et du « Pouvoir bouger ».

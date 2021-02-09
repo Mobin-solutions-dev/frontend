@@ -1,107 +1,189 @@
 import { Fragment } from 'react'
 import { Container, Box, Grid } from '@material-ui/core'
-import { Layout, Title, Text } from '../../components'
+import { Layout, Title, Text, Icon } from '../../components'
 import { regions, bureau } from '../../utils'
 import Link from 'next/link'
+import { makeStyles } from '@material-ui/core/styles';
+
+const useStyles = makeStyles((theme) => ({
+    mainImage: {
+        maxHeight: '100%',
+        maxWidth: 'auto',
+        // opacity: 0.9,
+        display: "block",
+        textAlign: 'center'
+    },
+    gridItem: {
+        display: "flex",
+        flexDirection: "column",
+        justifyContent: "center",
+        marginBottom: "1em"
+    },
+    flex: {
+        display: "flex",
+        alignItems: 'center'
+    },
+    greyBox: {
+        marginTop: "1em",
+        backgroundColor: theme.palette.gray.main,
+        borderRadius: '10px',
+        padding: "1em"
+    },
+    item1: {
+        order: 1,
+        [theme.breakpoints.down('sm')]: {
+            order: 2,
+        },
+    },
+    item2: {
+        order: 2,
+        [theme.breakpoints.down('sm')]: {
+            order: 1,
+        },
+    },
+}))
 
 const Fonctionnement = ({ }) => {
+    const classes = useStyles();
+
     return (
         <Layout>
             <Box mt={7}>
                 <Container maxWidth="lg">
                     <Grid container>
                         <Box mb={5}>
-                            <Title content="Notre Fonctionnement" size="h4" uppercase bold letterspacing="2px" />
+                            <Title content="Notre" size="h4" bold letterspacing="2px" />
+                            <Title color="#2699b0" content="fonctionnement" size="h4" bold letterspacing="2px" />
                         </Box>
                     </Grid>
-                    <Grid container>
-                        <Grid item xs={12}>
-                            <Box mt={4}>
-                                <Title
-                                    color="black"
-                                    content="Les Mob'In régionaux" size="h6" uppercase bold letterspacing="2px" />
-                            </Box>
+
+                    <Box mb={5} className={classes.greyBox}>
+                        <Grid container spacing={4}>
+                            <Grid item xs={12} sm={6} md={4} className={[classes.gridItem, classes.item1]}>
+
+                                <img
+                                    className={classes.mainImage}
+                                    src="/static/verbatims/Verbatim Orange9.png"
+                                    alt="mobilite"
+                                />
+                            </Grid>
+                            <Grid item xs={12} md={8} className={[classes.gridItem, classes.item2]}>
+                                <Box mt={4} mb={4} className={classes.flex}>
+                                    <Box mr={2}>
+                                        <Icon
+                                            src="/static/icons/P.ensavoirplus.png"
+                                            maxWidth="30px"
+                                        />
+                                    </Box>
+                                    <Title content="Les Mob'In régionaux" color="#2699b0" size="h5" bold letterspacing="1px" />
+                                </Box>
+                                <Box mt={2}>
+                                    <Text size="body1" color="#000">
+                                        {
+                                            regions.map((region, index) => (
+                                                <Fragment key={index}>
+                                                    <li><Link href={`/adherents/regions/${region}`}>{`Mob'In ${region}`}</Link></li>
+                                                    <br />
+                                                </Fragment>
+                                            ))
+                                        }
+                                    </Text>
+                                </Box>
+                            </Grid>
                         </Grid>
-                        <Grid item xs={12}>
-                            <Box mt={2}>
-                                <Text  >
-                                    {
-                                        regions.map((region, index) => (
-                                            <Fragment key={index}>
-                                                <li><Link href={`/adherents/regions/${region}`}>{`Mob'In ${region}`}</Link></li>
+                    </Box>
+
+                    <Box mb={5}>
+                        <Grid container spacing={4}>
+                            <Grid item xs={12} sm={6} md={8}>
+                                <Box mt={4} mb={4} className={classes.flex}>
+                                    <Box mr={2}>
+                                        <Icon
+                                            src="/static/icons/P.ensavoirplus.png"
+                                            maxWidth="30px"
+                                        />
+                                    </Box>
+                                    <Title content="L'équipe salariée" size="h5" bold letterspacing="1px" />
+                                </Box>
+                                <Box mt={2}>
+                                    <Text size="body1" color="#000">
+                                        <ul>
+                                            <li>
+                                                <span><strong>
+                                                    Justine Vuillaume
+                                                </strong></span>
+                                                <br /> Chargée de mission développement
                                                 <br />
-                                            </Fragment>
-                                        ))
-                                    }
-                                </Text>
-                            </Box>
-                        </Grid>
-
-                        <Grid container>
-                            <Grid item xs={12}>
-                                <Box mt={4}>
-                                    <Title
-                                        color="black"
-                                        content="L'équipe salariée" size="h6" uppercase bold letterspacing="2px" />
-                                </Box>
-                            </Grid>
-                            <Grid item xs={12}>
-                                <Box mt={4}>
-                                    <strong>Justine Vuillaume, chargée de mission développement </strong>
-                                    <br />
-                                    <br />
-                                    jvuillaume@mobin-solutions.fr
-                                    <br />
-                                    <br />
-                                    06.10.33.93.11
-                                </Box>
-                            </Grid>
-                        </Grid>
-
-                        <Grid container>
-                            <Grid item xs={12}>
-                                <Box mt={4}>
-                                    <Title
-                                        color="black"
-                                        content="Le bureau exécutif" size="h6" uppercase bold letterspacing="2px" />
-                                </Box>
-                            </Grid>
-                            <Grid item xs={12}>
-                                <Box mt={4}>
-                                    {
-                                        bureau.map((member, i) => (
-                                            <Fragment key={i}>
-                                                <strong>{member.name}</strong>, {member.position}
+                                                <a href="mailto:jvuillaume@mobin-solutions.fr"> jvuillaume@mobin-solutions.fr</a>
                                                 <br />
-                                                <br />
-                                            </Fragment>
-                                        ))
-                                    }
+                                                06.10.33.93.11
+                                            </li>
+                                        </ul>
+                                    </Text>
+                                </Box>
+                                <Box mt={4} mb={4} className={classes.flex}>
+                                    <Box mr={2}>
+                                        <Icon
+                                            src="/static/icons/P.ensavoirplus.png"
+                                            maxWidth="30px"
+                                        />
+                                    </Box>
+                                    <Title color="#b1b3b4" content="Le bureau exécutif" size="h5" bold letterspacing="1px" />
+                                </Box>
+                                <Box mt={2}>
+                                    <Text size="body1" color="#000">
+                                        <ul>
+                                            {
+                                                bureau.map((member, i) => (
+                                                    <li key={i}>
+                                                        <strong>{member.name}</strong>, {member.position}
+                                                        <br />
+                                                        <br />
+                                                    </li>
+                                                ))
+                                            }
+                                        </ul>
+                                    </Text>
+                                </Box>
+                                <Box mt={4} mb={4} className={classes.flex}>
+                                    <Box mr={2}>
+                                        <Icon
+                                            src="/static/icons/P.ensavoirplus.png"
+                                            maxWidth="30px"
+                                        />
+                                    </Box>
+                                    <Title color="#2699b0" content="Le conseil d'administration" size="h5" bold letterspacing="1px" />
+                                </Box>
+                                <Box mt={2}>
+                                    <Text size="body1" color="#000">
+                                        Le conseil d’administration est composé d’au moins 5 membres en y incluant des représentant.e.s des collègues adhérents. Chaque membre dispose d’une voix. Les membres élu.e.s sont élu.e.s pour deux années et rééligibles sans limitation du nombre de mandat.
+                                    </Text>
+                                </Box>
+                                <Box mt={4} mb={4} className={classes.flex}>
+                                    <Box mr={2}>
+                                        <Icon
+                                            src="/static/icons/P.ensavoirplus.png"
+                                            maxWidth="30px"
+                                        />
+                                    </Box>
+                                    <Title color="#b1b3b4" content="Les statuts" size="h5" bold letterspacing="1px" />
+                                </Box>
+                                <Box mt={2}>
+                                    <Text size="body1" color="#000">
+                                        <a target="_blank" href="/static/legal/statuts.pdf">Télécharger les statuts</a>
+                                    </Text>
                                 </Box>
                             </Grid>
-                        </Grid>
-
-                        <Grid container>
-                            <Grid item xs={12}>
-                                <Box mt={4}>
-                                    <Title
-                                        color="black"
-                                        content="Le conseil d'administration" size="h6" uppercase bold letterspacing="2px" />
-                                </Box>
+                            <Grid item xs={12} sm={6} md={4} className={classes.gridItem}>
+                                <img
+                                    className={classes.mainImage}
+                                    src="/static/illus/team.png"
+                                    alt="mobilite"
+                                />
                             </Grid>
                         </Grid>
+                    </Box>
 
-                        <Grid container>
-                            <Grid item xs={12}>
-                                <Box mt={4}>
-                                    <Title
-                                        color="black"
-                                        content="Les statuts de l'association" size="h6" uppercase bold letterspacing="2px" />
-                                </Box>
-                            </Grid>
-                        </Grid>
-
-                    </Grid>
                 </Container>
             </Box>
         </Layout>
