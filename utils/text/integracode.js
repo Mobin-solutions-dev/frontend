@@ -11,7 +11,7 @@ Le permis B est également un cadre efficace à la socialisation et à l’appre
 spécifique.
 <br />
             <br />
-            Depuis 2018, les acteurs du réseau Mob’In développent ce programme en partenariat avec le ministère de l’Intérieur pour :
+            Depuis 2018, les acteurs du réseau Mob’In développent ce programme en partenariat avec le Ministère de l’Intérieur pour :
 <br />
 <Box style={{
                 marginTop: "1em",
@@ -47,7 +47,7 @@ spécifique.
                     />
                 </Box>
                 <Text>
-                    une <span style={{ color: "#2699b0", fontWeight: 'bold' }}>appropriation des codes de la citoyenneté</span> au travers un apprentissage basé sur le REMC.
+                    une <span style={{ color: "#2699b0", fontWeight: 'bold' }}>appropriation des codes de la citoyenneté</span> au travers d'un apprentissage basé sur le REMC.
                 </Text>
             </Box>
             </Box>
@@ -86,7 +86,7 @@ spécifique.
                     />
                 </Box>
                 <Text>
-                    Environ <span style={{ color: "#2699b0", fontWeight: 'bold' }}>500 bénéficiaires</span> par an sur <span style={{ color: "#2699b0", fontWeight: 'bold' }}>7 régions</span>
+                    Environ <span style={{ color: "#2699b0", fontWeight: 'bold' }}>500 bénéficiaires</span> par an sur <span style={{ color: "#2699b0", fontWeight: 'bold' }}>7 régions.</span>
 
                 </Text>
             </Box>
@@ -98,9 +98,7 @@ spécifique.
                 <a href="#">Télécharger la fiche action</a>
         < br />
         <br />
-    Contact:
-    <br />
-        <br />
+        <Text color="#2699b0" size="h5" letterspacing="2px" bold>Contact</Text>
         <ul>
                                             <li>
                                                 <span><strong>
