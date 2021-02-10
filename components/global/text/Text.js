@@ -12,8 +12,8 @@ const Text = ({ size, color, uppercase, children, bold, letterspacing, fontSize,
             fontSize: fontSize ? fontSize : undefined,
             textAlign: justify ? "justify" : undefined,
             textAlign: "justify",
-            textAlign: center ? "center" : undefined,
-            textJustify: "inter-word",
+            // textAlign: center ? "center" : undefined,
+            // textJustify: "inter-word",
             lineHeight: '30px'
         }
     }))

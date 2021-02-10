@@ -3,7 +3,7 @@ import { makeStyles } from '@material-ui/core/styles';
 
 
 
-const Title = ({ size, color, uppercase, content, bold, italic, letterspacing, fontSize, listItem, listStyleType, listStylePosition, opacity }) => {
+const Title = ({ size, color, uppercase, content, bold, italic, letterspacing, fontSize, listItem, listStyleType, listStylePosition, opacity, mr }) => {
 
     const useStyles = makeStyles((theme) => ({
         title: {
@@ -16,7 +16,8 @@ const Title = ({ size, color, uppercase, content, bold, italic, letterspacing, f
             display: listItem ? "list-item" : undefined,
             listStyleType: listStyleType ? listStyleType : undefined,
             listStylePosition: listStylePosition ? listStylePosition : undefined,
-            opacity: opacity ? opacity : undefined
+            opacity: opacity ? opacity : undefined,
+            marginRight: mr ? mr : undefined
         }
     }))
     const classes = useStyles();
