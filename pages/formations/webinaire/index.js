@@ -40,8 +40,7 @@ const useStyles = makeStyles((theme) => ({
 }))
 
 const Webinaire = ({ trainings = [] }) => {
-    console.log("trainings", trainings)
-    const filteredTrainings = trainings.filter(training => training ?.formation_categorie ?.type === "Webinaire")
+    const filteredTrainings = trainings.filter(training => training?.formation_categorie?.type === "Webinaire")
 
     const classes = useStyles()
     return (

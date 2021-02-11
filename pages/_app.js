@@ -9,6 +9,8 @@ import CssBaseline from '@material-ui/core/CssBaseline';
 import theme from '../src/theme';
 import AppContext from "../context/AppContext";
 
+import { API_URL } from '../utils/api/api-url'
+
 export default function MyApp(props) {
   const { Component, pageProps } = props;
   const [user, setUser] = useState(null)
@@ -21,13 +23,12 @@ export default function MyApp(props) {
   }, []);
 
   useEffect(() => {
-    console.log("useEffect")
+    console.log("CHECK IF TOKEN IS HERE")
     // grab token value from cookie
     const token = Cookie.get("token");
-
     if (token) {
       // authenticate the token on the server and place set user object
-      fetch(`${process.env.SERVER_URL}users/me`, {
+      fetch(`${API_URL}/users/me`, {
         headers: {
           Authorization: `Bearer ${token}`,
         },

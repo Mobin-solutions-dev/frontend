@@ -3,7 +3,6 @@ import { Layout, Title, HtmlContent, Text } from '../../../components'
 import { getTraining } from '../../../utils'
 
 const Formation = ({ training = {} }) => {
-    console.log("training", training)
     const { titre = "", description = "", document_pdf = null } = training
 
     return (
@@ -19,7 +18,7 @@ const Formation = ({ training = {} }) => {
                         document_pdf && (
                             <Grid container>
                                 <Text size="body1" color="#000">
-                                    <a target="_blank" href={document_pdf ?.url}>Télécharger le document de présentation</a>
+                                    <a target="_blank" href={document_pdf?.url}>Télécharger le document de présentation</a>
                                 </Text>
                             </Grid>
                         )

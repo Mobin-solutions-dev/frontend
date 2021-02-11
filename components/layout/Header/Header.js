@@ -11,6 +11,8 @@ import Router from "next/router";
 import { menuItems } from '../../../utils'
 import AppContext from "../../../context/AppContext";
 
+import { logout } from '../../../lib/auth'
+
 const useStyles = makeStyles((theme) => ({
     menuDesktop: {
         [theme.breakpoints.down('sm')]: {
@@ -95,7 +97,6 @@ const Header = () => {
     });
     const { user, isAuthenticated } = useContext(AppContext);
     console.log("isAuthenticated", isAuthenticated)
-
     const toggleDrawer = (anchor, open) => (event) => {
         if (event && event.type === 'keydown' && (event.key === 'Tab' || event.key === 'Shift')) {
             return;
@@ -124,7 +125,9 @@ const Header = () => {
     };
 
     const onLogin = () => Router.push("/login")
-    const onLogout = () => { }
+    const onLogout = async () => {
+        await logout()
+    }
 
 
 
@@ -201,16 +204,17 @@ const Header = () => {
                         {
                             isAuthenticated ? (
                                 <Button
+                                    variant="outlined"
                                     onClick={() => onLogout()}
                                     style={{ backgroundColor: 'transparent' }}>
-                                    >Déconnexion</Button>
+                                    Déconnexion</Button>
                             ) : (
-                                    <Button
-                                        onClick={() => onLogin()}
-                                        style={{ backgroundColor: 'transparent' }}>
-                                        <Icon src="/static/icons/P.Adhérent1.png" maxWidth="50px" />
-                                    </Button>
-                                )
+                                <Button
+                                    onClick={() => onLogin()}
+                                    style={{ backgroundColor: 'transparent' }}>
+                                    <Icon src="/static/icons/P.Adhérent1.png" maxWidth="50px" />
+                                </Button>
+                            )
                         }
 
                     </Box>

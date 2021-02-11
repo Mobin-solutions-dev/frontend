@@ -1,7 +1,8 @@
 import { useState } from 'react'
-import { Container, Box, Grid, Card, Paper, Divider, TextField, Button } from '@material-ui/core'
+import { Container, Box, Grid, Card, Paper, Divider, TextField, Button, LinearProgress } from '@material-ui/core'
 import { Layout, Title, Text } from '../../components'
 import { makeStyles } from '@material-ui/core/styles';
+import { login } from '../../lib/auth'
 
 const useStyles = makeStyles((theme) => ({
     paper: {
@@ -21,10 +22,10 @@ const useStyles = makeStyles((theme) => ({
     btn: {
         paddingLeft: '2em',
         paddingRight: '2em',
-        color: "black",
+        color: theme.palette.blue.main,
         fontWeight: 'bold',
         letterSpacing: '2px',
-        borderColor: theme.palette.orange.main,
+        borderColor: theme.palette.grey.main,
         borderRadius: "1.5em",
         '&:hover': {
             backgroundColor: theme.palette.golden.main,
@@ -37,29 +38,46 @@ const useStyles = makeStyles((theme) => ({
 const Login = ({ }) => {
     const classes = useStyles();
     const [variables, setVariables] = useState({
-        email: "",
+        identifier: "",
         password: ""
     })
+    const [loader, setLoader] = useState(false)
 
     const [error, setError] = useState(null)
     const validateEmail = (email) => {
         const re = /\S+@\S+\.\S+/;
         return re.test(email);
     }
-    const onSubmit = () => {
-        const { email, password } = variables
+    const onSubmit = async () => {
+        setLoader(true)
+        const { identifier, password } = variables
         setError(null)
-        if (!validateEmail(email)) {
+        if (!validateEmail(identifier)) {
+            setLoader(false)
             setError("Merci de saisir une adresse email.")
             return
         }
         if (password.length < 1) {
+            setLoader(false)
             setError("Un mot de passe doit être saisi.")
             return
         }
 
+        try {
+            const response = await login(variables)
+            setLoader(false)
+        } catch (error) {
+            console.log(error)
+            setLoader(false)
+            setError("Connexion impossible avec ce couple email/mot de passe. Veuillez réessayer.")
+        }
+
         // submit credentials
     }
+
+    if (loader) return (
+        <LinearProgress color="primary" />
+    )
 
 
     return (
@@ -83,8 +101,8 @@ const Login = ({ }) => {
                                 <Box mt={3} mb={2} className={classes.textFieldBox}
                                 >
                                     <TextField
-                                        value={variables.email}
-                                        onChange={(event) => setVariables({ ...variables, email: event.target.value })}
+                                        value={variables.identifier}
+                                        onChange={(event) => setVariables({ ...variables, identifier: event.target.value })}
                                         label="Email"
                                         variant="outlined"
                                         size="small"
@@ -94,6 +112,7 @@ const Login = ({ }) => {
                                 <Box mt={3} mb={2} className={classes.textFieldBox}
                                 >
                                     <TextField
+                                        type="password"
                                         value={variables.password}
                                         onChange={(event) => setVariables({ ...variables, password: event.target.value })}
                                         label="Mot de passe"
