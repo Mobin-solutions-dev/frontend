@@ -18,6 +18,10 @@ const useStyles = makeStyles((theme) => ({
             border: 'none'
         }
     },
+    flexBox: {
+        display: "flex",
+        alignItems: 'center'
+    }
 }))
 
 const Contact = ({ contactEmails }) => {
@@ -75,8 +79,10 @@ const Contact = ({ contactEmails }) => {
             <Box mt={7}>
                 <Container maxWidth="lg">
                     <Grid container>
-                        <Box mb={2}>
-                            <Title content="Contactez-nous" size="h4" uppercase bold letterspacing="2px" />
+                        <Box mb={3} className={classes.flexBox}>
+                            <Title color="#2699b0" content="Contactez-" size="h4" bold letterspacing="2px" />
+                            <Title content="nous" size="h4" bold letterspacing="2px" />
+
                         </Box>
                         <Box mb={2}>
                             <Text size="body1">

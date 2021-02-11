@@ -15,6 +15,7 @@ const useStyles = makeStyles((theme) => ({
     },
     btn: {
         color: "black",
+        fontWeight: 'bold',
         borderColor: theme.palette.orange.main,
         '&:hover': {
             backgroundColor: theme.palette.golden.main,

@@ -6,7 +6,7 @@ import Box from '@material-ui/core/Box';
 
 import { makeStyles } from '@material-ui/core/styles';
 
-import { Banner, Layout, FiguresSection, NewsSection, NewsletterSection, Title } from "../components"
+import { Banner, Layout, FiguresSection, NewsSection, NewsletterSection, Title, Text } from "../components"
 import { getNews } from '../utils'
 
 const useStyles = makeStyles((theme) => ({
@@ -31,17 +31,6 @@ const useStyles = makeStyles((theme) => ({
     left: "50%",
     transform: "translate(-50%, -50%)",
   },
-  // mainTitleBox: {
-  //   backgroundImage: `url(static/icons/main_image.png)`,
-  //   backgroundPosition: 'center',
-  //   backgroundSize: 'cover',
-  //   backgroundRepeat: 'no-repeat',
-  //   minHeight: '600px'
-  // },
-  // box: {
-  //   textAlign: "center",
-  //   alignContent: 'center'
-  // }
   wrapper: {
     position: "relative",
     width: "100%",
@@ -92,6 +81,21 @@ const useStyles = makeStyles((theme) => ({
       marginLeft: '2em',
       marginRight: '2em'
     }
+  },
+  mainImage2: {
+    // maxHeight: '100%',
+    maxWidth: '100%',
+    // opacity: 0.9,
+    display: "block",
+    textAlign: 'center'
+  },
+  mainBox: {
+    minHeight: '100%',
+    maxHeight: '100%',
+  },
+  flexBox: {
+    display: "flex",
+    alignItems: 'center'
   }
 }))
 
@@ -102,7 +106,28 @@ const Home = ({ news = [] }) => {
     <Layout>
       <Container maxWidth="xl">
         <section>
-          <div className={classes.wrapper}>
+          <Banner />
+          <Grid container>
+            <Grid item xs={12} md={12} align="center">
+              <Grid container justify="center" alignItems="center">
+                <Box className={classes.mainBox}>
+                  <img
+                    className={classes.mainImage2}
+                    src="/static/illus/main_image_texte.png"
+                    alt="mobilite"
+                  />
+                  <Grid container justify="center">
+                    <Box mb={3} mt={3} className={classes.flexBox}>
+                      <Text center size="h4" color="#2699b0" bold>
+                        <span style={{ fontStyle: "italic" }}>Vers une mobilité</span> <span style={{ fontStyle: "italic", color: "#e95e2e" }}>autonome et durable</span>
+                      </Text>
+                    </Box>
+                  </Grid>
+                </Box>
+              </Grid>
+            </Grid>
+          </Grid>
+          {/* <div className={classes.wrapper}>
             <div className={classes.image}></div>
             <div className={classes.text}>
               <Banner />
@@ -110,26 +135,8 @@ const Home = ({ news = [] }) => {
                 <Title letterspacing="1px" color="#e95e2e" size="h3" bold content="Les acteurs territoriaux de la mobilité inclusive" />
               </Box>
             </div>
-          </div>
+          </div> */}
         </section>
-        {/* <Banner /> */}
-        {/* <Grid container>
-          <Grid container item xs={12} md={12}
-          >
-            <Box className={classes.container}>
-              <img
-                className={classes.mainImage}
-                src="/static/icons/main_image.png"
-                alt="mobilite"
-              />
-              <Box className={classes.imageText}>
-                <Banner />
-                <Title letterspacing="1px" color="#e95e2e" size="h2" bold content="Les acteurs territoriaux de la mobilité inclusive" />
-              </Box>
-
-            </Box>
-          </Grid>
-        </Grid> */}
         <section id="figures">
           <FiguresSection />
         </section>

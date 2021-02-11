@@ -3,9 +3,17 @@ import { Container, Box, Grid } from '@material-ui/core'
 import { Layout, Title } from '../../components'
 import ReactHtmlParser from 'react-html-parser';
 import { FranceSVG } from '../../utils'
+import { makeStyles } from '@material-ui/core/styles';
+
+const useStyles = makeStyles((theme) => ({
+    flexBox: {
+        display: "flex",
+        alignItems: 'center'
+    },
+}))
 
 const Adherents = ({ }) => {
-
+    const classes = useStyles()
     const html = FranceSVG
 
     return (
@@ -13,8 +21,12 @@ const Adherents = ({ }) => {
             <Box mt={7}>
                 <Container maxWidth="lg">
                     <Grid container>
-                        <Box mb={1}>
-                            <Title content="Nos Adhérents" size="h4" uppercase bold letterspacing="2px" />
+                        <Box mb={3} className={classes.flexBox}>
+                            <Box mr={1}>
+                                <Title color="#2699b0" content="Nos " size="h4" bold letterspacing="2px" />
+                            </Box>
+                            <Title content="adhérents" size="h4" bold letterspacing="2px" />
+
                         </Box>
                     </Grid>
                     <Grid container>

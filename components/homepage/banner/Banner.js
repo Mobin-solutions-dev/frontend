@@ -13,9 +13,10 @@ const useStyles = makeStyles((theme) => ({
         color: theme.palette.blue.main
     },
     whiteBox: {
-        backgroundColor: theme.palette.green.main,
-        paddingLeft: "6px",
-        paddingRight: "6px"
+        backgroundColor: theme.palette.orange.main,
+        borderRadius: '6px',
+        paddingLeft: "10px",
+        paddingRight: "10px"
     }
 }))
 const Banner = ({ }) => {
@@ -23,7 +24,7 @@ const Banner = ({ }) => {
     return (
         <Grid container spacing={2}>
             <Grid item xs={12}>
-                <Box pt={3} pb={10}>
+                <Box>
                     <Grid container justify="center" spacing={4}>
                         <Grid item className={classes.box}>
                             <Link href="/adherents">
@@ -34,7 +35,7 @@ const Banner = ({ }) => {
                                 </Box>
 
                                 <Box className={classes.whiteBox}>
-                                    <Title italic letterspacing="0px" uppercase bold content="nos adhérents" size="body1" color="#fff" />
+                                    <Title letterspacing="0px" uppercase bold content="nos adhérents" size="body1" color="#fff" />
                                 </Box>
                             </Link>
 
@@ -48,7 +49,7 @@ const Banner = ({ }) => {
                                         src="/static/icons/P.chiffres2.png" />
                                 </Box>
                                 <Box className={classes.whiteBox}>
-                                    <Title italic letterspacing="0px" uppercase bold content="nos chiffres" size="body1" color="#fff" />
+                                    <Title letterspacing="0px" uppercase bold content="nos chiffres" size="body1" color="#fff" />
                                 </Box>
                             </Link>
                         </Grid>
@@ -61,7 +62,7 @@ const Banner = ({ }) => {
                                         src="/static/icons/P.actus2.png" />
                                 </Box>
                                 <Box className={classes.whiteBox}>
-                                    <Title italic letterspacing="0px" uppercase bold content="nos actus" size="body1" color="#fff" />
+                                    <Title letterspacing="0px" uppercase bold content="nos actus" size="body1" color="#fff" />
                                 </Box>
                             </Link>
                         </Grid>

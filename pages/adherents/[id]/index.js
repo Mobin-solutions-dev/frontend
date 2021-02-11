@@ -77,8 +77,8 @@ const Adherent = ({ adherent = {} }) => {
             <Box mt={7}>
                 <Container maxWidth="lg">
                     <Grid container>
-                        <Box mb={5}>
-                            <Title content={nom_adherent} size="h5" uppercase bold letterspacing="2px" />
+                        <Box mb={4}>
+                            <Title content={nom_adherent} size="h4" bold letterspacing="2px" />
                         </Box>
                     </Grid>
                     <Grid container>

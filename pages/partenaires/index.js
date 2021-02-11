@@ -14,8 +14,11 @@ const useStyles = makeStyles((theme) => ({
         width: "100%",
         maxHeight: "80px",
         objectFit: "contain"
-    }
-
+    },
+    flexBox: {
+        display: "flex",
+        alignItems: 'center'
+    },
 }))
 
 const Partenaires = ({ partners = [] }) => {
@@ -39,8 +42,12 @@ const Partenaires = ({ partners = [] }) => {
             <Box mt={7}>
                 <Container maxWidth="lg">
                     <Grid container>
-                        <Box mb={4}>
-                            <Title content="Nos partenaires" size="h4" uppercase bold letterspacing="2px" />
+                        <Box mb={3} className={classes.flexBox}>
+                            <Box mr={1}>
+                                <Title color="#2699b0" content="Nos" size="h4" bold letterspacing="2px" />
+                            </Box>
+                            <Title content="partenaires" size="h4" bold letterspacing="2px" />
+
                         </Box>
                     </Grid>
                     <Grid container spacing={3}>

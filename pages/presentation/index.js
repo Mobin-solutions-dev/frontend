@@ -14,8 +14,26 @@ const useStyles = makeStyles((theme) => ({
         display: "flex",
         flexDirection: "column",
         justifyContent: "center",
-        marginBottom: "1em"
-    }
+        marginBottom: "1em",
+    },
+    greyBox: {
+        marginTop: "1em",
+        backgroundColor: theme.palette.gray.main,
+        borderRadius: '10px',
+        padding: "1em"
+    },
+    item1: {
+        order: 1,
+        [theme.breakpoints.down('sm')]: {
+            order: 2,
+        },
+    },
+    item2: {
+        order: 2,
+        [theme.breakpoints.down('sm')]: {
+            order: 1,
+        },
+    },
 }))
 
 const Presentation = ({ }) => {
@@ -26,63 +44,60 @@ const Presentation = ({ }) => {
             <Box mt={7}>
                 <Container maxWidth="lg">
                     <Grid container>
-                        <Box mb={5}>
-                            <Title content="Présentation de Mob'In " size="h4" uppercase bold letterspacing="2px" />
+                        <Box mb={4}>
+                            <Title content="Présentation" size="h4" bold letterspacing="2px" />
+                            <Title color="#2699b0" content="de Mob'In " size="h4" bold letterspacing="2px" />
                         </Box>
                     </Grid>
                     <Grid container spacing={4}>
                         <Grid item xs={12} md={8} className={classes.gridItem}>
                             <Box mt={2} mb={8}>
-                                <Text size="h6" color="#2699b0">
-                                    Le réseau Mob’In fédère les acteurs de la mobilité inclusive, solidaire et durable sous la forme d’organisations régionales.
+                                <Text size="body1" color="#000">
+                                    Le réseau Mob’In fédère les <span style={{ color: "#2699b0", fontWeight: 'bold' }}>acteurs de la mobilité inclusive</span>, solidaire et durable sous la forme d’organisations régionales.
                                 <br />
                                     <br />
-                                    Il fédère 8 régions Mob’In et regroupe près de 150 membres en France. Le réseau a pour pour objectif de rassembler des acteurs territoriaux de la mobilité. Ces structures, que ce soient des écoles de conduite à statut associatif, des garages solidaires ou des plateformes mobilité ont en commun une priorité : l’accompagnement à la mobilité des publics vulnérables.
+                                    Il fédère <span style={{ color: "#2699b0", fontWeight: 'bold' }}>8 régions Mob'In</span> et regroupe près de   <span style={{ color: "#2699b0", fontWeight: 'bold' }}>150 membres en France</span>. Le réseau a pour <span style={{ color: "#2699b0", fontWeight: 'bold' }}>pour objectif de rassembler des acteurs territoriaux de la mobilité</span>. Ces structures, que ce soient des écoles de conduite à statut associatif, des garages solidaires ou des plateformes mobilité ont en commun une priorité : <span style={{ color: "#2699b0", fontWeight: 'bold' }}>l’accompagnement à la mobilité des publics vulnérables</span>.
                                 <br />
                                     <br />
-                                    Au sein de chaque région, au plus près des territoires, des hommes et des femmes, acteurs associatifs apportent leurs compétences pédagogiques, leur capacité à innover et à développer des projets qui favorisent la mobilité de leurs bénéficiaires.
+                                    Au sein de chaque région, <span style={{ color: "#2699b0", fontWeight: 'bold' }}>au plus près des territoires</span>, des hommes et des femmes, acteurs associatifs apportent leurs <span style={{ color: "#2699b0", fontWeight: 'bold' }}>compétences pédagogiques</span>, leur <span style={{ color: "#2699b0", fontWeight: 'bold' }}>capacité à innover et à développer des projets</span> qui favorisent la mobilité de leurs bénéficiaires.
                                 </Text>
                             </Box>
                         </Grid>
-                        <Grid item xs={9} sm={6} md={4} className={classes.gridItem}>
+                        <Grid item xs={12} sm={6} md={4} className={classes.gridItem}>
                             <img
                                 className={classes.mainImage}
-                                src="/static/verbatims/Verbatim Bleu.png"
+                                src="/static/verbatims/Verbatim Bleu5.png"
                                 alt="mobilite"
                             />
                         </Grid>
                     </Grid>
-                    <Grid container spacing={4}>
+                    <Box className={classes.greyBox}>
+                        <Grid container spacing={4}>
+                            <Grid item xs={12} sm={6} md={4} className={[classes.gridItem, classes.item1]}>
+                                <img
+                                    className={classes.mainImage}
+                                    alt="mobilite"
+                                    src="/static/verbatims/Verbatim Jaune-orangé.png"
+                                />
+                            </Grid>
+                            <Grid item xs={12} md={8} className={[classes.gridItem, classes.item2]}>
+                                <Box mt={2} pl={10}>
+                                    <Title color="#2699b0" content="Le réseau Mob'In" size="h4" bold letterspacing="2px" />
+                                    <Title content="c'est :" size="h4" bold letterspacing="2px" />
+                                    <br />
+                                    <Title color="#2699b0" italic bold size="h5" content="8 régions constituées" />
+                                    <br />
+                                    <Title color="#2699b0" italic bold size="h5" content="+ de 120 adhérents" />
+                                    <br />
+                                    <Title color="#2699b0" italic bold size="h5" content="+ de 30 000 personnes accompagnées" />
+                                    <br />
+                                    <Title color="#2699b0" italic bold size="h5" content="+ de 130 conseillers mobilité" />
+                                    <br />
+                                </Box>
 
-                        <Grid item xs={9} sm={6} md={4} className={classes.gridItem}>
-                            <img
-                                className={classes.mainImage}
-                                alt="mobilite"
-                                src="/static/verbatims/Verbatim Jaune-orangé2.png"
-                            />
+                            </Grid>
                         </Grid>
-                        <Grid item xs={12} md={8} className={classes.gridItem}>
-                            <Box mt={2} pl={10}>
-                                <Text size="h5">Le réseau Mob’In c’est :</Text>
-                                <br />
-                                <Title italic size="h4" content="8 régions Mob'In constituées" />
-                                <br />
-                                <Title italic size="h4" content="+ de 120 adhérents" />
-                                <br />
-                                <Title italic size="h4" content="+ de 35 000 personnes accompagnées" />
-                                <br />
-                                <Title italic size="h4" content="+ de 60 conseillers mobilité" />
-                                <br />
-                                {/* <ul>
-                                        <li><strong>8 régions</strong> Mob’In constituées</li>
-                                        <li><strong>+ de 120 adhérents</strong></li>
-                                        <li><strong>+ de 35 000 personnes accompagnées</strong></li>
-                                        <li><strong>+ de 60 conseillers mobilité</strong></li>
-                                    </ul> */}
-                            </Box>
-
-                        </Grid>
-                    </Grid>
+                    </Box>
                 </Container>
             </Box>
         </Layout>

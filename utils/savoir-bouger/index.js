@@ -11,7 +11,7 @@ export const savoirBouger = [
     },
     {
         title: "Vélo école",
-        icon: "P.Compétences.fb",
+        icon: "P.Vélo.fb",
         infos: [
             "Apprendre à se déplacer avec un vélo sur piste",
             "Se mettre en situation réelle de conduite en circulation",

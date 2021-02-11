@@ -76,7 +76,7 @@ const BecomePartner = ({ contactEmails }) => {
                 <Container maxWidth="lg">
                     <Grid container>
                         <Box mb={2}>
-                            <Title content="Vous souhaitez devenir partenaire ? Ecrivez-nous !" size="h4" uppercase bold letterspacing="2px" />
+                            <Title content="Vous souhaitez devenir partenaire ? Ecrivez-nous !" size="h5" bold letterspacing="2px" />
                         </Box>
                     </Grid>
                     <Grid container>
