@@ -23,7 +23,6 @@ export default function MyApp(props) {
   }, []);
 
   useEffect(() => {
-    console.log("CHECK IF TOKEN IS HERE")
     // grab token value from cookie
     const token = Cookie.get("token");
     if (token) {

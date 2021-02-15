@@ -1,8 +1,9 @@
 import { Fragment } from 'react'
 import { Container, Box, Grid, Card } from '@material-ui/core'
 import { Layout, Title, Text } from '../../components'
-
+import { privateMenuSections } from '../../utils'
 import { makeStyles } from '@material-ui/core/styles';
+import Link from 'next/link'
 
 const useStyles = makeStyles((theme) => ({
     gridItem: {
@@ -17,6 +18,13 @@ const useStyles = makeStyles((theme) => ({
     flexBox: {
         display: "flex",
         alignItems: 'center'
+    },
+    mainImage: {
+        maxHeight: '300px',
+        maxWidth: 'auto',
+        // opacity: 0.9,
+        display: "block",
+        textAlign: 'center'
     },
 }))
 
@@ -34,10 +42,29 @@ const AuthHome = ({ }) => {
                             </Text>
                         </Box>
                     </Grid>
-                    <Grid container spacing={3}>
-                        <Grid item xs={12} md={6}>
-
-                        </Grid>
+                    <Grid
+                        container
+                        spacing={2}
+                        justify="center"
+                    >
+                        {
+                            privateMenuSections && privateMenuSections.map((section, index) => (
+                                <Grid key={index} item xs={12} md={6} align="center">
+                                    <Grid container justify="center" alignItems="center">
+                                        <Link href={section.route}>
+                                            {section.title}
+                                            {/* <a>
+                                                <img
+                                                    className={classes.mainImage}
+                                                    src="/static/cadres/presentiel.png"
+                                                    alt="mobilite"
+                                                />
+                                            </a> */}
+                                        </Link>
+                                    </Grid>
+                                </Grid>
+                            ))
+                        }
 
                     </Grid>
 

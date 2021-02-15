@@ -96,7 +96,6 @@ const Header = () => {
         right: false,
     });
     const { user, isAuthenticated } = useContext(AppContext);
-    console.log("isAuthenticated", isAuthenticated)
     const toggleDrawer = (anchor, open) => (event) => {
         if (event && event.type === 'keydown' && (event.key === 'Tab' || event.key === 'Shift')) {
             return;
