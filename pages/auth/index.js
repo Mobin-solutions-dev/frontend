@@ -1,6 +1,6 @@
 import { Fragment } from 'react'
 import { Container, Box, Grid, Card } from '@material-ui/core'
-import { Layout, Title, Text } from '../../components'
+import { Layout, Title, Text, PrivateDocumentsCard } from '../../components'
 import { privateMenuSections } from '../../utils'
 import { makeStyles } from '@material-ui/core/styles';
 import Link from 'next/link'
@@ -51,16 +51,8 @@ const AuthHome = ({ }) => {
                             privateMenuSections && privateMenuSections.map((section, index) => (
                                 <Grid key={index} item xs={12} md={6} align="center">
                                     <Grid container justify="center" alignItems="center">
-                                        <Link href={section.route}>
-                                            {section.title}
-                                            {/* <a>
-                                                <img
-                                                    className={classes.mainImage}
-                                                    src="/static/cadres/presentiel.png"
-                                                    alt="mobilite"
-                                                />
-                                            </a> */}
-                                        </Link>
+                                        <PrivateDocumentsCard section={section} />
+
                                     </Grid>
                                 </Grid>
                             ))

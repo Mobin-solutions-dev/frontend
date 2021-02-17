@@ -2,7 +2,9 @@ import { Container, Box, Grid } from '@material-ui/core'
 import { Layout, Text, DownloadDocumentSection } from '../../../components'
 import { getResources } from '../../../utils'
 
-const PrivateNationalDocs = ({ docs = [] }) => {
+
+const PrivateTrainingResources = ({ docs = [] }) => {
+
     return (
         <Layout>
             <Box mt={7}>
@@ -10,7 +12,7 @@ const PrivateNationalDocs = ({ docs = [] }) => {
                     <Grid container>
                         <Box mb={2}>
                             <Text size="h4" letterspacing="2px" bold>
-                                <span style={{ color: "#e95e2e" }}>Documents</span> <span style={{ color: "#2699b0" }}>fédéraux</span>
+                                <span style={{ color: "#e95e2e" }}>Outils</span> <span style={{ color: "#2699b0" }}>de</span> <span style={{ color: "#b1b3b4" }}>formation</span>
                             </Text>
                         </Box>
                     </Grid>
@@ -36,7 +38,7 @@ const PrivateNationalDocs = ({ docs = [] }) => {
 export const getServerSideProps = async () => {
     const res = await fetch(getResources)
     const resources = await res.json()
-    const docs = resources.filter(doc => doc?.thematique?.titre === "Documents fédéraux").sort((a, b) => new Date(b.created_at) - new Date(a.created_at))
+    const docs = resources.filter(doc => doc?.thematique?.titre === "Outils de formation").sort((a, b) => new Date(b.created_at) - new Date(a.created_at))
 
     return {
         props: { docs }
@@ -44,4 +46,4 @@ export const getServerSideProps = async () => {
 }
 
 
-export default PrivateNationalDocs
+export default PrivateTrainingResources

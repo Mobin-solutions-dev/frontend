@@ -53,7 +53,7 @@ const Partenaires = ({ partners = [] }) => {
                     <Grid container spacing={3}>
                         {
                             partners.map((partner, index) => (
-                                <Grid item className={classes.gridItem} key={index} item xs={12} sm={6} md={4}>
+                                <Grid item className={classes.gridItem} key={index} xs={12} sm={6} md={4}>
                                     {
                                         partner.logo_partenaire && (
                                             <Box mb={3}>

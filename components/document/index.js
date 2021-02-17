@@ -1,3 +1,4 @@
 import DownloadDocumentSection from './DownloadDocumentSection'
+import PrivateDocumentsCard from './PrivateDocumentsCard'
 
-export { DownloadDocumentSection }
+export { DownloadDocumentSection, PrivateDocumentsCard }
