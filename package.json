@@ -18,6 +18,7 @@
     "react-bootstrap": "^1.4.0",
     "react-countup": "^4.3.3",
     "react-dom": "latest",
+    "react-dropzone": "^11.3.1",
     "react-helmet": "^6.1.0",
     "react-html-parser": "^2.0.2",
     "react-moment": "^1.1.1",

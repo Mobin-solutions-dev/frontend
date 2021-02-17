@@ -1,14 +1,19 @@
-import { useState } from 'react'
+import { useState, useCallback } from 'react'
 
-import { Container, Box, Grid, LinearProgress, Button, Paper, Divider, TextField } from '@material-ui/core'
+import { Container, Box, Grid, LinearProgress, Button, Paper, Divider, TextField, FormControl, Select, InputLabel, MenuItem } from '@material-ui/core'
 import { Layout, Text } from '../../../components'
 import { getThemes } from '../../../utils'
 import { makeStyles } from '@material-ui/core/styles';
+import { useDropzone } from 'react-dropzone';
 
 const useStyles = makeStyles((theme) => ({
     paper: {
         padding: "2em",
         border: `2px solid ${theme.palette.grey.main}`
+    },
+    paper2: {
+        padding: "2em",
+        border: `2px solid ${theme.palette.blue.main}`
     },
     flexBox: {
         display: "flex",
@@ -18,6 +23,9 @@ const useStyles = makeStyles((theme) => ({
         minWidth: "100%",
     },
     textFieldBox: {
+        // textAlign: 'center'
+    },
+    btnBox: {
         textAlign: 'center'
     },
     btn: {
@@ -39,20 +47,45 @@ const useStyles = makeStyles((theme) => ({
 const PrivateShareDocument = ({ themes = [] }) => {
     const classes = useStyles();
 
+
     const [variables, setVariables] = useState({
         titre: "",
+        thematique: "",
+        file: null
     })
     const [loader, setLoader] = useState(false)
     const [error, setError] = useState(null)
 
+    const onDrop = useCallback(acceptedFiles => {
+        setVariables({ ...variables, file: acceptedFiles[0] })
+    }, [])
+
+    const { getRootProps, getInputProps, isDragActive } = useDropzone({
+        onDrop,
+        accept: '.pdf'
+    })
+
+
     const onSubmit = async () => {
         setLoader(true)
-        const { titre } = variables
+        const { titre, thematique, file } = variables
         setError(null)
 
         if (titre.length < 1) {
             setLoader(false)
             setError("Un titre de document doit être saisi.")
+            return
+        }
+
+        if (thematique.length < 1) {
+            setLoader(false)
+            setError("Merci de choisir une thématique.")
+            return
+        }
+
+        if (!file) {
+            setLoader(false)
+            setError("Merci de télécharger un document pdf.")
             return
         }
 
@@ -96,14 +129,51 @@ const PrivateShareDocument = ({ themes = [] }) => {
                                             Téléverser un fichier
                                         </Text>
                                     </Box>
-                                    <TextField
-                                        value={variables.titre}
-                                        onChange={(event) => setVariables({ ...variables, titre: event.target.value })}
-                                        label="Titre"
-                                        variant="outlined"
-                                        size="small"
-                                        className={classes.textField}
-                                    />
+                                    <Box mb={2}>
+                                        <TextField
+                                            value={variables.titre}
+                                            onChange={(event) => setVariables({ ...variables, titre: event.target.value })}
+                                            label="Titre"
+                                            variant="outlined"
+                                            size="small"
+                                            className={classes.textField}
+                                        />
+                                    </Box>
+                                    <Box mb={3}>
+                                        <FormControl
+                                            className={classes.textField}
+                                        >
+                                            <InputLabel>Thème</InputLabel>
+                                            <Select
+                                                value={variables.thematique}
+                                                onChange={(event) => setVariables({ ...variables, thematique: event.target.value })}
+
+                                            >
+                                                {
+                                                    themes.map((t, i) => (
+                                                        <MenuItem key={i} value={t.titre}>{t.titre}</MenuItem>
+                                                    ))
+                                                }
+                                            </Select>
+                                        </FormControl>
+                                    </Box>
+                                    <Box>
+                                        <Paper className={classes.paper2}>
+                                            <div {...getRootProps()}>
+                                                <input {...getInputProps()} />
+                                                {
+                                                    isDragActive ?
+                                                        <Text>Téléversez votre fichier PDF ici</Text> :
+                                                        <Text>Téléversez votre fichier PDF ici</Text>
+                                                }
+                                                {
+                                                    variables.file && (
+                                                        <Text bold>{variables?.file?.name}</Text>
+                                                    )
+                                                }
+                                            </div>
+                                        </Paper>
+                                    </Box>
                                 </Box>
                                 {
                                     error && (
@@ -114,7 +184,7 @@ const PrivateShareDocument = ({ themes = [] }) => {
                                         </Box>
                                     )
                                 }
-                                <Box mt={3} mb={2} className={classes.textFieldBox}
+                                <Box mt={3} mb={2} className={classes.btnBox}
                                 >
                                     <Button className={classes.btn} variant="outlined" onClick={() => onSubmit()}>
                                         Valider
