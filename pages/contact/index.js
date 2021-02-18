@@ -24,7 +24,7 @@ const useStyles = makeStyles((theme) => ({
     }
 }))
 
-const Contact = ({ contactEmails }) => {
+const Contact = ({ contactEmails = [] }) => {
     const classes = useStyles();
 
     const [message, setMessage] = useState("")
@@ -87,7 +87,7 @@ const Contact = ({ contactEmails }) => {
                         <Box mb={2}>
                             <Text size="body1">
                                 Vous souhaitez avoir des informations sur l’accompagnement proposé par Mob’In France ou vous avez un projet de mobilité solidaire sur votre territoire ou votre entreprise ?
-                            N’hésitez pas à nous laisser un message par le biais de ce formulaire de contact :
+                                N’hésitez pas à nous laisser un message par le biais de ce formulaire de contact :
                             </Text>
                         </Box>
                     </Grid>

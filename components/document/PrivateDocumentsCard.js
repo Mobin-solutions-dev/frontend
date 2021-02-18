@@ -28,7 +28,7 @@ const PrivateDocumentsCard = ({ section = {} }) => {
                 <a>
                     <img
                         className={classes.mainImage}
-                        src="/static/cadres/presentiel.png"
+                        src={section.picto}
                         alt="mobilite"
                     />
                 </a>

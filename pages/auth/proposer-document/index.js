@@ -1,12 +1,14 @@
-import { useState, useCallback, useContext } from 'react'
-import AppContext from "../../../context/AppContext";
 
+import { useState, useCallback, useContext } from 'react'
 import { Container, Box, Grid, LinearProgress, Button, Paper, Divider, TextField, FormControl, Select, InputLabel, MenuItem } from '@material-ui/core'
 import { Layout, Text } from '../../../components'
-import { getThemes } from '../../../utils'
+import { getThemes, getContactEmails } from '../../../utils'
 import { makeStyles } from '@material-ui/core/styles';
 import { useDropzone } from 'react-dropzone';
 import { postDocumentAdherent } from '../../../lib/ressources'
+import AppContext from "../../../context/AppContext";
+import { sendResourceNotif } from "../../../src/services/sendEmail";
+
 
 const useStyles = makeStyles((theme) => ({
     paper: {
@@ -46,21 +48,22 @@ const useStyles = makeStyles((theme) => ({
     }
 }))
 
-const PrivateShareDocument = ({ themes = [] }) => {
+const PrivateShareDocument = ({ themes = [], contactEmails = [] }) => {
     const classes = useStyles();
-    const { user, isAuthenticated } = useContext(AppContext);
-    console.log("user", user)
-
-    const [variables, setVariables] = useState({
+    const { user } = useContext(AppContext)
+    const initialState = {
         titre: "",
-        thematique: "",
-        file: null
-    })
+        thematique: {},
+        fichier: null
+    }
+    const [variables, setVariables] = useState(initialState)
     const [loader, setLoader] = useState(false)
     const [error, setError] = useState(null)
+    const [success, setSuccess] = useState(null)
+
 
     const onDrop = useCallback(acceptedFiles => {
-        setVariables({ ...variables, file: acceptedFiles[0] })
+        setVariables({ ...variables, fichier: acceptedFiles[0] })
     }, [])
 
     const { getRootProps, getInputProps, isDragActive } = useDropzone({
@@ -71,8 +74,14 @@ const PrivateShareDocument = ({ themes = [] }) => {
 
     const onSubmit = async () => {
         setLoader(true)
-        const { titre, thematique, file } = variables
+        const { titre, thematique, fichier } = variables
         setError(null)
+
+        if (!fichier) {
+            setLoader(false)
+            setError("Merci de télécharger un document pdf.")
+            return
+        }
 
         if (titre.length < 1) {
             setLoader(false)
@@ -80,21 +89,38 @@ const PrivateShareDocument = ({ themes = [] }) => {
             return
         }
 
-        if (thematique.length < 1) {
+        if (Object.keys(thematique).length < 1) {
             setLoader(false)
             setError("Merci de choisir une thématique.")
             return
         }
 
-        if (!file) {
-            setLoader(false)
-            setError("Merci de télécharger un document pdf.")
-            return
-        }
-
         try {
-            const response = await postDocumentAdherent(variables)
-            console.log("response compo", response)
+
+            // 1. Create Form Data with Document
+            const formData = new FormData()
+            formData.append(`files.fichier`, fichier, fichier.name);
+            const data = {};
+            data.titre = titre
+            data.thematique = thematique.id
+            formData.append('data', JSON.stringify(data));
+
+            // 2. Post Form Data
+            const response = await postDocumentAdherent(formData)
+
+            // 3. Send Email Notif
+            let emails = contactEmails.map(e => {
+                return { email: e.email }
+            })
+            let variables = {
+                message: `L'utilisateur ${user.email} a déposé un nouveau document dans l'espace adhérents, section ${response?.data?.thematique?.titre || 'inconnue'}.`,
+                emails,
+                senderEmail: user.email
+            }
+            let res = await sendResourceNotif(variables);
+            //4. Set Loader to false and success and variable to initial state
+            setVariables(initialState)
+            setSuccess("Votre document a bien été envoyé !")
             setLoader(false)
         } catch (error) {
             console.log(error)
@@ -130,8 +156,26 @@ const PrivateShareDocument = ({ themes = [] }) => {
                                 >
                                     <Box mt={2} mb={2}>
                                         <Text bold size="body2">
-                                            Téléverser un fichier
+                                            Télécharger un fichier
                                         </Text>
+                                    </Box>
+                                    <Box mb={3}>
+                                        <Paper variant="outlined"
+                                            className={classes.paper2}>
+                                            <div {...getRootProps()}>
+                                                <input {...getInputProps()} />
+                                                {
+                                                    isDragActive ?
+                                                        <Text>Téléchargez votre fichier PDF ici</Text> :
+                                                        <Text>Téléchargez votre fichier PDF ici</Text>
+                                                }
+                                                {
+                                                    variables.fichier && (
+                                                        <Text bold>{variables?.fichier?.name}</Text>
+                                                    )
+                                                }
+                                            </div>
+                                        </Paper>
                                     </Box>
                                     <Box mb={2}>
                                         <TextField
@@ -149,41 +193,38 @@ const PrivateShareDocument = ({ themes = [] }) => {
                                         >
                                             <InputLabel>Thème</InputLabel>
                                             <Select
-                                                value={variables.thematique}
+                                                value={variables.thematique || ''}
                                                 onChange={(event) => setVariables({ ...variables, thematique: event.target.value })}
 
                                             >
                                                 {
                                                     themes.map((t, i) => (
-                                                        <MenuItem key={i} value={t.titre}>{t.titre}</MenuItem>
+                                                        <MenuItem
+                                                            key={i}
+                                                            value={t}>
+                                                            {t.titre}
+                                                        </MenuItem>
                                                     ))
                                                 }
                                             </Select>
                                         </FormControl>
                                     </Box>
-                                    <Box>
-                                        <Paper className={classes.paper2}>
-                                            <div {...getRootProps()}>
-                                                <input {...getInputProps()} />
-                                                {
-                                                    isDragActive ?
-                                                        <Text>Téléversez votre fichier PDF ici</Text> :
-                                                        <Text>Téléversez votre fichier PDF ici</Text>
-                                                }
-                                                {
-                                                    variables.file && (
-                                                        <Text bold>{variables?.file?.name}</Text>
-                                                    )
-                                                }
-                                            </div>
-                                        </Paper>
-                                    </Box>
+
                                 </Box>
                                 {
                                     error && (
                                         <Box mt={3} mb={2}>
                                             <Text size="body1" bold color="#e5352c">
                                                 {error}
+                                            </Text>
+                                        </Box>
+                                    )
+                                }
+                                {
+                                    success && (
+                                        <Box mt={3} mb={2}>
+                                            <Text size="body1" bold color="#4ba829">
+                                                {success}
                                             </Text>
                                         </Box>
                                     )
@@ -206,9 +247,12 @@ const PrivateShareDocument = ({ themes = [] }) => {
 export const getServerSideProps = async () => {
     const res = await fetch(getThemes)
     const themes = await res.json()
+    const res2 = await fetch(getContactEmails)
+    const emails = await res2.json()
+
 
     return {
-        props: { themes }
+        props: { themes, contactEmails: emails }
     };
 }
 

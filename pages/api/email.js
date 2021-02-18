@@ -2,10 +2,10 @@ const sendinblue = require('../../api/sendinblue')
 
 
 export default function handler(req, res) {
-    const { message = '', emails = [], senderEmail = "" } = req.body;
+    const { message = '', emails = [], senderEmail = "", template = undefined } = req.body;
     let sendSmtpEmail = {
         to: emails,
-        templateId: 21,
+        templateId: template,
         params: {
             message,
             senderEmail

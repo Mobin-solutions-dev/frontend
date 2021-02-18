@@ -2,25 +2,25 @@ export const privateMenuSections = [
     {
         id: "1",
         title: "Documents Fédéraux",
-        picto: "",
+        picto: "/static/auth-cadres/docfederaux.png",
         route: "/auth/documents-federaux"
     },
     {
         id: "2",
         title: "Actualités",
-        picto: "",
+        picto: "/static/auth-cadres/actualites.png",
         route: "/auth/actualites"
     },
     {
         id: "3",
         title: "Outils de formation",
-        picto: "",
+        picto: "/static/auth-cadres/outilsformation.png",
         route: "/auth/outils-formation"
     },
     {
         id: "4",
         title: "Proposer un document",
-        picto: "",
+        picto: "/static/auth-cadres/proposerressource.png",
         route: "/auth/proposer-document"
     },
 ]
