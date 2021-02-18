@@ -1,10 +1,12 @@
-import { useState, useCallback } from 'react'
+import { useState, useCallback, useContext } from 'react'
+import AppContext from "../../../context/AppContext";
 
 import { Container, Box, Grid, LinearProgress, Button, Paper, Divider, TextField, FormControl, Select, InputLabel, MenuItem } from '@material-ui/core'
 import { Layout, Text } from '../../../components'
 import { getThemes } from '../../../utils'
 import { makeStyles } from '@material-ui/core/styles';
 import { useDropzone } from 'react-dropzone';
+import { postDocumentAdherent } from '../../../lib/ressources'
 
 const useStyles = makeStyles((theme) => ({
     paper: {
@@ -13,7 +15,7 @@ const useStyles = makeStyles((theme) => ({
     },
     paper2: {
         padding: "2em",
-        border: `2px solid ${theme.palette.blue.main}`
+        border: `0.5px solid ${theme.palette.blue.main}`
     },
     flexBox: {
         display: "flex",
@@ -46,7 +48,8 @@ const useStyles = makeStyles((theme) => ({
 
 const PrivateShareDocument = ({ themes = [] }) => {
     const classes = useStyles();
-
+    const { user, isAuthenticated } = useContext(AppContext);
+    console.log("user", user)
 
     const [variables, setVariables] = useState({
         titre: "",
@@ -90,7 +93,8 @@ const PrivateShareDocument = ({ themes = [] }) => {
         }
 
         try {
-            // const response = await login(variables)
+            const response = await postDocumentAdherent(variables)
+            console.log("response compo", response)
             setLoader(false)
         } catch (error) {
             console.log(error)

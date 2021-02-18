@@ -50,7 +50,7 @@ export default function MyApp(props) {
 
   return (
     <AppContext.Provider value={{
-      user: user, isAuthenticated: !!user
+      user: user, isAuthenticated: !!user, setUser: setUser
     }}>
       <Fragment>
         <Head>

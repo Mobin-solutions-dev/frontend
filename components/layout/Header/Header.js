@@ -95,7 +95,7 @@ const Header = () => {
         bottom: false,
         right: false,
     });
-    const { user, isAuthenticated } = useContext(AppContext);
+    const { isAuthenticated, setUser } = useContext(AppContext);
     const toggleDrawer = (anchor, open) => (event) => {
         if (event && event.type === 'keydown' && (event.key === 'Tab' || event.key === 'Shift')) {
             return;
@@ -125,7 +125,11 @@ const Header = () => {
 
     const onLogin = () => Router.push("/login")
     const onLogout = async () => {
-        await logout()
+        const res = await logout()
+        if (res) {
+            setUser(null)
+            Router.push('/')
+        }
     }
 
 

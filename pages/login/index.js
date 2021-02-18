@@ -1,8 +1,9 @@
-import { useState } from 'react'
+import { useState, useContext } from 'react'
 import { Container, Box, Grid, Card, Paper, Divider, TextField, Button, LinearProgress } from '@material-ui/core'
 import { Layout, Title, Text } from '../../components'
 import { makeStyles } from '@material-ui/core/styles';
 import { login } from '../../lib/auth'
+import AppContext from "../../context/AppContext";
 
 const useStyles = makeStyles((theme) => ({
     paper: {
@@ -37,6 +38,7 @@ const useStyles = makeStyles((theme) => ({
 
 const Login = ({ }) => {
     const classes = useStyles();
+    const { setUser } = useContext(AppContext);
     const [variables, setVariables] = useState({
         identifier: "",
         password: ""
@@ -65,6 +67,8 @@ const Login = ({ }) => {
 
         try {
             const response = await login(variables)
+            const user = response.data.user
+            setUser(user)
             setLoader(false)
         } catch (error) {
             console.log(error)
