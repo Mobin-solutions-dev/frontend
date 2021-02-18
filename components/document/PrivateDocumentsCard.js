@@ -33,7 +33,6 @@ const PrivateDocumentsCard = ({ section = {} }) => {
                     />
                 </a>
             </Link>
-            {section.title}
         </>
 
     )

@@ -44,20 +44,23 @@ const AuthHome = ({ }) => {
                     </Grid>
                     <Grid
                         container
-                        spacing={2}
+                        direction="column"
                         justify="center"
+                        alignItems="center"
                     >
-                        {
-                            privateMenuSections && privateMenuSections.map((section, index) => (
-                                <Grid key={index} item xs={12} md={6} align="center">
-                                    <Grid container justify="center" alignItems="center">
-                                        <PrivateDocumentsCard section={section} />
+                        <Grid item xs={12} md={8}>
+                            <Grid container spacing={4} justify="center">
+                                {
+                                    privateMenuSections &&
+                                    privateMenuSections.map((section, index) => (
+                                        <Grid key={index} item xs={12} sm={6}>
+                                            <PrivateDocumentsCard section={section} />
+                                        </Grid>
+                                    ))
+                                }
 
-                                    </Grid>
-                                </Grid>
-                            ))
-                        }
-
+                            </Grid>
+                        </Grid>
                     </Grid>
 
                 </Container>

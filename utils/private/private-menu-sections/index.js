@@ -8,7 +8,7 @@ export const privateMenuSections = [
     {
         id: "2",
         title: "Actualités",
-        picto: "/static/auth-cadres/actualites.png",
+        picto: "/static/auth-cadres/actus.png",
         route: "/auth/actualites"
     },
     {
@@ -20,7 +20,7 @@ export const privateMenuSections = [
     {
         id: "4",
         title: "Proposer un document",
-        picto: "/static/auth-cadres/proposerressource.png",
+        picto: "/static/auth-cadres/proposerresource.png",
         route: "/auth/proposer-document"
     },
 ]
