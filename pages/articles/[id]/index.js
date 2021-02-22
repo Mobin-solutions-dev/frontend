@@ -1,5 +1,5 @@
 import { useEffect } from 'react'
-import { Container, Box, Grid } from '@material-ui/core'
+import { Container, Box, Grid, Button } from '@material-ui/core'
 import { Layout, Title, HtmlContent } from '../../../components'
 import { getNewsItem } from '../../../utils'
 import Image from 'next/image'
@@ -11,7 +11,17 @@ const useStyles = makeStyles((theme) => ({
         width: "100%",
         maxHeight: "200px",
         objectFit: "contain"
-    }
+    },
+    btn: {
+        backgroundColor: theme.palette.golden.main,
+        color: "#fff",
+        border: 'none',
+        '&:hover': {
+            backgroundColor: theme.palette.blue.main,
+            color: "#fff",
+            border: 'none'
+        }
+    },
 
 }))
 
@@ -34,18 +44,26 @@ const Article = ({ article = {} }) => {
         <Layout>
             <Box mt={7}>
                 <Container maxWidth="lg">
+                    <Box mb={4}>
+                        <Grid container>
+                            <Button onClick={() => router.push('/articles')} className={classes.btn} variant="outlined">
+                                Voir tous les articles
+                            </Button>
+                        </Grid>
+                    </Box>
                     <Grid container>
                         <Box mb={2}>
                             <Title content={titre_article} size="h4" bold letterspacing="2px" />
                         </Box>
                     </Grid>
+
                     <Grid container>
                         <Grid item xs={12} sm={6} md={4}>
                             <Box mt={1}>
                                 {
                                     image_principale && (
                                         <img
-                                            src={image_principale ?.url}
+                                            src={image_principale?.url}
                                             className={classes.img}
                                         />
                                     )

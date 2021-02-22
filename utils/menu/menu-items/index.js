@@ -21,6 +21,10 @@ export const menuItems = [
                 link: "/adherents"
             },
             {
+                title: "Nos actualités",
+                link: "/articles"
+            },
+            {
                 title: "Nos partenaires",
                 link: "/partenaires"
             },
