@@ -370,6 +370,65 @@ const Header = () => {
                                                 </Fragment>
                                             ))
                                         }
+                                        {
+                                            isAuthenticated ?
+                                                menuLoginItems.map((item, index) => (
+                                                    <Fragment key={index}>
+                                                        <ListItem button onClick={() => handleClickCollapse(item.id)}>
+                                                            <ListItemText>
+                                                                <Title bold size="body1" content={item.title || ""} />
+                                                            </ListItemText>
+                                                            {openCollapseId === item.id ? <ExpandLess /> : <ExpandMore />}
+                                                        </ListItem>
+                                                        <Collapse in={openCollapseId === item.id} timeout="auto" unmountOnExit>
+                                                            <List component="div" disablePadding>
+                                                                {
+                                                                    item.subItems.map((subItem, i) => (
+                                                                        <ListItem
+                                                                            key={i}
+                                                                            button
+                                                                            onClick={subItem.action ? () => onLogout() : null}
+                                                                            className={classes.nested}>
+                                                                            <Box pl={3}>
+                                                                                <Link href={subItem.action ? `#` : subItem.link}>
+                                                                                    <Text
+                                                                                        bold
+                                                                                        color="#2699b0"
+                                                                                        size="body2"
+                                                                                        uppercase>
+                                                                                        {subItem.title || ""}
+                                                                                    </Text>
+                                                                                </Link>
+
+                                                                            </Box>
+                                                                        </ListItem>
+                                                                    ))
+                                                                }
+
+                                                            </List>
+                                                        </Collapse>
+                                                    </Fragment>
+                                                ))
+                                                : (
+                                                    <ListItem
+                                                        button
+                                                        className={classes.nested}>
+                                                        <Box pl={3}>
+                                                            <Link href="/login">
+                                                                <Text
+                                                                    bold
+                                                                    color="#2699b0"
+                                                                    size="body2"
+                                                                    uppercase>
+                                                                    Accès Adhérent
+                                                                 </Text>
+                                                            </Link>
+                                                        </Box>
+                                                    </ListItem>
+                                                )
+                                        }
+
+
 
                                     </List>
                                 </div>
@@ -380,7 +439,7 @@ const Header = () => {
                     </Box>
                 </div>
             </Toolbar>
-        </AppBar>
+        </AppBar >
     )
 }
 
