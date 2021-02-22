@@ -1,6 +1,7 @@
 import { Container, Box, Grid } from '@material-ui/core'
 import { Layout, Text, DownloadDocumentSection } from '../../../components'
-import { getResources } from '../../../utils'
+import { getResources, isTokenValid } from '../../../utils'
+import Cookies from 'cookies'
 
 
 const PrivateNews = ({ docs = [] }) => {
@@ -35,15 +36,39 @@ const PrivateNews = ({ docs = [] }) => {
     )
 }
 
-export const getServerSideProps = async () => {
-    const res = await fetch(getResources)
-    const resources = await res.json()
-    const docs = resources.filter(doc => doc?.thematique?.titre === "Actualités").sort((a, b) => new Date(b.created_at) - new Date(a.created_at))
 
-    return {
-        props: { docs }
-    };
+export const getServerSideProps = async (ctx) => {
+    const req = ctx.req ? ctx.req : null
+    if (req) {
+        const cookies = new Cookies(ctx.req, ctx.res)
+        const token = cookies.get('token')
+        if (token) {
+            const isTokValid = isTokenValid(token)
+            if (isTokValid) {
+                const res = await fetch(getResources)
+                const resources = await res.json()
+                const docs = resources.filter(doc => doc?.thematique?.titre === "Actualités").sort((a, b) => new Date(b.created_at) - new Date(a.created_at))
+
+                return {
+                    props: { docs }
+                };
+            } else {
+                ctx.res.writeHead(302, { Location: '/' })
+                ctx.res.end()
+                return { props: {} }
+            }
+
+
+        } else {
+            ctx.res.writeHead(302, { Location: '/' })
+            ctx.res.end()
+            return { props: {} }
+        }
+    } else {
+
+    }
 }
+
 
 
 export default PrivateNews

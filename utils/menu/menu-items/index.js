@@ -81,3 +81,21 @@ export const menuItems = [
         ]
     },
 ]
+
+export const menuLoginItems = [
+    {
+        id: 1000,
+        title: "Mon compte",
+        subItems: [
+            {
+                title: "Accueil Adhérent",
+                link: "/auth"
+            },
+            {
+                title: "Déconnexion",
+                link: "/",
+                action: "Logout"
+            },
+        ]
+    },
+]

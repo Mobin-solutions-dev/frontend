@@ -2,12 +2,13 @@
 import { useState, useCallback, useContext } from 'react'
 import { Container, Box, Grid, LinearProgress, Button, Paper, Divider, TextField, FormControl, Select, InputLabel, MenuItem } from '@material-ui/core'
 import { Layout, Text } from '../../../components'
-import { getThemes, getContactEmails } from '../../../utils'
+import { getThemes, getContactEmails, isTokenValid } from '../../../utils'
 import { makeStyles } from '@material-ui/core/styles';
 import { useDropzone } from 'react-dropzone';
 import { postDocumentAdherent } from '../../../lib/ressources'
 import AppContext from "../../../context/AppContext";
 import { sendResourceNotif } from "../../../src/services/sendEmail";
+import Cookies from 'cookies'
 
 
 const useStyles = makeStyles((theme) => ({
@@ -244,16 +245,36 @@ const PrivateShareDocument = ({ themes = [], contactEmails = [] }) => {
     )
 }
 
-export const getServerSideProps = async () => {
-    const res = await fetch(getThemes)
-    const themes = await res.json()
-    const res2 = await fetch(getContactEmails)
-    const emails = await res2.json()
+export const getServerSideProps = async (ctx) => {
+    const req = ctx.req ? ctx.req : null
+    if (req) {
+        const cookies = new Cookies(ctx.req, ctx.res)
+        const token = cookies.get('token')
+        if (token) {
+            const isTokValid = isTokenValid(token)
+            if (isTokValid) {
+                const res = await fetch(getThemes)
+                const themes = await res.json()
+                const res2 = await fetch(getContactEmails)
+                const emails = await res2.json()
+                return {
+                    props: { themes, contactEmails: emails }
+                };
+            } else {
+                ctx.res.writeHead(302, { Location: '/' })
+                ctx.res.end()
+                return { props: {} }
+            }
 
 
-    return {
-        props: { themes, contactEmails: emails }
-    };
+        } else {
+            ctx.res.writeHead(302, { Location: '/' })
+            ctx.res.end()
+            return { props: {} }
+        }
+    } else {
+
+    }
 }
 
 

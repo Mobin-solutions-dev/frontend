@@ -8,7 +8,7 @@ import ExpandMore from '@material-ui/icons/ExpandMore';
 import MenuIcon from '@material-ui/icons/Menu';
 import { Icon, Title, Text } from '../../global'
 import Router from "next/router";
-import { menuItems } from '../../../utils'
+import { menuItems, menuLoginItems } from '../../../utils'
 import AppContext from "../../../context/AppContext";
 
 import { logout } from '../../../lib/auth'
@@ -54,6 +54,17 @@ const useStyles = makeStyles((theme) => ({
             color: '#000'
         }
     },
+    navbarItem2: {
+        backgroundColor: theme.palette.orange.main,
+        color: theme.palette.background.default,
+        marginRight: '15px',
+        paddingLeft: '3em',
+        paddingRight: '3em',
+        '&:hover': {
+            backgroundColor: theme.palette.golden.main,
+            color: '#000'
+        }
+    },
     list: {
         listStyleType: "disc",
         fontSize: "20px",
@@ -81,6 +92,19 @@ const useStyles = makeStyles((theme) => ({
     fullList: {
         width: 'auto',
     },
+    flex: {
+        display: "flex",
+        alignItems: 'center'
+    },
+    loginBtn: {
+        backgroundColor: 'transparent',
+        border: `0.5px ${theme.palette.blue.main} solid`,
+        '&:hover': {
+            backgroundColor: theme.palette.blue.main,
+            color: "#fff",
+            border: 'none'
+        }
+    }
 }))
 const Header = () => {
     const classes = useStyles();
@@ -88,6 +112,8 @@ const Header = () => {
     const [anchor, setAnchor] = useState('left')
     const [openCollapseId, setOpenCollapseId] = useState(null);
     const [itemClicked, setItemClicked] = useState(null)
+    const [loginItemClicked, setLoginItemClicked] = useState(null)
+
     const open = Boolean(anchorEl);
     const [state, setState] = useState({
         top: false,
@@ -176,8 +202,6 @@ const Header = () => {
                                             keepMounted
                                             open={itemClicked === item.id}
                                             onClose={handleClose}
-                                        // anchorOrigin={{ vertical: "bottom", horizontal: "center" }}
-                                        // transformOrigin={{ vertical: "bottom", horizontal: "center" }}
                                         >
                                             {
                                                 item.subItems.map((subItem, index) => (
@@ -206,16 +230,79 @@ const Header = () => {
                         }
                         {
                             isAuthenticated ? (
-                                <Button
-                                    variant="outlined"
-                                    onClick={() => onLogout()}
-                                    style={{ backgroundColor: 'transparent' }}>
-                                    Déconnexion</Button>
+                                menuLoginItems.map((item, index) => (
+                                    <Box key={index}>
+                                        <Fragment>
+                                            <Button
+                                                aria-controls="simple-menu" aria-haspopup="true"
+                                                onClick={(event) => {
+                                                    handleClick(event, item.id);
+                                                }}
+                                                className={classes.navbarItem2}>
+                                                {
+                                                    item.icon ?
+                                                        <Icon
+                                                            maxWidth="60px"
+                                                            src={`/static/icons/${item.icon}.png`} />
+                                                        :
+                                                        <Title fontSize="12px" bold color="#fff" size="body2" content={item.title} />
+
+                                                }
+                                            </Button>
+                                            <Menu
+                                                className={classes.list}
+                                                id="simple-menu"
+                                                anchorEl={anchorEl}
+                                                keepMounted
+                                                open={itemClicked === item.id}
+                                                onClose={handleClose}
+                                            >
+                                                {
+                                                    item.subItems.map((subItem, index) => (
+                                                        <MenuItem
+                                                            // button={subItem.action ? true : false}
+                                                            key={index}
+                                                            onClick={subItem.action ? () => onLogout() : null}
+
+                                                        >
+                                                            <Link href={subItem.action ? `#` : subItem.link}>
+                                                                <Title
+                                                                    listItem
+                                                                    listStyleType="disc"
+                                                                    listStylePosition="inside"
+                                                                    uppercase
+                                                                    bold
+                                                                    fontSize="12px"
+                                                                    letterspacing="1px"
+                                                                    color="black"
+                                                                    content={subItem.title} />
+                                                            </Link>
+                                                        </MenuItem>
+                                                    ))
+                                                }
+                                            </Menu>
+                                        </Fragment>
+                                    </Box>
+                                ))
                             ) : (
                                 <Button
                                     onClick={() => onLogin()}
-                                    style={{ backgroundColor: 'transparent' }}>
-                                    <Icon src="/static/icons/P.Adhérent1.png" maxWidth="50px" />
+                                    className={classes.loginBtn}
+                                >
+                                    <Box
+                                    // className={classes.flex}
+                                    >
+                                        <Icon src="/static/icons/P.Adhérent1.png" maxWidth="30px" />
+                                        <Title
+                                            size="body2"
+                                            fontSize="10px"
+                                            // uppercase
+                                            lowercase
+                                            // bold
+                                            letterspacing="1px"
+                                            color="black"
+                                            content="Accès Adhérent" />
+                                    </Box>
                                 </Button>
                             )
                         }

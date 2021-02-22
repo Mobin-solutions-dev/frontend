@@ -9,6 +9,8 @@ import CssBaseline from '@material-ui/core/CssBaseline';
 import theme from '../src/theme';
 import AppContext from "../context/AppContext";
 
+import { isTokenValid } from '../utils'
+
 import { API_URL } from '../utils/api/api-url'
 
 export default function MyApp(props) {
@@ -25,7 +27,8 @@ export default function MyApp(props) {
   useEffect(() => {
     // grab token value from cookie
     const token = Cookie.get("token");
-    if (token) {
+    const isValid = isTokenValid(token)
+    if (token && isValid) {
       // authenticate the token on the server and place set user object
       fetch(`${API_URL}/users/me`, {
         headers: {
@@ -42,6 +45,10 @@ export default function MyApp(props) {
         const user = await res.json();
         setUser(user)
       });
+    } else {
+      Cookie.remove("token");
+      setUser(null)
+      return null;
     }
 
   }, [])

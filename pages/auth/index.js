@@ -1,9 +1,12 @@
 import { Fragment } from 'react'
 import { Container, Box, Grid, Card } from '@material-ui/core'
 import { Layout, Title, Text, PrivateDocumentsCard } from '../../components'
-import { privateMenuSections } from '../../utils'
+import { privateMenuSections, isTokenValid } from '../../utils'
 import { makeStyles } from '@material-ui/core/styles';
 import Link from 'next/link'
+import Cookies from 'cookies'
+
+
 
 const useStyles = makeStyles((theme) => ({
     gridItem: {
@@ -67,6 +70,32 @@ const AuthHome = ({ }) => {
             </Box>
         </Layout>
     )
+}
+
+export const getServerSideProps = async (ctx) => {
+    const req = ctx.req ? ctx.req : null
+    if (req) {
+        const cookies = new Cookies(ctx.req, ctx.res)
+        const token = cookies.get('token')
+        if (token) {
+            const isTokValid = isTokenValid(token)
+            if (isTokValid) {
+                return { props: {} }
+            } else {
+                ctx.res.writeHead(302, { Location: '/' })
+                ctx.res.end()
+                return { props: {} }
+            }
+
+
+        } else {
+            ctx.res.writeHead(302, { Location: '/' })
+            ctx.res.end()
+            return { props: {} }
+        }
+    } else {
+
+    }
 }
 
 
