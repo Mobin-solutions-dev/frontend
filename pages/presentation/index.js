@@ -87,7 +87,7 @@ const Presentation = ({ }) => {
                                     <br />
                                     <Title color="#2699b0" italic bold size="h5" content="8 régions constituées" />
                                     <br />
-                                    <Title color="#2699b0" italic bold size="h5" content="+ de 120 adhérents" />
+                                    <Title color="#2699b0" italic bold size="h5" content="+ de 120 structures adhérentes" />
                                     <br />
                                     <Title color="#2699b0" italic bold size="h5" content="+ de 30 000 personnes accompagnées" />
                                     <br />

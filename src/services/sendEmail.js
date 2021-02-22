@@ -27,7 +27,6 @@ export const sendResourceNotif = async (variables) => {
         let request = await axios
             .post("/api/email", data)
             .then((res) => {
-                console.log("RES ===", res)
                 return res;
             }); 0
         return request.status === 200 ? true : false;;

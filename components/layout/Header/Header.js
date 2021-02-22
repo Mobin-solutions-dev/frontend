@@ -98,7 +98,7 @@ const useStyles = makeStyles((theme) => ({
     },
     loginBtn: {
         backgroundColor: 'transparent',
-        border: `0.5px ${theme.palette.blue.main} solid`,
+        // border: `0.5px ${theme.palette.blue.main} solid`,
         '&:hover': {
             backgroundColor: theme.palette.blue.main,
             color: "#fff",
@@ -165,7 +165,7 @@ const Header = () => {
             <Toolbar className={classes.toolbar}>
                 <Box style={{ flex: 1 }}>
                     <Link href="/" classes={classes.logo}>
-                        <Icon src="/static/icons/logo_mobin.jpg" />
+                        <Icon maxWidth="200px" src="/static/icons/logo_mobin.jpg" />
                     </Link>
                 </Box>
                 <div className={classes.menuDesktop}>

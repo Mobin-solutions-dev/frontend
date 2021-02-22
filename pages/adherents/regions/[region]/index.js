@@ -97,14 +97,14 @@ const Region = ({ departments = [], adherents = [], coordinateurs = [], expertis
     const [mainDepartementSelected, setMainDepartmentSelected] = useState([]);
     const [mainExpertiseSelected, setMainExpertiseSelected] = useState([]);
 
-    const adherentsFiltered = adherents.filter(adh => adh ?.region_siege ?.nom_region === region)
-    const [adherentsToDisplay, setAdherentsToDisplay] = useState(adherents.filter(adh => adh ?.region_siege ?.nom_region === region))
-    const [adherentsToDisplayExpertise, setAdherentsToDisplayExpertise] = useState(adherents.filter(adh => adh ?.region_siege ?.nom_region === region))
+    const adherentsFiltered = adherents.filter(adh => adh?.region_siege?.nom_region === region)
+    const [adherentsToDisplay, setAdherentsToDisplay] = useState(adherents.filter(adh => adh?.region_siege?.nom_region === region))
+    const [adherentsToDisplayExpertise, setAdherentsToDisplayExpertise] = useState(adherents.filter(adh => adh?.region_siege?.nom_region === region))
     // Get filtered Departments
-    const regionDepartments = departments.filter(dep => dep ?.region ?.nom_region === region)
+    const regionDepartments = departments.filter(dep => dep?.region?.nom_region === region)
 
     // Get filtered coordinateur
-    const uniqueCoordinateur = coordinateurs.find(c => c ?.region ?.nom_region === region)
+    const uniqueCoordinateur = coordinateurs.find(c => c?.region?.nom_region === region)
     const getStyles = (departement, mainDepartementSelected) => {
         return {
             fontWeight:
@@ -243,7 +243,7 @@ const Region = ({ departments = [], adherents = [], coordinateurs = [], expertis
                                         uniqueCoordinateur && uniqueCoordinateur.logo && (
                                             <img
                                                 className={classes.mainImage}
-                                                src={uniqueCoordinateur ?.logo ?.url}
+                                                src={uniqueCoordinateur?.logo?.url}
                                                 alt="mobilite"
                                             />
                                         )
@@ -336,16 +336,39 @@ const Region = ({ departments = [], adherents = [], coordinateurs = [], expertis
                                                         </Grid>
 
                                                         {
-                                                            uniqueCoordinateur.site_internet && (
+                                                            uniqueCoordinateur.nom_charge_developpement && (
                                                                 <Grid container spacing={2}>
                                                                     <Grid item xs={6}>
                                                                         <Title
                                                                             fontSize="16px"
                                                                             color="black"
                                                                             bold
-                                                                            content="Site internet" />
+                                                                            content="Chargé.e de développement" />
                                                                     </Grid>
                                                                     <Grid item xs={6}>
+                                                                        <Box mb={1}>
+                                                                            <Title
+                                                                                fontSize="16px"
+                                                                                color="#2699b0"
+                                                                                bold
+                                                                                content={uniqueCoordinateur.nom_charge_developpement || ""} />
+                                                                        </Box>
+                                                                    </Grid>
+                                                                </Grid>
+                                                            )
+                                                        }
+
+                                                        {
+                                                            uniqueCoordinateur.site_internet && (
+                                                                <Grid container>
+                                                                    {/* <Grid item xs={6}>
+                                                                        <Title
+                                                                            fontSize="16px"
+                                                                            color="black"
+                                                                            bold
+                                                                            content="Site internet" />
+                                                                    </Grid> */}
+                                                                    <Grid item xs={12}>
                                                                         <Box mb={1}>
                                                                             <Button
                                                                                 className={classes.btn}

@@ -68,7 +68,7 @@ const Fonctionnement = ({ }) => {
                                 />
                             </Grid>
                             <Grid item xs={12} md={8} className={[classes.gridItem, classes.item2]}>
-                                <Box mt={4} mb={4} className={classes.flex}>
+                                <Box mt={4} mb={2} className={classes.flex}>
                                     <Box mr={2}>
                                         <Icon
                                             src="/static/icons/P.ensavoirplus.png"
@@ -77,8 +77,12 @@ const Fonctionnement = ({ }) => {
                                     </Box>
                                     <Title content="Les Mob'In régionaux" color="#2699b0" size="h5" bold letterspacing="1px" />
                                 </Box>
-                                <Box mt={2}>
+                                <Box mt={0}>
                                     <Text size="body1" color="#000">
+                                        <span>Le Réseau Mob'In France fédère les régions Mob'In, qui elles-mêmes fédèrent des structures adhérentes. Vous retrouverez la liste de ces structures régionales en cliquant sur la région souhaitée.</span>
+                                        <br />
+                                        <br />
+
                                         {
                                             regions.map((region, index) => (
                                                 <Fragment key={index}>
@@ -172,6 +176,15 @@ const Fonctionnement = ({ }) => {
                                     <Text size="body1" color="#000">
                                         <a target="_blank" href="/static/legal/statuts.pdf">Télécharger les statuts</a>
                                     </Text>
+                                </Box>
+                                <Box mt={4} mb={4} className={classes.flex}>
+                                    <Box mr={2}>
+                                        <Icon
+                                            src="/static/icons/P.ensavoirplus.png"
+                                            maxWidth="30px"
+                                        />
+                                    </Box>
+                                    <Title content="Les rapports d'activité" size="h5" bold letterspacing="1px" />
                                 </Box>
                             </Grid>
                             <Grid item xs={12} sm={6} md={4} className={classes.gridItem}>

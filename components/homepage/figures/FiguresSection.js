@@ -49,7 +49,7 @@ const FiguresSection = () => {
                                     } color="black" />
                                 </Box>
                                 <Box pl={4}>
-                                    <Title content="Nombre de personnes reçues" color="black" size="h6" />
+                                    <Title content="Nombre de personnes reçues en 2019" color="black" size="h6" />
                                 </Box>
                             </Grid>
 
@@ -65,7 +65,7 @@ const FiguresSection = () => {
                                     } color="black" />
                                 </Box>
                                 <Box pl={4}>
-                                    <Title content="Nombre de conseillers mobilité" color="black" size="h6" />
+                                    <Title content="Nombre de conseiller.ère.s mobilité en 2019" color="black" size="h6" />
                                 </Box>
                             </Grid>
 
@@ -81,7 +81,7 @@ const FiguresSection = () => {
                                     } color="black" />
                                 </Box>
                                 <Box pl={4}>
-                                    <Title content="Nombre de jours de location" color="black" size="h6" />
+                                    <Title content="Nombre de jours de location en 2019" color="black" size="h6" />
                                 </Box>
                             </Grid>
 
@@ -97,7 +97,7 @@ const FiguresSection = () => {
                                     } color="black" />
                                 </Box>
                                 <Box pl={4}>
-                                    <Title content="Nombre d'adhérents" color="black" size="h6" />
+                                    <Title content="Nombre d'adhérents en 2019" color="black" size="h6" />
                                 </Box>
                             </Grid>
                         </Grid>
