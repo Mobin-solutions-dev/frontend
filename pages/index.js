@@ -37,33 +37,6 @@ const useStyles = makeStyles((theme) => ({
     height: "100%",
     minHeight: "650px",
   },
-  image: {
-    position: "absolute",
-    top: 0,
-    left: 0,
-    // width: "100%",
-    // height: "100%",
-    // minHeight: "500px",
-    "@media (min-width: 960px)": {
-      background: `url(static/icons/main_image2.png)`,
-      backgroundRepeat: "no-repeat",
-      backgroundSize: "100% auto",
-      opacity: 0.3,
-      width: "100%",
-      height: "100%",
-      minHeight: "650px",
-    },
-    "@media (max-width: 960px)": {
-      backgroundColor: theme.palette.blue.main,
-      opacity: 0.1,
-      border: `20px solid ${theme.palette.blue.main}`,
-      borderRadius: "10px",
-      minHeight: "300px",
-      width: "100%",
-      height: "100%",
-
-    }
-  },
   text: {
     position: "absolute",
     paddingTop: "5%",
@@ -83,16 +56,16 @@ const useStyles = makeStyles((theme) => ({
     }
   },
   mainImage2: {
-    // maxHeight: '100%',
+    maxHeight: "calc(100vh - 160px - 160px)", // Window height minus Header minus Banner
     maxWidth: '100%',
     // opacity: 0.9,
     display: "block",
     textAlign: 'center'
   },
-  mainBox: {
-    minHeight: '100%',
-    maxHeight: '100%',
-  },
+  // mainBox: {
+  //   minHeight: '100%',
+  //   maxHeight: '100%',
+  // },
   flexBox: {
     display: "flex",
     alignItems: 'center'
@@ -105,7 +78,7 @@ const Home = ({ news = [] }) => {
   return (
     <Layout>
       <Container maxWidth="xl">
-        <section>
+        <section className={classes.main}>
           <Banner />
           <Grid container>
             <Grid item xs={12} md={12} align="center">
@@ -116,26 +89,17 @@ const Home = ({ news = [] }) => {
                     src="/static/illus/main_image_texte.png"
                     alt="mobilite"
                   />
-                  <Grid container justify="center">
+                  {/* <Grid container justify="center">
                     <Box mb={3} mt={3} className={classes.flexBox}>
                       <Text center size="h4" color="#2699b0" bold>
                         <span style={{ fontStyle: "italic" }}>Vers une mobilité</span> <span style={{ fontStyle: "italic", color: "#e95e2e" }}>autonome et durable</span>
                       </Text>
                     </Box>
-                  </Grid>
+                  </Grid> */}
                 </Box>
               </Grid>
             </Grid>
           </Grid>
-          {/* <div className={classes.wrapper}>
-            <div className={classes.image}></div>
-            <div className={classes.text}>
-              <Banner />
-              <Box className={classes.title}>
-                <Title letterspacing="1px" color="#e95e2e" size="h3" bold content="Les acteurs territoriaux de la mobilité inclusive" />
-              </Box>
-            </div>
-          </div> */}
         </section>
         <section id="figures">
           <FiguresSection />

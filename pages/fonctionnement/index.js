@@ -41,6 +41,13 @@ const useStyles = makeStyles((theme) => ({
             order: 1,
         },
     },
+    list: {
+        color: theme.palette.blue.main,
+    },
+    listItem: {
+        marginBottom: '0px',
+        marginTop: '0px'
+    }
 }))
 
 const Fonctionnement = ({ }) => {
@@ -79,18 +86,21 @@ const Fonctionnement = ({ }) => {
                                 </Box>
                                 <Box mt={0}>
                                     <Text size="body1" color="#000">
-                                        <span>Le Réseau Mob'In France fédère les régions Mob'In, qui elles-mêmes fédèrent des structures adhérentes. Vous retrouverez la liste de ces structures régionales en cliquant sur la région souhaitée.</span>
+                                        <span>Le Réseau Mob'In France fédère les régions Mob'In, qui elles-mêmes fédèrent des structures adhérentes. Vous retrouverez la liste de ces structures locales en cliquant sur la région souhaitée.</span>
                                         <br />
                                         <br />
+                                        <ul className={classes.list}>
+                                            {
+                                                regions.map((region, index) => (
+                                                    <Fragment key={index}>
+                                                        <li className={classes.listItem}><Link href={`/adherents/regions/${region}`}>{`Mob'In ${region}`}</Link></li>
+                                                        <br />
+                                                    </Fragment>
+                                                ))
+                                            }
+                                        </ul>
 
-                                        {
-                                            regions.map((region, index) => (
-                                                <Fragment key={index}>
-                                                    <li><Link href={`/adherents/regions/${region}`}>{`Mob'In ${region}`}</Link></li>
-                                                    <br />
-                                                </Fragment>
-                                            ))
-                                        }
+                                        <span>Les régions Mob’In sont des associations régionales, indépendantes dans leur fonctionnement et financement.</span>
                                     </Text>
                                 </Box>
                             </Grid>

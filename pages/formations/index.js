@@ -82,7 +82,7 @@ const Formations = () => {
                                     <a>
                                         <img
                                             className={classes.mainImage}
-                                            src="/static/cadres/webinaire.png"
+                                            src="/static/cadres/webinaires.png"
                                             alt="mobilite"
                                         />
                                     </a>

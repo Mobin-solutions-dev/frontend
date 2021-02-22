@@ -9,6 +9,12 @@ const useStyles = makeStyles((theme) => ({
         display: "flex",
         alignItems: 'center'
     },
+    greyBox: {
+        marginTop: "1em",
+        backgroundColor: theme.palette.gray.main,
+        borderRadius: '10px',
+        padding: "1em"
+    },
 }))
 
 const PouvoirBougerPage = ({ }) => {
@@ -25,13 +31,32 @@ const PouvoirBougerPage = ({ }) => {
                         <Title content="bouger" size="h4" bold letterspacing="2px" />
 
                     </Box>
-                    <Box mt={2} mb={2}>
-                        <Text size="h6">
-                            Le réseau Mob’In propose une offre globale et coordonnée d’actions qui permettent d’agir au service du « Savoir bouger » et du « Pouvoir bouger ».
+                    <Grid
+                        container
+                        direction="column"
+                        justify="center"
+                        alignItems="center"
+                    >
+                        <Grid item xs={10} md={8}>
+                            <Box style={{ justifyContent: 'center' }}>
+                                <Text size="body2" bold center>
+                                    <span style={{ fontStyle: 'italic', color: "#2699b0" }}>
+                                        Agir pour la mobilité inclusive et solidaire c’est proposer des solutions physiquement et financièrement accessibles aux catégories de populations exclues d’un accès à la mobilité (personnes à faibles revenus, demandeurs d’emploi, travailleurs précaires, personnes âgées, personnes à mobilité réduite,...).
+                                </span>
+                                </Text>
+                            </Box>
+                        </Grid>
+                    </Grid>
+                    <Box className={classes.greyBox}>
+
+                        <Box mt={2} mb={2}>
+                            <Text size="h6">
+                                Le réseau Mob’In propose une offre globale et coordonnée d’actions qui permettent d’agir au service du « Savoir bouger » et du « Pouvoir bouger ».
                                 <br />
-                            <br />
+                                <br />
                             Les actions au service du « Pouvoir bouger » permettent de lever les freins matériels et financiers et de disposer de moyens matériels pour se déplacer.
                     </Text>
+                        </Box>
                     </Box>
                     <Box mt={4} mb={2}>
                         <Grid container spacing={2}>
@@ -75,8 +100,8 @@ const PouvoirBougerPage = ({ }) => {
                         </Grid>
                     </Box>
                     <Box mt={4}>
-                        <Text fontSize="18px">
-                            Vous retrouverez la liste complète des activités proposées par les adhérents <Link href="/adherents">ici</Link>.
+                        <Text size="h6">
+                            Vous retrouverez la liste complète des activités proposées par les adhérents <span onClick={() => window.location.href = "/adherents"}><Link href="#">ici</Link></span>.
                         </Text>
                     </Box>
                 </Container>

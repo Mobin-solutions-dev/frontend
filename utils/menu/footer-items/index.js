@@ -24,7 +24,7 @@ export const footerLinks = [
 export const footerButtons = [
     {
         title: "Rejoignez-nous",
-        path: "/devenir-partenaire"
+        path: "/rejoignez-nous"
     },
     {
         title: "Inscription à la newsletter",

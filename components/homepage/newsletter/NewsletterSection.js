@@ -81,10 +81,13 @@ const FiguresSection = () => {
                 <Grid container>
                     <Grid item xs={12} md={12} className={classes.grid}>
                         <Box className={classes.box}>
-                            <Title color="#2699b0" content="Vous souhaitez être tenu au courant des actualités du réseau ?" size="h6" uppercase bold letterspacing="2px" />
-                            <Text size="body1" bold color="#e95e2e">
+                            <Box mb={3}>
+                                <Title color="#2699b0" content="Vous souhaitez être tenu.e au courant des actualités du réseau ?" size="h6" bold letterspacing="2px" />
+                            </Box>
+                            <Title color="#e95e2e" content="Inscrivez-vous à notre newsletter mensuelle !" size="body1" uppercase bold letterspacing="2px" />
+                            {/* <Text center size="body1" bold color="#e95e2e">
                                 Inscrivez-vous à notre newsletter mensuelle !
-                            </Text>
+                            </Text> */}
                             {/* <FormControl fullWidth variant="outlined" className={classes.form}>
                                 <InputLabel htmlFor="outlined-adornment-amount">Email</InputLabel>
                                 <OutlinedInput

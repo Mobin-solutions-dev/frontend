@@ -46,7 +46,7 @@ const Partenaires = ({ partners = [] }) => {
                             <Box mr={1}>
                                 <Title color="#2699b0" content="Nos" size="h4" bold letterspacing="2px" />
                             </Box>
-                            <Title content="partenaires" size="h4" bold letterspacing="2px" />
+                            <Title content="partenaires nationaux" size="h4" bold letterspacing="2px" />
 
                         </Box>
                     </Grid>

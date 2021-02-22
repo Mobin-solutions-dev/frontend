@@ -57,7 +57,7 @@ const RegionFilters = ({ departments = [], onChangeMainDepartementSelected }) =>
         <Grid container>
             <Grid item xs={12} md={4} className={classes.grid}>
                 <FormControl className={classes.formControl}>
-                    <InputLabel className={classes.inputLabel}>Département du siège</InputLabel>
+                    <InputLabel className={classes.inputLabel}>Département</InputLabel>
                     <Select
                         multiple
                         value={mainDepartementSelected}

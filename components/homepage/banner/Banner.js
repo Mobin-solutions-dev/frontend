@@ -4,6 +4,9 @@ import { makeStyles } from '@material-ui/core/styles';
 import { Icon, Title } from '../../global'
 
 const useStyles = makeStyles((theme) => ({
+    bannerBox: {
+        minHeight: '160px'
+    },
     box: {
         display: "flex",
         flexDirection: "column",
@@ -24,7 +27,7 @@ const Banner = ({ }) => {
     return (
         <Grid container spacing={2}>
             <Grid item xs={12}>
-                <Box>
+                <Box className={classes.bannerBox}>
                     <Grid container justify="center" spacing={4}>
                         <Grid item className={classes.box}>
                             <Link href="/adherents">

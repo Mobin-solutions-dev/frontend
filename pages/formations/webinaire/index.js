@@ -1,3 +1,4 @@
+import { Fragment } from 'react'
 import { Container, Box, Grid } from '@material-ui/core'
 import { Layout, Title, Text } from '../../../components'
 import { getTrainings } from '../../../utils'
@@ -37,11 +38,17 @@ const useStyles = makeStyles((theme) => ({
             order: 1,
         },
     },
+    list: {
+        color: theme.palette.blue.main,
+    },
+    listItem: {
+        marginBottom: '0px',
+        marginTop: '0px'
+    }
 }))
 
 const Webinaire = ({ trainings = [] }) => {
     const filteredTrainings = trainings.filter(training => training?.formation_categorie?.type === "Webinaire")
-
     const classes = useStyles()
     return (
         <Layout>
@@ -53,6 +60,7 @@ const Webinaire = ({ trainings = [] }) => {
                             <Title color="#2699b0" content="webinaire" size="h4" bold letterspacing="2px" />
                         </Box>
                     </Grid>
+                    {}
                     {
                         !filteredTrainings || filteredTrainings.length < 1 && (
                             <Grid container>
@@ -61,18 +69,23 @@ const Webinaire = ({ trainings = [] }) => {
                         )
                     }
                     {
-                        filteredTrainings.map((training, i) => (
-                            <Grid container key={i}>
-                                <Box mt={2}>
-                                    <Text fontSize="18px" color="#2699b0">
-                                        <Link href={`/formations/${training.id}`} style={{ color: 'inherit', textDecoration: 'inherit' }}>
-                                            {training.titre}
-                                        </Link>
-                                    </Text>
-                                </Box>
-
-                            </Grid>
-                        ))
+                        filteredTrainings && (
+                            <Box className={classes.greyBox}>
+                                <ul className={classes.list}>
+                                    {
+                                        filteredTrainings.map((training, index) => (
+                                            <Fragment key={index}>
+                                                <li className={classes.listItem}><Link href={`/formations/${training.id}`} style={{ color: 'inherit', textDecoration: 'inherit' }}>
+                                                    {training.titre}
+                                                </Link>
+                                                </li>
+                                                <br />
+                                            </Fragment>
+                                        ))
+                                    }
+                                </ul>
+                            </Box>
+                        )
                     }
 
                 </Container>

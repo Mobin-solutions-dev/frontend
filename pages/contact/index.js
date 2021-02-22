@@ -86,7 +86,7 @@ const Contact = ({ contactEmails = [] }) => {
                         </Box>
                         <Box mb={2}>
                             <Text size="body1">
-                                Vous souhaitez avoir des informations sur l’accompagnement proposé par Mob’In France ou vous avez un projet de mobilité solidaire sur votre territoire ou votre entreprise ?
+                                Vous souhaitez avoir des informations sur l’accompagnement proposé par Mob’In France, vous êtes intéressé.e pour devenir partenaire du Réseau Mob’In ou bien vous avez un projet de mobilité solidaire sur votre territoire ou votre entreprise ?
                                 N’hésitez pas à nous laisser un message par le biais de ce formulaire de contact :
                             </Text>
                         </Box>

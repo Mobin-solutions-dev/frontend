@@ -4,6 +4,7 @@ import { Layout, Title } from '../../components'
 import ReactHtmlParser from 'react-html-parser';
 import { FranceSVG } from '../../utils'
 import { makeStyles } from '@material-ui/core/styles';
+import Router from 'next/router'
 
 const useStyles = makeStyles((theme) => ({
     flexBox: {
@@ -15,6 +16,11 @@ const useStyles = makeStyles((theme) => ({
 const Adherents = ({ }) => {
     const classes = useStyles()
     const html = FranceSVG
+
+    // useEffect(() => {
+    //     window.location.reload();
+
+    // }, [])
 
     return (
         <Layout>

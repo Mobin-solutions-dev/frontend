@@ -91,7 +91,7 @@ const Presentation = ({ }) => {
                                     <br />
                                     <Title color="#2699b0" italic bold size="h5" content="+ de 30 000 personnes accompagnées" />
                                     <br />
-                                    <Title color="#2699b0" italic bold size="h5" content="+ de 130 conseillers mobilité" />
+                                    <Title color="#2699b0" italic bold size="h5" content="+ de 130 conseillers et conseillères mobilité" />
                                     <br />
                                 </Box>
 

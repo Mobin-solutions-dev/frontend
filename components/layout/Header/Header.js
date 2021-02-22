@@ -37,6 +37,7 @@ const useStyles = makeStyles((theme) => ({
     navbar: {
         backgroundColor: theme.palette.background.default,
         marginBottom: "10px",
+        height: '140px'
         // "@media (min-width: 960px)": {
         //     position: "-webkit-sticky",
         //     position: "sticky",
@@ -100,7 +101,7 @@ const useStyles = makeStyles((theme) => ({
         backgroundColor: 'transparent',
         // border: `0.5px ${theme.palette.blue.main} solid`,
         '&:hover': {
-            backgroundColor: theme.palette.blue.main,
+            backgroundColor: theme.palette.grey.secondary,
             color: "#fff",
             border: 'none'
         }

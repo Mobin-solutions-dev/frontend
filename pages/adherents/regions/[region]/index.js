@@ -177,7 +177,7 @@ const Region = ({ departments = [], adherents = [], coordinateurs = [], expertis
                                 <Grid container>
                                     <Grid item xs={12} className={classes.grid}>
                                         <FormControl className={classes.formControl}>
-                                            <InputLabel className={classes.inputLabel}>Département du siège</InputLabel>
+                                            <InputLabel className={classes.inputLabel}>Département</InputLabel>
                                             <Select
                                                 multiple
                                                 value={mainDepartementSelected}
