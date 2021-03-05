@@ -339,11 +339,16 @@ const Region = ({ departments = [], adherents = [], coordinateurs = [], expertis
                                                             uniqueCoordinateur.nom_charge_developpement && (
                                                                 <Grid container spacing={2}>
                                                                     <Grid item xs={6}>
-                                                                        <Title
-                                                                            fontSize="16px"
-                                                                            color="black"
-                                                                            bold
-                                                                            content="Chargé.e de développement" />
+                                                                        {
+                                                                            uniqueCoordinateur.nom_charge_developpement && (
+                                                                                <Title
+                                                                                    fontSize="16px"
+                                                                                    color="black"
+                                                                                    bold
+                                                                                    content="Chargé.e de développement" />
+                                                                            )
+                                                                        }
+
                                                                     </Grid>
                                                                     <Grid item xs={6}>
                                                                         <Box mb={1}>
@@ -352,6 +357,20 @@ const Region = ({ departments = [], adherents = [], coordinateurs = [], expertis
                                                                                 color="#2699b0"
                                                                                 bold
                                                                                 content={uniqueCoordinateur.nom_charge_developpement || ""} />
+                                                                        </Box>
+                                                                        <Box mb={1}>
+                                                                            <Title
+                                                                                fontSize="13px"
+                                                                                color="black"
+                                                                                bold
+                                                                                content={uniqueCoordinateur.telephone_charge_developpement || ""} />
+                                                                        </Box>
+                                                                        <Box mb={1}>
+                                                                            <Title
+                                                                                fontSize="13px"
+                                                                                color="black"
+                                                                                bold
+                                                                                content={<a href={`mailto:${uniqueCoordinateur.email_charge_developpement}`}>{uniqueCoordinateur.email_charge_developpement}</a> || ""} />
                                                                         </Box>
                                                                     </Grid>
                                                                 </Grid>
