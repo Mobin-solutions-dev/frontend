@@ -143,8 +143,8 @@ const Presse = ({ newsletters = [], revuesPresse = [], communiquesPresse = [] })
                                         newsletters && newsletters.map((item, index) => (
                                             <Grid item xs={12} md={6} key={index}>
                                                 <Box mb={1}>
-                                                    <Text color="#b1b3b4" size="body1" uppercase>
-                                                        {item.trimestre || ""} {item.annee || ""}
+                                                    <Text color="#b1b3b4" size="body1" uppercase bold>
+                                                        {item?.trimestre?.type || ""} {item.annee || ""}
                                                     </Text>
                                                 </Box>
                                                 <Box className={classes.flex} mb={2}>

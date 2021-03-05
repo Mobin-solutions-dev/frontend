@@ -8,7 +8,14 @@ import { makeStyles } from '@material-ui/core/styles';
 const useStyles = makeStyles((theme) => ({
     mainImage: {
         maxHeight: '100%',
-        maxWidth: 'auto',
+        maxWidth: '100%',
+        // opacity: 0.9,
+        display: "block",
+        textAlign: 'center'
+    },
+    mainImage2: {
+        maxHeight: '100%',
+        maxWidth: '60%',
         // opacity: 0.9,
         display: "block",
         textAlign: 'center'
@@ -17,6 +24,12 @@ const useStyles = makeStyles((theme) => ({
         display: "flex",
         flexDirection: "column",
         justifyContent: "center",
+        marginBottom: "1em"
+    },
+    gridItem2: {
+        display: "flex",
+        flexDirection: "column",
+        // justifyContent: "center",
         marginBottom: "1em"
     },
     flex: {
@@ -107,9 +120,9 @@ const Fonctionnement = ({ }) => {
                         </Grid>
                     </Box>
 
-                    <Box mb={5}>
+                    <Box mb={2}>
                         <Grid container spacing={4}>
-                            <Grid item xs={12} sm={6} md={8}>
+                            <Grid item xs={12} md={6}>
                                 <Box mt={4} mb={4} className={classes.flex}>
                                     <Box mr={2}>
                                         <Icon
@@ -135,6 +148,17 @@ const Fonctionnement = ({ }) => {
                                         </ul>
                                     </Text>
                                 </Box>
+                                <Box mt={1}>
+                                    <img
+                                        className={classes.mainImage2}
+                                        src="/static/illus/team.png"
+                                        alt="mobilite"
+                                    />
+                                </Box>
+
+
+                            </Grid>
+                            <Grid item xs={12} md={6} className={classes.gridItem2}>
                                 <Box mt={4} mb={4} className={classes.flex}>
                                     <Box mr={2}>
                                         <Icon
@@ -159,6 +183,15 @@ const Fonctionnement = ({ }) => {
                                         </ul>
                                     </Text>
                                 </Box>
+
+                            </Grid>
+                        </Grid>
+                    </Box>
+
+                    <Box mb={5}>
+                        <Grid container spacing={4}>
+                            <Grid item xs={12} sm={12} md={12}>
+
                                 <Box mt={4} mb={4} className={classes.flex}>
                                     <Box mr={2}>
                                         <Icon
@@ -196,13 +229,6 @@ const Fonctionnement = ({ }) => {
                                     </Box>
                                     <Title content="Les rapports d'activité" size="h5" bold letterspacing="1px" />
                                 </Box>
-                            </Grid>
-                            <Grid item xs={12} sm={6} md={4} className={classes.gridItem}>
-                                <img
-                                    className={classes.mainImage}
-                                    src="/static/illus/team.png"
-                                    alt="mobilite"
-                                />
                             </Grid>
                         </Grid>
                     </Box>
