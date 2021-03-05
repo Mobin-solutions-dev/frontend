@@ -50,9 +50,9 @@ const Footer = ({ }) => {
                             {
                                 footerLinks && footerLinks.map((link, index) => (
                                     <ListItem key={index}>
-                                        <Link href={link ?.path || "/" }>
+                                        <Link href={link?.path || "/"}>
                                             <a className={classes.link}><Text bold color="#fff">
-                                                {link ?.title || ""}
+                                                {link?.title || ""}
                                             </Text></a>
                                         </Link>
                                     </ListItem>
@@ -77,13 +77,13 @@ const Footer = ({ }) => {
                     </Grid>
                     <Grid item xs={12} md={4} className={classes.gridItem}>
                         <List>
-                            <ListItem>
+                            {/* <ListItem>
                                 <Link href="/">
                                     <a target="_blank" className={classes.link}>
                                         <LinkedIn className={classes.icon} />
                                     </a>
                                 </Link>
-                            </ListItem>
+                            </ListItem> */}
                             <ListItem>
                                 <Link href="https://twitter.com/mobin_solutions">
                                     <a target="_blank" className={classes.link}>

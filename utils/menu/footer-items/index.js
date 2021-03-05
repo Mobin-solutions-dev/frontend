@@ -32,7 +32,7 @@ export const footerButtons = [
     },
     {
         title: "Presse",
-        path: "/"
+        path: "/presse"
     },
 ]
 

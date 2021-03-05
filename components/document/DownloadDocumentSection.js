@@ -34,7 +34,7 @@ const DownloadDocumentSection = ({ doc = {} }) => {
             <Box mb={3}>
                 {
                     documents && documents.map((doc, index) => (
-                        <Box className={classes.flex}>
+                        <Box className={classes.flex} key={index}>
                             <Box mr={3}>
                                 <a className={classes.downloadIcon} target="_blank" href={doc.url || "#"}>
                                     <GetAppIcon />
