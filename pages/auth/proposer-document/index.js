@@ -147,9 +147,14 @@ const PrivateShareDocument = ({ themes = [], contactEmails = [] }) => {
                     >
                         <Grid item xs={10} md={8}>
                             <Paper className={classes.paper}>
-                                <Box mb={4}>
+                                <Box mb={2}>
                                     <Text size="h5" letterspacing="2px" bold>
                                         <span style={{ color: "#e95e2e" }}>Proposer une ressource</span> <span style={{ color: "#2699b0" }}>au réseau</span>
+                                    </Text>
+                                </Box>
+                                <Box mb={4}>
+                                    <Text size="body2" bold color="#4ba829">
+                                        Vous avez un nouveau projet, vous venez de signer une nouvelle convention, vous avez un article dans la presse, vous avez recruté un nouvel adhérent, toutes les actualités sont les bienvenues ! N'hésitez pas à déposer un fichier en format PDF pour que Mob'In en soit informé et puisse diffuser cette actualité aux autres membres du réseau. Merci d'avance !
                                     </Text>
                                 </Box>
                                 <Divider color="#b1b3b4" />
