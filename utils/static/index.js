@@ -21,7 +21,7 @@ export const bureau = [
     },
     {
         name: "Pascal Grand",
-        position: "Vice-président"
+        position: "VP Professionnalisation"
     },
     {
         name: "Didier Luces",
@@ -33,6 +33,6 @@ export const bureau = [
     },
     {
         name: "Françoise Huguet",
-        position: "Administratrice"
+        position: "VP Communication"
     },
 ]

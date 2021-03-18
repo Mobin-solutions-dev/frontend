@@ -206,6 +206,11 @@ const Fonctionnement = ({ }) => {
                                         Le conseil d’administration est composé d’au moins 5 membres en y incluant des représentant.e.s des collègues adhérents. Chaque membre dispose d’une voix. Les membres élu.e.s sont élu.e.s pour deux années et rééligibles sans limitation du nombre de mandat.
                                     </Text>
                                 </Box>
+                                <Box mt={2}>
+                                    <Text size="body1" color="#000">
+                                        <a target="_blank" href="/static/legal/organigramme.pdf">Télécharger l'organigramme de Mob'In France</a>
+                                    </Text>
+                                </Box>
                                 <Box mt={4} mb={4} className={classes.flex}>
                                     <Box mr={2}>
                                         <Icon
