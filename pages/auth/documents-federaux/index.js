@@ -1,9 +1,21 @@
+import { useContext, useEffect, useState } from 'react'
 import { Container, Box, Grid } from '@material-ui/core'
 import { Layout, Text, DownloadDocumentSection } from '../../../components'
 import { getResources, isTokenValid } from '../../../utils'
 import Cookies from 'cookies'
+import AppContext from "../../../context/AppContext";
 
 const PrivateNationalDocs = ({ docs = [] }) => {
+    const { user } = useContext(AppContext);
+    const [docsToDisplay, setDocsToDisplay] = useState(docs)
+
+    useEffect(() => {
+        if (user.role.type !== "mobin_admin") {
+            const newsDocs = docs.filter(d => d.contenu_mobin_admin !== true)
+            setDocsToDisplay(newsDocs)
+        }
+    }, [])
+
     return (
         <Layout>
             <Box mt={7}>
@@ -19,7 +31,7 @@ const PrivateNationalDocs = ({ docs = [] }) => {
                     <Box mb={2} mt={4}>
                         <Grid container spacing={10}>
                             {
-                                docs && docs.map((doc, index) => (
+                                docsToDisplay && docsToDisplay.map((doc, index) => (
                                     <Grid key={index} item xs={12} md={6}>
                                         <DownloadDocumentSection doc={doc} />
                                     </Grid>

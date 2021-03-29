@@ -7,8 +7,8 @@ export const integracodeText = () => {
         <Text size="body1" color="#000">
             <br />
             Obtenir le permis de conduire est une condition souvent nécessaire à l’accès à la mobilité et à l’emploi, notamment dans les territoires ruraux.
-Le permis B est également un cadre efficace à la socialisation et à l’apprentissage de la règle et de la citoyenneté. La préparation au code s’avère quasiment impossible sans formation préparatoire
-spécifique.
+            Le permis B est également un cadre efficace à la socialisation et à l’apprentissage de la règle et de la citoyenneté. La préparation au code s’avère quasiment impossible sans formation préparatoire
+            spécifique.
             <br />
             <br />
             Depuis 2018, les acteurs du réseau Mob’In développent ce programme en partenariat avec le Ministère de l’Intérieur pour :
@@ -48,12 +48,12 @@ spécifique.
                     </Box>
                     <Text>
                         une <span style={{ color: "#2699b0", fontWeight: 'bold' }}>appropriation des codes de la citoyenneté</span> au travers d'un apprentissage basé sur le REMC.
-                </Text>
+                    </Text>
                 </Box>
             </Box>
             <br />
 
-            Depuis 2019, la marque Intégracode est déposée à l’INPI.
+            Depuis 2019, la marque Intégracode® est déposée à l’INPI.
             <br />
             <br />
             <br />
@@ -76,7 +76,7 @@ spécifique.
                     <Text>
                         Plus de <span style={{ color: "#2699b0", fontWeight: 'bold' }}>100 professionnels</span> formés à l’animation de cette formation
 
-                </Text>
+                    </Text>
                 </Box>
                 <Box mt={4} mb={4} style={{ display: 'flex', alignItems: "center" }}>
                     <Box mr={2}>
@@ -93,7 +93,7 @@ spécifique.
             </Box>
             <br />
             <br />
-            <a target="_blank" href="/static/integracode/presentation.pdf">Télécharger la maquette de présentation</a>
+            <a target="_blank" href="/static/integracode/presentation.pdf">Télécharger la plaquette de présentation</a>
             <br />
             <a target="_blank" href="/static/integracode/fiche_action_integracode.pdf">Télécharger la fiche action</a>
 
@@ -104,13 +104,13 @@ spécifique.
                 <li>
                     <span><strong>
                         Pascal Grand
-                                                </strong></span>
+                    </strong></span>
                     <br /> Coordinateur national
-                                                <br />
+                    <br />
                     <a href="mailto:integracode@mobin-solutions.fr"> integracode@mobin-solutions.fr</a>
                     <br />
-                                                06.16.99.90.29
-                                            </li>
+                    06.16.99.90.29
+                </li>
             </ul>
         </Text >
     )

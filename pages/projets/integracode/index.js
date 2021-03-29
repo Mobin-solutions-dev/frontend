@@ -19,7 +19,7 @@ const Integracode = ({ }) => {
             <Box mt={7}>
                 <Container maxWidth="lg">
                     <Box mb={3} className={classes.flexBox}>
-                        <Title color="#4ba829" content="Intégracode" size="h4" bold letterspacing="2px" />
+                        <Title color="#4ba829" content="Intégracode®" size="h4" bold letterspacing="2px" />
                     </Box>
                     <Box mb={2}>
                         <Text size="h5" letterspacing="2px" bold>

@@ -1,5 +1,14 @@
 export const savoirBouger = [
     {
+        title: "Ecole de conduite à statut associatif",
+        icon: "P.Autoécole.fb",
+        infos: [
+            "Proposer une formation adaptée et personnalisée à l’apprentissage du code de la route",
+            " Proposer une formation adaptée et personnalisée à l’apprentissage de la conduite",
+            " Accompagner les publics tout au long de leur parcours",
+        ]
+    },
+    {
         title: "Apprendre à utiliser les transports en commun et à se déplacer",
         icon: "P.Déplacement2.fb",
         infos: [

@@ -1,11 +1,11 @@
-// import { useState } from 'react'
+import { useState } from 'react'
 import { Container, Box, Grid, TextField, Button, MenuItem, Menu } from '@material-ui/core'
 import { makeStyles } from '@material-ui/core/styles';
 import { Layout, Title, Text, Icon } from '../../components'
-// import { sendMail } from "../../src/services/sendEmail";
-// import { getContactEmails } from '../../utils'
-import Link from 'next/link'
-import Router from 'next/router'
+import { sendMail } from "../../src/services/sendEmail";
+import { getContactEmails } from '../../utils'
+// import Link from 'next/link'
+// import Router from 'next/router'
 
 const useStyles = makeStyles((theme) => ({
     textField: {
@@ -32,52 +32,52 @@ const useStyles = makeStyles((theme) => ({
 const BecomePartner = ({ contactEmails }) => {
     const classes = useStyles();
 
-    // const [message, setMessage] = useState("")
-    // const [errorMessage, setErrorMessage] = useState(null)
-    // const [successMessage, setSuccessMessage] = useState(null)
+    const [message, setMessage] = useState("")
+    const [errorMessage, setErrorMessage] = useState(null)
+    const [successMessage, setSuccessMessage] = useState(null)
 
-    // const [senderEmail, setSenderEmail] = useState("")
-    // const [errorSenderEmail, setErrorSenderEmail] = useState(null)
+    const [senderEmail, setSenderEmail] = useState("")
+    const [errorSenderEmail, setErrorSenderEmail] = useState(null)
 
-    // const minCharacters = 10
+    const minCharacters = 10
 
-    // const validateEmail = (email) => {
-    //     const re = /\S+@\S+\.\S+/;
-    //     return re.test(email);
-    // }
+    const validateEmail = (email) => {
+        const re = /\S+@\S+\.\S+/;
+        return re.test(email);
+    }
 
-    // const handleClick = async () => {
-    //     setErrorMessage(null)
-    //     setErrorSenderEmail(null)
-    //     if (message.length < minCharacters) {
-    //         setErrorMessage(`Votre message doit contenir au moins ${minCharacters} caractères.`)
-    //         return
-    //     }
+    const handleClick = async () => {
+        setErrorMessage(null)
+        setErrorSenderEmail(null)
+        if (message.length < minCharacters) {
+            setErrorMessage(`Votre message doit contenir au moins ${minCharacters} caractères.`)
+            return
+        }
 
-    //     if (!validateEmail(senderEmail)) {
-    //         setErrorSenderEmail("Merci de saisir votre email de contact.")
-    //         return
-    //     }
+        if (!validateEmail(senderEmail)) {
+            setErrorSenderEmail("Merci de saisir votre email de contact.")
+            return
+        }
 
 
-    //     let emails = contactEmails.map(e => {
-    //         return { email: e.email }
-    //     })
-    //     let variables = {
-    //         message,
-    //         emails,
-    //         senderEmail
-    //     }
-    //     let response = await sendMail(variables);
+        let emails = contactEmails.map(e => {
+            return { email: e.email }
+        })
+        let variables = {
+            message,
+            emails,
+            senderEmail
+        }
+        let response = await sendMail(variables);
 
-    //     if (response) {
-    //         setMessage("")
-    //         setSenderEmail("")
-    //         alert("Message envoyé !")
-    //     } else {
-    //         alert("Erreur dans l'envoi du message. Veuillez recommencer.")
-    //     }
-    // }
+        if (response) {
+            setMessage("")
+            setSenderEmail("")
+            alert("Message envoyé !")
+        } else {
+            alert("Erreur dans l'envoi du message. Veuillez recommencer.")
+        }
+    }
 
     return (
         <Layout>
@@ -92,20 +92,20 @@ const BecomePartner = ({ contactEmails }) => {
                                 <Text size="h6" letterspacing="0px">
                                     <span>Vous êtes opérateur de mobilité solidaire et vous souhaitez rejoindre le réseau Mob’In ?</span>
                                     <br />
-                                    <span>N’hésitez pas à contacter directement le responsable de la région concernée.</span>
+                                    <span> N’hésitez pas à nous laisser un message par le biais de ce formulaire de contact en indiquant votre région et département.</span>
                                 </Text>
-                                <Box mb={3} mt={3}>
+                                {/* <Box mb={3} mt={3}>
                                     <Button
                                         className={classes.btn}
                                         onClick={() => window.location.href = "/adherents"}
                                     >
                                         Choisir ma région
-                               </Button>
-                                </Box>
+                                    </Button>
+                                </Box> */}
                             </Box>
                         </Grid>
                     </Grid>
-                    {/* <Grid container>
+                    <Grid container>
                         <Grid item xs={12} sm={8} md={3}>
                             <Box mt={2} mb={4}>
                                 <TextField
@@ -121,8 +121,8 @@ const BecomePartner = ({ contactEmails }) => {
                                 <Text color="#e5352c">{errorSenderEmail}</Text>
                             </Box>
                         </Grid>
-                    </Grid> */}
-                    {/* <Grid container>
+                    </Grid>
+                    <Grid container>
                         <Grid item xs={12}>
                             <Box mt={2} mb={4}>
                                 <TextField
@@ -151,20 +151,20 @@ const BecomePartner = ({ contactEmails }) => {
                             </Box>
                         </Grid>
 
-                    </Grid> */}
+                    </Grid>
                 </Container>
             </Box>
         </Layout >
     )
 }
 
-// export const getServerSideProps = async (context) => {
-//     const res = await fetch(getContactEmails)
-//     const emails = await res.json()
-//     return {
-//         props: { contactEmails: emails }
-//     };
-// }
+export const getServerSideProps = async (context) => {
+    const res = await fetch(getContactEmails)
+    const emails = await res.json()
+    return {
+        props: { contactEmails: emails }
+    };
+}
 
 
 export default BecomePartner
