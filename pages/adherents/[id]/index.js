@@ -111,6 +111,25 @@ const Adherent = ({ adherent = {} }) => {
                             <Box mb={3}>
                                 <Grid container>
                                     <Grid item xs={2} md={4}>
+                                        <Title color="#000" size="body2" bold content="Email" />
+                                    </Grid>
+                                    <Grid item xs={10} md={8}>
+                                        <Box className={classes.borderBox}>
+                                            <Text color="#000" size="body1">
+                                                {
+                                                    email
+                                                        ?
+                                                        <a href={`mailto:${email}`}>{email}</a>
+                                                        :
+                                                        ""
+                                                }</Text>
+                                        </Box>
+                                    </Grid>
+                                </Grid>
+                            </Box>
+                            <Box mb={3}>
+                                <Grid container>
+                                    <Grid item xs={2} md={4}>
                                         <Title color="#000" size="body2" bold content="Site internet" />
                                     </Grid>
                                     {
