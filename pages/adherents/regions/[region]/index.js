@@ -160,7 +160,7 @@ const Region = ({ departments = [], adherents = [], coordinateurs = [], expertis
                     <Grid container>
                         <Grid item xs={12} md={12}>
                             <Box mb={4}>
-                                <Title color="#2699b0" content={region} size="h4" bold letterspacing="2px" />
+                                <Title color="#2699b0" content={`Mob’In ${region}`} size="h4" bold letterspacing="2px" />
                             </Box>
                         </Grid>
                     </Grid>

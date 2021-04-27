@@ -37,7 +37,7 @@ const Adherents = ({ }) => {
                     </Grid>
                     <Grid container>
                         <Box mb={3}>
-                            <Title content="Sélectionnez une région:" bold size="body1" color="#000" />
+                            <Title content=" L’association Mob'In France fédère des régions Mob'In, qui elles-mêmes fédèrent des structures adhérentes. Vous retrouverez la liste de ces structures locales en cliquant sur la région souhaitée." bold size="body1" color="#000" />
                         </Box>
                     </Grid>
                 </Container>
