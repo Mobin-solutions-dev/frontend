@@ -62,7 +62,7 @@ export const menuItems = [
       },
       {
         title: "M[ob]ilitances",
-        link: "/projets/m[ob]ilitances",
+        link: "/projets/mobilitances",
       },
       {
         title: "Nos formations",
