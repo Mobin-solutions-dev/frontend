@@ -1,7 +1,7 @@
 export const pouvoirBouger = [
     {
         title: "Ecole de conduite à statut associatif",
-        icon: "P.Autoécole.fb",
+        icon: "P.Autoecole.fb",
         infos: [
             "Proposer une formation adaptée et personnalisée à l’apprentissage du code de la route",
             " Proposer une formation adaptée et personnalisée à l’apprentissage de la conduite",
@@ -18,7 +18,7 @@ export const pouvoirBouger = [
     },
     {
         title: "Conduite supervisée solidaire",
-        icon: "P.fb",
+        icon: "P.css.fb",
         infos: [
             "Permettre à des accompagnateurs bénévoles d’accompagner les publics en formation dans des véhicules mis à leur disposition",
             "Améliorer le niveau de conduite et créé un lien social souvent intergénérationnel : prise de confiance, amélioration du niveau technique, multiplication des situations de conduite",

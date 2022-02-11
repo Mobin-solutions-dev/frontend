@@ -1,7 +1,7 @@
 export const savoirBouger = [
     {
         title: "Ecole de conduite à statut associatif",
-        icon: "P.Autoécole.fb",
+        icon: "P.Autoecole.fb",
         infos: [
             "Proposer une formation adaptée et personnalisée à l’apprentissage du code de la route",
             " Proposer une formation adaptée et personnalisée à l’apprentissage de la conduite",
@@ -10,7 +10,7 @@ export const savoirBouger = [
     },
     {
         title: "Apprendre à utiliser les transports en commun et à se déplacer",
-        icon: "P.Déplacement2.fb",
+        icon: "P.Deplacement2.fb",
         infos: [
             "Connaître l’offre globale de transport en commun du territoire",
             "Savoir lire un plan et les horaires des transports",
@@ -20,7 +20,7 @@ export const savoirBouger = [
     },
     {
         title: "Vélo école",
-        icon: "P.Vélo.fb",
+        icon: "P.Velo.fb",
         infos: [
             "Apprendre à se déplacer avec un vélo sur piste",
             "Se mettre en situation réelle de conduite en circulation",
@@ -36,7 +36,7 @@ export const savoirBouger = [
     },
     {
         title: "Sensibilisation et promotion de l’écomobilité",
-        icon: "P.éco.fb",
+        icon: "P.eco.fb",
         infos: [
             "Aider au choix de la solution de déplacement la plus durable dans l’offre de mobilité",
             "Démontrer que la solution la plus durable peut générer des économies",
