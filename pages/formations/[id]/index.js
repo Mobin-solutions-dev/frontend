@@ -57,7 +57,7 @@ const Formation = ({ training = {} }) => {
             {contacts && (
               <Box mt={4}>
                 <Grid container spacing={2}>
-                  {contacts.map((contact, index) => (
+                  {contacts.map(({ contact }, index) => (
                     <Grid item key={contact.Nom}>
                       <Section
                         title={contact.Nom}
