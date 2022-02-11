@@ -126,22 +126,22 @@ const Formations = ({ trainings = [] }) => {
                       <div className={classes.mainContentTitle}>{training.titre}</div>
                       <div className={classes.separator}>
                         <div className={classes.mainContentDescription}>
-                          <div>14h</div>
-                          <div>4 demies journées</div>
+                          <div>{training.duree}</div>
+                          <div>{training.nombre_seances}</div>
                           <div>
-                            {training.formation_categorie.type === 'Webinaire'
-                              ? 'Webinaire'
-                              : 'Présentiel'}
+                            {training.formation_categorie.type}
                           </div>
                         </div>
                       </div>
                       <div className={classes.secondImageBackground} />
                     </div>
+                    {training.icon && (
                     <img
                       className={classes.secondImage}
-                      src="/static/icons/P.Déplacement2.png"
+                      src={`/static/icons/P.${training.icon}.png`}
                       alt=""
                     />
+                    )}
                   </Grid>
                 </Link>
               </Grid>
