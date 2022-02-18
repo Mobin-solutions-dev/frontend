@@ -64,6 +64,10 @@ export const menuItems = [
         title: 'M[ob]ilitances',
         link: '/projets/mobilitances',
       },
+      {
+        title: 'Nos Webinaires',
+        link: '/webinaires',
+      },
     ],
   },
   {
