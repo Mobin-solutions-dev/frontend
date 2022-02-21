@@ -95,7 +95,9 @@ const OneFormation = ({ training = {} }) => {
                 />
               </Grid>
             ))}
-            {contacts && (
+          </Grid>
+          {contacts && (
+            <Grid container spacing={2}>
               <Box mt={4} pl={1}>
                 <Grid container spacing={2}>
                   {contacts.map(({ contact }, index) => (
@@ -112,8 +114,9 @@ const OneFormation = ({ training = {} }) => {
                   ))}
                 </Grid>
               </Box>
-            )}
-            {footer && (
+            </Grid>
+          )}
+          {footer && (
             <Box mt={4} pl={1}>
               <div>
                 Pour retrouver le contenu de notre webinaire :
@@ -129,8 +132,7 @@ const OneFormation = ({ training = {} }) => {
                 </ul>
               </div>
             </Box>
-            )}
-          </Grid>
+          )}
         </Container>
       </Box>
     </Layout>
