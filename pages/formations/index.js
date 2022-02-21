@@ -11,7 +11,7 @@ export const getServerSideProps = async () => {
   return {
     props: {
       trainings: trainings
-        .filter((training) => training.formation_categorie.type === 'Présentiel')
+        .filter((training) => training.formation_categorie.type === 'Présentiel' || training.formation_categorie.type === 'Formation')
         .sort((a, b) => a.id - b.id),
     },
   };

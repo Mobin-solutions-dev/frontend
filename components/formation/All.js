@@ -77,6 +77,7 @@ const useStyles = makeStyles((theme) => ({
   },
   mainContentDescription: {
     padding: '8px 32px 0 32px',
+    fontWeight: 'bold',
     '& div': {
       marginTop: '4px',
     },
@@ -116,8 +117,7 @@ const AllFormations = ({ trainings = [], title, displayFooterImage }) => {
         <Container maxWidth="lg">
           <Grid container>
             <Box mb={5}>
-              <Title content="Nos" size="h4" bold letterspacing="2px" />
-              <Title color="#2699b0" content={title} size="h4" bold letterspacing="2px" />
+              <Title content={title} size="h4" bold letterspacing="2px" />
             </Box>
           </Grid>
           <Grid
@@ -134,7 +134,7 @@ const AllFormations = ({ trainings = [], title, displayFooterImage }) => {
                       <div className={classes.separator}>
                         <div className={classes.mainContentDescription}>
                           <div>
-                            {training.formation_categorie.type}
+                            {training.lieu || training.formation_categorie.type}
                           </div>
                           {training.nombre_seances && <div>{training.nombre_seances}</div>}
                           {training.duree && (
