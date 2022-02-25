@@ -48,7 +48,7 @@ const OneFormation = ({ training = {} }) => {
     eligible_opco,
     contacts,
     footer,
-    dates,
+    inscriptions,
   } = training;
 
   return (
@@ -72,18 +72,20 @@ const OneFormation = ({ training = {} }) => {
               </div>
             </Box>
           </Grid>
-          {dates && (
-            <Box mb={4}>
-              <div className={classes.dates}>
-                <span>{dates.Dates}</span>
+          {inscriptions && (
+          <Box mb={4}>
+            {inscriptions.map((inscription) => (
+              <Box mb={2} className={classes.dates}>
+                <span>{inscription.Dates}</span>
                 <Button
-                  onClick={() => window.open(dates.Lien, '_blank')}
+                  onClick={() => window.open(inscription.Lien, '_blank')}
                   className={classes.button}
                 >
                   S&lsquo;inscrire
                 </Button>
-              </div>
-            </Box>
+              </Box>
+            ))}
+          </Box>
           )}
           <Grid container spacing={2}>
             {HTML && HTML.map((section, index) => (
