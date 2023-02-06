@@ -1,7 +1,7 @@
 import { Container, Box, Grid } from '@material-ui/core';
 import Link from 'next/link';
 import { makeStyles } from '@material-ui/core/styles';
-import { Layout, Title } from '..';
+import { Layout, NewsletterSection, Title } from '..';
 
 const useStyles = makeStyles((theme) => ({
   mainContainer: {
@@ -158,6 +158,9 @@ const AllFormations = ({ trainings = [], title, displayFooterImage }) => {
               </Grid>
             ))}
           </Grid>
+          <section id="newsletter">
+            <NewsletterSection formation />
+          </section>
           {displayFooterImage && (
           <Box mt={4}>
             <Grid container>
