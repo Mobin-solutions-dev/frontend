@@ -81,7 +81,7 @@ const OneFormation = ({ training = {} }) => {
                   onClick={() => window.open(inscription.Lien, '_blank')}
                   className={classes.button}
                 >
-                  S&lsquo;inscrire
+                  Obtenir un Devis
                 </Button>
               </Box>
             ))}
