@@ -6,7 +6,6 @@ import { Layout, NewsletterSection, Title } from '..';
 const useStyles = makeStyles((theme) => ({
   mainContainer: {
     position: 'relative',
-    height: '320px',
     width: '260px',
   },
   mainImage: {
@@ -76,7 +75,7 @@ const useStyles = makeStyles((theme) => ({
     flex: '0 0 205px',
   },
   mainContentDescription: {
-    padding: '8px 32px 0 32px',
+    padding: '8px 32px',
     fontWeight: 'bold',
     '& div': {
       marginTop: '4px',
@@ -122,8 +121,9 @@ const AllFormations = ({ trainings = [], title, displayFooterImage }) => {
           </Grid>
           <Grid
             container
-            spacing={4}
+            spacing={8}
             justify="center"
+            alignItems="center"
           >
             {trainings.map((training) => (
               <Grid item xs={12} md={4} align="center" key={training.id}>
