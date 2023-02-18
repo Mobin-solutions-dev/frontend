@@ -2,6 +2,7 @@ import { Container, Box, Grid } from '@material-ui/core';
 import Link from 'next/link';
 import { makeStyles } from '@material-ui/core/styles';
 import { Layout, NewsletterSection, Title } from '..';
+import Qualiopi from './Qualiopi';
 
 const useStyles = makeStyles((theme) => ({
   mainContainer: {
@@ -115,10 +116,15 @@ const AllFormations = ({ trainings = [], title, displayFooterImage }) => {
       <Box mt={7}>
         <Container maxWidth="lg">
           <Grid container>
-            <Box mb={5}>
+            <Box>
               <Title content={title} size="h4" bold letterspacing="2px" />
             </Box>
           </Grid>
+          <section>
+            <Box mt={2} mb={5}>
+              <Qualiopi index={1} />
+            </Box>
+          </section>
           <Grid
             container
             spacing={8}

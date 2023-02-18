@@ -7,7 +7,7 @@ export const sendMail = async (variables) => {
       .post('/api/email', {
         message, emails, senderEmail, template: 21,
       })
-      .then((res) => res); 0;
+      .then((res) => res);
     return request.status === 200;
   } catch (err) {
     console.error(err);
@@ -24,7 +24,7 @@ export const sendResourceNotif = async (variables) => {
     };
     const request = await axios
       .post('/api/email', data)
-      .then((res) => res); 0;
+      .then((res) => res);
     return request.status === 200;
   } catch (err) {
     console.error(err);

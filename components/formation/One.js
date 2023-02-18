@@ -4,6 +4,7 @@ import {
 import {
   Layout, Title,
 } from '..';
+import Qualiopi from './Qualiopi';
 import Section from './Section';
 
 const useStyles = makeStyles((theme) => ({
@@ -35,6 +36,12 @@ const useStyles = makeStyles((theme) => ({
     '& span': {
       fontSize: '24px',
       fontWeight: 'bold',
+    },
+  },
+  contacts: {
+    flexWrap: 'wrap',
+    '@media (min-width: 800px)': {
+      flexWrap: 'nowrap',
     },
   },
 }));
@@ -98,26 +105,27 @@ const OneFormation = ({ training = {} }) => {
               </Grid>
             ))}
           </Grid>
-          {contacts && (
-            <Grid container spacing={2}>
-              <Box mt={4} pl={1}>
-                <Grid container spacing={2}>
-                  {contacts.map(({ contact }, index) => (
-                    <Grid item key={contact.Nom}>
-                      <Section
-                        title={contact.Nom}
-                        subTitle={contact.Fonction}
-                        index={index}
-                      >
-                        <div>{contact.Telephone}</div>
-                        <a href={`mailto:${contact.Email}`}>{contact.Email}</a>
-                      </Section>
-                    </Grid>
-                  ))}
+          <Grid container spacing={2}>
+            <Box mt={4} px={1}>
+              <Grid container spacing={2} alignItems="center" className={classes.contacts}>
+                {contacts && contacts.map(({ contact }, index) => (
+                  <Grid item key={contact.Nom}>
+                    <Section
+                      title={contact.Nom}
+                      subTitle={contact.Fonction}
+                      index={index}
+                    >
+                      <div>{contact.Telephone}</div>
+                      <a href={`mailto:${contact.Email}`}>{contact.Email}</a>
+                    </Section>
+                  </Grid>
+                ))}
+                <Grid item xs={12}>
+                  <Qualiopi index={contacts ? contacts.length + 1 : 0} />
                 </Grid>
-              </Box>
-            </Grid>
-          )}
+              </Grid>
+            </Box>
+          </Grid>
           {footer && (
             <Box mt={4} pl={1}>
               <div>
