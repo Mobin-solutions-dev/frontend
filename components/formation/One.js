@@ -1,9 +1,5 @@
-import {
-  Container, Box, Grid, makeStyles, Button,
-} from '@material-ui/core';
-import {
-  Layout, Title,
-} from '..';
+import { Container, Box, Grid, makeStyles, Button } from '@material-ui/core';
+import { Layout, Title } from '..';
 import Qualiopi from './Qualiopi';
 import Section from './Section';
 
@@ -64,65 +60,84 @@ const OneFormation = ({ training = {} }) => {
         <Container maxWidth="lg">
           <Grid container justify="center">
             <Box mb={3}>
-              <Title content={titre} size="h4" uppercase bold letterspacing="2px" />
+              <Title
+                content={titre}
+                size="h4"
+                uppercase
+                bold
+                letterspacing="2px"
+              />
               <div className={classes.subTitles}>
                 {eligible_opco && (
-                <div className={classes.subTitle}>
-                  Eligible au financement par des OPCO.
-                </div>
+                  <div className={classes.subTitle}>
+                    Eligible au financement par des OPCO.
+                  </div>
                 )}
                 {document_pdf && (
-                <div className={classes.subTitle}>
-                  <a target="_blank" href={document_pdf?.url} rel="noreferrer">Télécharger le document de présentation</a>
-                </div>
+                  <div className={classes.subTitle}>
+                    <a
+                      target="_blank"
+                      href={document_pdf?.url}
+                      rel="noreferrer"
+                    >
+                      Télécharger le document de présentation
+                    </a>
+                  </div>
                 )}
               </div>
             </Box>
           </Grid>
           {inscriptions && (
-          <Box mb={4}>
-            {inscriptions.map((inscription) => (
-              <Box mb={2} className={classes.dates}>
-                <span>{inscription.Dates}</span>
-                <Button
-                  onClick={() => window.open(inscription.Lien, '_blank')}
-                  className={classes.button}
-                >
-                  Obtenir un Devis
-                </Button>
-              </Box>
-            ))}
-          </Box>
+            <Box mb={4}>
+              {inscriptions.map((inscription) => (
+                <Box mb={2} className={classes.dates}>
+                  <span>{inscription.Dates}</span>
+                  <Button
+                    onClick={() => window.open(inscription.Lien, '_blank')}
+                    className={classes.button}
+                  >
+                    Obtenir un Devis
+                  </Button>
+                </Box>
+              ))}
+            </Box>
           )}
           <Grid container spacing={2}>
-            {HTML && HTML.map((section, index) => (
-              <Grid item key={section.Titre} xs={12}>
-                <Section
-                  title={section.Titre}
-                  description={section.Content}
-                  index={index}
-                />
-              </Grid>
-            ))}
+            {HTML &&
+              HTML.map((section, index) => (
+                <Grid item key={section.Titre} xs={12}>
+                  <Section
+                    title={section.Titre}
+                    description={section.Content}
+                    index={index}
+                  />
+                </Grid>
+              ))}
           </Grid>
           <Grid container spacing={2}>
             <Box mt={4} px={1}>
-              <Grid container spacing={2} alignItems="center" className={classes.contacts}>
-                {contacts && contacts.map(({ contact }, index) => (
-                  <Grid item key={contact.Nom}>
-                    <Section
-                      title={contact.Nom}
-                      subTitle={contact.Fonction}
-                      index={index}
-                    >
-                      <div>{contact.Telephone}</div>
-                      <a href={`mailto:${contact.Email}`}>{contact.Email}</a>
-                    </Section>
-                  </Grid>
-                ))}
-                <Grid item xs={12}>
+              <Grid
+                container
+                spacing={2}
+                alignItems="center"
+                className={classes.contacts}
+              >
+                {contacts &&
+                  contacts.map(({ contact }, index) => (
+                    <Grid item key={contact.Nom}>
+                      <Section
+                        title={contact.Nom}
+                        subTitle={contact.Fonction}
+                        index={index}
+                      >
+                        <div>{contact.Telephone}</div>
+                        <a href={`mailto:${contact.Email}`}>{contact.Email}</a>
+                      </Section>
+                    </Grid>
+                  ))}
+                {/* <Grid item xs={12}>
                   <Qualiopi index={contacts ? contacts.length + 1 : 0} />
-                </Grid>
+                </Grid> */}
               </Grid>
             </Box>
           </Grid>
@@ -132,12 +147,13 @@ const OneFormation = ({ training = {} }) => {
                 Pour retrouver le contenu de notre webinaire :
                 <ul>
                   <li>
-                    si vous êtes adhérent Mob&lsquo;In :
-                    retrouver le replay dans votre accès privé dans la rubrique
-                    &ldquo;outils de formation&ldquo;
+                    si vous êtes adhérent Mob&lsquo;In : retrouver le replay
+                    dans votre accès privé dans la rubrique &ldquo;outils de
+                    formation&ldquo;
                   </li>
                   <li>
-                    si vous n&lsquo;êtes pas adhérent : n&lsquo;hésitez pas à nous contacter
+                    si vous n&lsquo;êtes pas adhérent : n&lsquo;hésitez pas à
+                    nous contacter
                   </li>
                 </ul>
               </div>
