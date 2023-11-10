@@ -141,7 +141,7 @@ const OneFormation = ({ training = {} }) => {
               </Grid>
             </Box>
           </Grid>
-          {footer && (
+          {/* {footer && (
             <Box mt={4} pl={1}>
               <div>
                 Pour retrouver le contenu de notre webinaire :
@@ -158,7 +158,7 @@ const OneFormation = ({ training = {} }) => {
                 </ul>
               </div>
             </Box>
-          )}
+          )} */}
         </Container>
       </Box>
     </Layout>
