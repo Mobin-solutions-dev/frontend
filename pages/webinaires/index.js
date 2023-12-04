@@ -1,7 +1,9 @@
 import { getTrainings } from '../../utils';
 import AllFormations from '../../components/formation/All';
 
-const Formations = ({ trainings = [] }) => <AllFormations trainings={trainings} title="Webinaires" />;
+const Formations = ({ trainings = [] }) => (
+  <AllFormations trainings={trainings} title="Webinaires" />
+);
 
 export default Formations;
 
@@ -11,7 +13,9 @@ export const getServerSideProps = async () => {
   return {
     props: {
       trainings: trainings
-        .filter((training) => training.formation_categorie.type === 'Webinaire')
+        .filter(
+          (training) => training?.formation_categorie?.type === 'Webinaire'
+        )
         .sort((a, b) => a.id - b.id),
     },
   };
