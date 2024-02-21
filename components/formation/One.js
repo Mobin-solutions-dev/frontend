@@ -1,6 +1,7 @@
-import { Container, Box, Grid, makeStyles, Button } from '@material-ui/core';
+import {
+  Container, Box, Grid, makeStyles, Button,
+} from '@material-ui/core';
 import { Layout, Title } from '..';
-import Qualiopi from './Qualiopi';
 import Section from './Section';
 
 const useStyles = makeStyles((theme) => ({
@@ -103,8 +104,8 @@ const OneFormation = ({ training = {} }) => {
             </Box>
           )}
           <Grid container spacing={2}>
-            {HTML &&
-              HTML.map((section, index) => (
+            {HTML
+              && HTML.map((section, index) => (
                 <Grid item key={section.Titre} xs={12}>
                   <Section
                     title={section.Titre}
@@ -122,8 +123,8 @@ const OneFormation = ({ training = {} }) => {
                 alignItems="center"
                 className={classes.contacts}
               >
-                {contacts &&
-                  contacts.map(({ contact }, index) => (
+                {contacts
+                  && contacts.map(({ contact }, index) => (
                     <Grid item key={contact.Nom}>
                       <Section
                         title={contact.Nom}
