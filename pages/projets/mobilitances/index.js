@@ -258,7 +258,7 @@ export const getServerSideProps = async () => ({
       {
         "cta-tims": {
           Label: "Plus d'info sur les pilotes régionaux et porteurs de projets",
-          Url: "https://lnkd.in/eQcibMdE",
+          Url: "mailto:lea.lesouder@cler.org",
           Carte: true,
         },
       },
