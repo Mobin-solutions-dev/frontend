@@ -5,82 +5,82 @@ export const menuItems = [
     title: "Mob'In",
     subItems: [
       {
-        title: 'Présentation',
-        link: '/presentation',
+        title: "Présentation",
+        link: "/presentation",
       },
       {
-        title: 'Notre histoire, nos valeurs et nos missions',
-        link: '/histoire-valeurs-missions',
+        title: "Notre histoire, nos valeurs et nos missions",
+        link: "/histoire-valeurs-missions",
       },
       {
-        title: 'Notre fonctionnement',
-        link: '/fonctionnement',
+        title: "Notre fonctionnement",
+        link: "/fonctionnement",
       },
       {
-        title: 'Nos adhérents',
-        link: '/adherents',
+        title: "Nos adhérents",
+        link: "/adherents",
       },
       {
-        title: 'Nos actualités',
-        link: '/articles',
+        title: "Nos actualités",
+        link: "/articles",
       },
       {
-        title: 'Nos partenaires',
-        link: '/partenaires',
+        title: "Nos partenaires",
+        link: "/partenaires",
       },
       {
-        title: 'Contact',
-        link: '/contact',
+        title: "Contact",
+        link: "/contact",
       },
     ],
   },
   {
     id: 2,
-    title: 'Nos activités',
+    title: "Nos activités",
     subItems: [
       {
-        title: 'savoir bouger',
-        link: '/savoir-bouger',
+        title: "savoir bouger",
+        link: "/savoir-bouger",
       },
       {
-        title: 'pouvoir bouger',
-        link: '/pouvoir-bouger',
+        title: "pouvoir bouger",
+        link: "/pouvoir-bouger",
       },
     ],
   },
   {
     id: 3,
-    title: 'Nos projets',
+    title: "Nos projets",
     subItems: [
       {
-        title: 'Intégracode',
-        link: '/projets/integracode',
+        title: "Intégracode",
+        link: "/projets/integracode",
       },
       {
-        title: 'Integramob',
-        link: '/projets/integramob',
+        title: "Integramob",
+        link: "/projets/integramob",
       },
       {
-        title: 'M[ob]ilitances',
-        link: '/projets/mobilitances',
+        title: "Programme TIMS",
+        link: "/projets/tims",
       },
       {
-        title: 'Nos Webinaires',
-        link: '/webinaires',
+        title: "Nos Webinaires",
+        link: "/webinaires",
       },
     ],
   },
   {
     id: 4,
-    title: 'Notre accompagnement',
+    title: "Notre accompagnement",
     subItems: [
       {
-        title: 'Au service des territoires',
-        link: '/accompagnement/territoires',
+        title: "Au service des territoires",
+        link: "/accompagnement/territoires",
       },
       {
-        title: 'Au service des entreprises',
-        link: '/accompagnement/entreprises',
+        title: "Au service des entreprises",
+        link: "/accompagnement/entreprises",
       },
       // {
       //     title: "Devenir partenaire",
@@ -90,24 +90,24 @@ export const menuItems = [
   },
   {
     id: 5,
-    title: 'Nos formations',
-    link: '/formations',
+    title: "Nos formations",
+    link: "/formations",
   },
 ];
 
 export const menuLoginItems = [
   {
     id: 1000,
-    title: 'Mon compte',
+    title: "Mon compte",
     subItems: [
       {
-        title: 'Accueil Adhérent',
-        link: '/auth',
+        title: "Accueil Adhérent",
+        link: "/auth",
       },
       {
-        title: 'Déconnexion',
-        link: '/',
-        action: 'Logout',
+        title: "Déconnexion",
+        link: "/",
+        action: "Logout",
       },
     ],
   },
