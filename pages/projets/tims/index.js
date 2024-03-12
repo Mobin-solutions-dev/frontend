@@ -135,8 +135,10 @@ const TIMS = (props) => {
                   <a
                     className={classes.link}
                     href={x["cta-tims"].Url}
-                    target={x.Internal ? undefined : "_blank"}
-                    rel={x.Internal ? undefined : "noreferrer noopener"}
+                    target={x["cta-tims"].Internal ? undefined : "_blank"}
+                    rel={
+                      x["cta-tims"].Internal ? undefined : "noreferrer noopener"
+                    }
                   >
                     <Grid
                       container
