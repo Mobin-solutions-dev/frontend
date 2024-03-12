@@ -135,8 +135,8 @@ const TIMS = (props) => {
                   <a
                     className={classes.link}
                     href={x["cta-tims"].Url}
-                    target="_blank"
-                    rel="noreferrer noopener"
+                    target={x.Internal ? undefined : "_blank"}
+                    rel={x.Internal ? undefined : "noreferrer noopener"}
                   >
                     <Grid
                       container
@@ -250,16 +250,24 @@ export const getServerSideProps = async () => ({
     cta: [
       {
         "cta-tims": {
-          Label: "Communiqué de presse",
-          Url: "https://cler.org/wp-content/uploads/2024/01/cp-tims-janvier-2024.pdf",
-          Carte: null,
+          Label: "Plus d'info sur les pilotes régionaux",
+          Url: "mailto:lea.lesouder@cler.org",
+          Carte: true,
         },
       },
       {
         "cta-tims": {
-          Label: "Plus d'info sur les pilotes régionaux et porteurs de projets",
-          Url: "mailto:lea.lesouder@cler.org",
+          Label: "Lauréats de l’AMI projets locaux",
+          Url: "https://cler.org/wp-content/uploads/2024/01/cp-tims-janvier-2024.pdf",
           Carte: true,
+        },
+      },
+      {
+        "cta-tims": {
+          Label: "Candidatez à l’AMI TEMI",
+          Url: "https://www.mobin-solutions.fr/articles/160",
+          Carte: true,
+          Internal: true,
         },
       },
     ],
