@@ -56,9 +56,9 @@ const FiguresSection = () => {
                         {({ isVisible }) => (
                           <div>
                             {isVisible ? (
-                              <CountUp separator=" " end={80043} />
+                              <CountUp separator=" " end={130000} />
                             ) : (
-                              "80043"
+                              "130000"
                             )}
                           </div>
                         )}
@@ -92,7 +92,7 @@ const FiguresSection = () => {
                     content={
                       <VisibilitySensor>
                         {({ isVisible }) => (
-                          <div>{isVisible ? <CountUp end={186} /> : "186"}</div>
+                          <div>{isVisible ? <CountUp end={229} /> : "229"}</div>
                         )}
                       </VisibilitySensor>
                     }
@@ -165,7 +165,7 @@ const FiguresSection = () => {
                 </Box>
                 <Box pl={4}>
                   <Title
-                    content="Nombre d'adhérents en 2023"
+                    content="Nombre d'adhérents en 2024"
                     color="black"
                     size="h6"
                   />
