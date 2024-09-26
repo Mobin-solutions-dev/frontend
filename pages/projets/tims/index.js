@@ -266,8 +266,8 @@ export const getServerSideProps = async () => ({
       },
       {
         "cta-tims": {
-          Label: "Candidatez à l’AMI TEMI",
-          Url: "https://www.mobin-solutions.fr/articles/160",
+          Label: "Lauréats de l’AMI TEMI",
+          Url: "https://mobilite-durable-inclusive.fr/9-territoires-tims-mobilite-durable-inclusive/",
           Carte: true,
           Internal: true,
         },
